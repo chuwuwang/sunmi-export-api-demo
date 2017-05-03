@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -75,6 +76,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	private Handler mHandler=new Handler();
 	private BroadcastReceiver receiver = new BroadcastReceiver() {
 
 		@Override
@@ -98,17 +100,22 @@ public class MainActivity extends Activity implements OnClickListener {
 				int paymentType = intent.getIntExtra("paymentType", 1);
 				String transTime = intent.getStringExtra("transTime");
 				String errorCode = intent.getStringExtra("errorId");
-				String errorMsg = intent.getStringExtra("errorMsg");
+				final String errorMsg = intent.getStringExtra("errorMsg");
 				long balance = intent.getLongExtra("balance", 0);
 				int transNum = intent.getIntExtra("transNum", 0);
 				long totalAmount = intent.getLongExtra("totalAmount", 0L);
 				if (resultCode == 0) {
 					// 交易成功
-					Toast.makeText(context, "交易成功, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
+					Toast.makeText(MainActivity.this, "交易成功, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
 					Log.e(TAG, "交易成功");
 				} else if (resultCode == -1) {
 					// 交易失败
-					Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show();
+					mHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(MainActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+						}
+					},1000);
 					Log.e(TAG, errorMsg);
 				}
 				Log.e(TAG, "resultCode:" + resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
