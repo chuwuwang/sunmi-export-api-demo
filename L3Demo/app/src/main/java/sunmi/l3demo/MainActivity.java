@@ -5,12 +5,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -290,7 +294,23 @@ public class MainActivity extends Activity implements OnClickListener {
 		default:
 			break;
 		}
-		startActivity(intent);
+		if(isIntentExisting(intent)){
+			startActivity(intent);
+		}else {
+			Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
+		}
+
+	}
+
+	public boolean isIntentExisting(Intent intent) {
+		final PackageManager packageManager = getPackageManager();
+		List<ResolveInfo> resolveInfo =
+				packageManager.queryIntentActivities(intent,
+						PackageManager.MATCH_DEFAULT_ONLY);
+		if (resolveInfo.size() > 0) {
+			return true;
+		}
+		return false;
 	}
 
 }
