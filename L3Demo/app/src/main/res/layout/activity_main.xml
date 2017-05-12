@@ -238,6 +238,17 @@
             android:layout_marginTop="5dp"
             android:text="签退"
             android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_select_consumption"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:text="選擇類型消費"
+            android:textSize="14sp" />
+
     </LinearLayout>
 
 </ScrollView>
