@@ -168,7 +168,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
             case R.id.btn_consume_wechat:
                 intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 2);
+                intent.putExtra("paymentType", 3);
                 intent.putExtra("amount", 1L);
                 intent.putExtra("appId", getPackageName());
                 break;
@@ -289,14 +289,14 @@ public class MainActivity extends Activity implements OnClickListener {
 
             // 二维码被扫
             case R.id.btn_generate_alipay:
-                intent.putExtra("transType", 14);
-                intent.putExtra("paymentType", 1);
+                intent.putExtra("transType", 0);
+                intent.putExtra("paymentType", 2);
                 intent.putExtra("amount", 1L);
                 intent.putExtra("appId", getPackageName());
                 break;
             case R.id.btn_generate_wechat:
-                intent.putExtra("transType", 14);
-                intent.putExtra("paymentType", 2);
+                intent.putExtra("transType", 0);
+                intent.putExtra("paymentType", 4);
                 intent.putExtra("amount", 1L);
                 intent.putExtra("appId", getPackageName());
                 break;
