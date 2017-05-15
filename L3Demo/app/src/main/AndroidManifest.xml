@@ -25,6 +25,7 @@
         <activity android:name=".ReturnGoodsActivity" />
         <activity android:name=".RevokeActivity" />
         <activity android:name=".ResultActivity" />
+        <activity android:name=".CustomConsumeActivity" />
         <!--接收结果广播-->
         <receiver android:name=".ResultReceiver">
             <intent-filter>

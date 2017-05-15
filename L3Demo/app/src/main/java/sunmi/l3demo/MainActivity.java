@@ -1,14 +1,10 @@
 package sunmi.l3demo;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -17,7 +13,6 @@ import java.util.List;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-    public static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +22,7 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.btn_consume).setOnClickListener(this);
         findViewById(R.id.btn_revoke).setOnClickListener(this);
         findViewById(R.id.btn_pre_auth).setOnClickListener(this);
-
+        findViewById(R.id.btn_return_goods).setOnClickListener(this);
         findViewById(R.id.btn_settlement).setOnClickListener(this);
         findViewById(R.id.btn_sign).setOnClickListener(this);
         findViewById(R.id.btn_query_balance).setOnClickListener(this);
@@ -110,6 +105,9 @@ public class MainActivity extends Activity implements OnClickListener {
                 intent.putExtra("transType", 15);
                 intent.putExtra("appId", getPackageName());
                 break;
+            case R.id.btn_select_consumption:
+                startActivity(new Intent(this,CustomConsumeActivity.class));
+                break;
             default:
                 break;
         }
@@ -126,10 +124,7 @@ public class MainActivity extends Activity implements OnClickListener {
         List<ResolveInfo> resolveInfo =
                 packageManager.queryIntentActivities(intent,
                         PackageManager.MATCH_DEFAULT_ONLY);
-        if (resolveInfo.size() > 0) {
-            return true;
-        }
-        return false;
+        return resolveInfo.size() > 0;
     }
 
 }

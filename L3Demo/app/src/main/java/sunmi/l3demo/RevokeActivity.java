@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
- * Created by xurong on 2017/5/15.
+ * @author  by xurong on 2017/5/15.
  */
 
 public class RevokeActivity extends Activity implements View.OnClickListener {
@@ -22,7 +22,6 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
     private RadioButton alipay_scan_rb;
     private RadioButton wechat_scan_rb;
     private EditText input_ori_voucher_no;
-    private Button ok_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +31,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         alipay_scan_rb = (RadioButton) findViewById(R.id.alipay_scan_rb);
         wechat_scan_rb = (RadioButton) findViewById(R.id.wechat_scan_rb);
         input_ori_voucher_no = (EditText) findViewById(R.id.input_ori_voucher_no);
+        Button ok_btn;
         ok_btn = (Button) findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(this);
     }
@@ -62,22 +62,11 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         intent.putExtra("paymentType", paymentType);
         intent.putExtra("oriVoucherNo", voucherNo);
         intent.putExtra("appId", getPackageName());
-        if (isIntentExisting(intent)) {
+        if (Util.isIntentExisting(intent,this)) {
             startActivity(intent);
         } else {
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    public boolean isIntentExisting(Intent intent) {
-        final PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> resolveInfo =
-                packageManager.queryIntentActivities(intent,
-                        PackageManager.MATCH_DEFAULT_ONLY);
-        if (resolveInfo.size() > 0) {
-            return true;
-        }
-        return false;
     }
 }

@@ -29,4 +29,6 @@
     <string name="preauth_revoke_rb">预授权撤销</string>
     <string name="preauth_complete_rb">预授权完成</string>
     <string name="preauth_complete_revoke_rb">预授权完成撤销</string>
+    <string name="trans_type">输入交易类型</string>
+    <string name="payment_type">输入交易方式</string>
 </resources>

@@ -156,7 +156,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="選擇類型消費"
+            android:text="自定义交易"
             android:textSize="14sp" />
 
     </LinearLayout>
