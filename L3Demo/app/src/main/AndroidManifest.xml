@@ -21,7 +21,6 @@
         </activity>
         <activity android:name=".ConsumeActivity" />
         <activity android:name=".PreAuthActivity" />
-        <activity android:name=".QRCordSweptActivity" />
         <activity android:name=".ReturnGoodsActivity" />
         <activity android:name=".RevokeActivity" />
         <activity android:name=".ResultActivity" />
