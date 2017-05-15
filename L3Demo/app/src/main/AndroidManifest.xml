@@ -20,11 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ConsumeActivity" />
-        <activity android:name=".ProAuthActivity" />
+        <activity android:name=".PreAuthActivity" />
         <activity android:name=".QRCordSweptActivity" />
         <activity android:name=".ReturnGoodsActivity" />
         <activity android:name=".RevokeActivity" />
-
+        <activity android:name=".ResultActivity" />
+        <!--接收结果广播-->
         <receiver android:name=".ResultReceiver">
             <intent-filter>
                 <action android:name="sunmi.payment.L3Route.RESULT" />

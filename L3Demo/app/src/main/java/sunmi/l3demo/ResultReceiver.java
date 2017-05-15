@@ -42,30 +42,21 @@ public class ResultReceiver extends BroadcastReceiver {
             int transNum = intent.getIntExtra("transNum", 0);
             long totalAmount = intent.getLongExtra("totalAmount", 0L);
 
-            if (resultCode == 0) {
-                // 交易成功
-                Toast.makeText(context, "交易成功, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "交易成功");
-
-            } else if (resultCode == -1) {
-                // 交易失败
-//                mHandler.postDelayed(new Runnable() {
-//
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }, 1000);
-                Log.e(TAG, errorMsg);
-            }
-            Log.e(TAG, "resultCode:" + resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
+            String resultInfo = "resultCode:" + resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
                     + "\nreferenceNo:" + referenceNo + "\nbatchNo:" + batchNo + "\ncardNo:" + cardNo + "\ncardType:"
                     + cardType + "\nissue:" + issue + "\nterminalId:" + terminalId + "\nmerchantId:" + merchantId
                     + "\nmerchantName:" + merchantName + "\npaymentType:" + paymentType + "\ntransDate:" + date
                     + "\ntransTime:" + transTime + "\nerrorCode:" + errorCode + "\nerrorMsg:" + errorMsg
                     + "\nbalance:" + balance + "\ntransId:" + transId + "\nmerchantNameEn:" + merchantNameEn
-                    + "\ntransNum:" + transNum + "\ntotalAmount:" + totalAmount);
+                    + "\ntransNum:" + transNum + "\ntotalAmount:" + totalAmount;
+
+            Log.e(TAG, resultInfo);
+            Intent myIntent = new Intent(context, ResultActivity.class);
+            myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            myIntent.putExtra("resultCode", resultCode);
+            myIntent.putExtra("resultInfo", resultInfo);
+            myIntent.putExtra("errorMsg", errorMsg);
+            context.startActivity(myIntent);
         }
     }
 }
