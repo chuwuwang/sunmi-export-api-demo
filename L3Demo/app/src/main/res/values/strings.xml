@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">L3Demo</string>
     <!--消费-->
+    <string name="consume">消费</string>
     <string name="select_mode_payment">选择交易方式</string>
     <string name="input_money">输入交易金额(单位：分)</string>
     <string name="bank_card">银行卡</string>
@@ -16,4 +17,8 @@
     <!-- 撤销-->
     <string name="consume_revoke">消费撤销</string>
     <string name="ori_voucher_no">原交易凭证号</string>
+    <!-- 退货 -->
+    <string name="return_goods">退货</string>
+    <!-- 预授权-->
+    <string name="pro_auth">预授权</string>
 </resources>

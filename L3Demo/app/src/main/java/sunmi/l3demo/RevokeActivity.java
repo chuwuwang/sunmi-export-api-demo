@@ -53,13 +53,14 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         //支付类型
         int paymentType = getType();
         // 原交易凭证号
+        //如果有值则会直接跳转到刷卡界面，为""则跳转到选择交易列表界面
         String voucherNo = input_ori_voucher_no.getText().toString();
 
         Intent intent = new Intent("sunmi.payment.L3");
         intent.putExtra("transId", "L3 demo transId");
         intent.putExtra("transType", 1);
         intent.putExtra("paymentType", paymentType);
-        intent.putExtra("oriVoucherNo", voucherNo);//如果有值则会直接跳转到刷卡界面，为""则跳转到选择交易列表界面
+        intent.putExtra("oriVoucherNo", voucherNo);
         intent.putExtra("appId", getPackageName());
         if (isIntentExisting(intent)) {
             startActivity(intent);

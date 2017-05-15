@@ -37,20 +37,8 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn_consume_bank).setOnClickListener(this);
-        findViewById(R.id.btn_consume_alipay).setOnClickListener(this);
-        findViewById(R.id.btn_consume_wechat).setOnClickListener(this);
-
+        findViewById(R.id.btn_consume).setOnClickListener(this);
         findViewById(R.id.btn_revoke).setOnClickListener(this);
-
-        findViewById(R.id.btn_return_good_bank).setOnClickListener(this);
-        findViewById(R.id.btn_return_good_alipay).setOnClickListener(this);
-        findViewById(R.id.btn_return_good_wechat).setOnClickListener(this);
-
-        findViewById(R.id.btn_pre_authorize).setOnClickListener(this);
-        findViewById(R.id.btn_pre_authorize_revoke).setOnClickListener(this);
-        findViewById(R.id.btn_pre_authorize_complete).setOnClickListener(this);
-        findViewById(R.id.btn_pre_authorize_complete_revoke).setOnClickListener(this);
 
         findViewById(R.id.btn_settlement).setOnClickListener(this);
         findViewById(R.id.btn_sign).setOnClickListener(this);
@@ -146,84 +134,30 @@ public class MainActivity extends Activity implements OnClickListener {
         intent.putExtra("transId", "L3 demo transId");
         switch (v.getId()) {
             // 消费
-            case R.id.btn_select_consumption:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", -1);
-                intent.putExtra("amount", 1234L);
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_consume_bank:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 0);
-                intent.putExtra("amount", 45678L);
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_consume_alipay:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 1);
-                intent.putExtra("amount", 1L);
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_consume_wechat:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 3);
-                intent.putExtra("amount", 1L);
-                intent.putExtra("appId", getPackageName());
+            case R.id.btn_consume:
+                startActivity(new Intent(this, ConsumeActivity.class));
                 break;
             //消费撤销
             case R.id.btn_revoke:
                 startActivity(new Intent(this, RevokeActivity.class));
                 break;
             // 退货
-            case R.id.btn_return_good_bank:
-                intent.putExtra("transType", 2);
-                intent.putExtra("paymentType", 0);
-                intent.putExtra("amount", amount);
-                intent.putExtra("oriReferenceNo", voucherNo);//oriReferenceNo不能为"",否则交易失败
-                intent.putExtra("oriTransDate", "0429");
-                intent.putExtra("appId", getPackageName());
+            case R.id.btn_return_goods:
+                startActivity(new Intent(this, ReturnGoodsActivity.class));
+//                intent.putExtra("transType", 2);
+//                intent.putExtra("paymentType", 0);
+//                intent.putExtra("amount", amount);
+//                intent.putExtra("oriReferenceNo", voucherNo);//oriReferenceNo不能为"",否则交易失败
+//                intent.putExtra("oriTransDate", "0429");
+//                intent.putExtra("appId", getPackageName());
                 break;
-            case R.id.btn_return_good_alipay:
-                intent.putExtra("transType", 2);
-                intent.putExtra("paymentType", 1);
-                intent.putExtra("amount", 1L);
-                intent.putExtra("oriQROrderNo", "000000775196");//当oriQROrderNo不为"",会跳转到退货确认界面
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_return_good_wechat:
-                intent.putExtra("transType", 2);
-                intent.putExtra("paymentType", 2);
-                intent.putExtra("amount", amount);
-                intent.putExtra("oriQROrderNo", "");//当oriQROrderNo为"",会跳转到扫描界面
-                intent.putExtra("appId", getPackageName());
-                break;
-
-            case R.id.btn_pre_authorize:
-                // 预授权
-                intent.putExtra("transType", 3);
-                intent.putExtra("amount", 6888L);
-                intent.putExtra("appId", getPackageName());
-                break;
-
-            case R.id.btn_pre_authorize_revoke:
-                // 预授权撤销
-                intent.putExtra("transType", 4);
-                intent.putExtra("oriVoucherNo", voucherNo);
-                intent.putExtra("appId", getPackageName());
-                break;
-
-            case R.id.btn_pre_authorize_complete:
-                // 预授权完成
-                intent.putExtra("transType", 5);
-                intent.putExtra("amount", 6888L);
-                intent.putExtra("oriVoucherNo", voucherNo);
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_pre_authorize_complete_revoke:
-                // 预授权完成撤销
-                intent.putExtra("transType", 6);
-                intent.putExtra("oriVoucherNo", voucherNo);
-                intent.putExtra("appId", getPackageName());
+            // 预授权
+            case R.id.btn_pre_auth:
+                startActivity(new Intent(this, ProAuthActivity.class));
+//                intent.putExtra("transType", 5);
+//                intent.putExtra("amount", 6888L);
+//                intent.putExtra("oriVoucherNo", voucherNo);
+//                intent.putExtra("appId", getPackageName());
                 break;
 
             // 结算
@@ -265,20 +199,6 @@ public class MainActivity extends Activity implements OnClickListener {
             // 商户信息查询
             case R.id.btn_query_merchant:
                 intent.putExtra("transType", 13);
-                intent.putExtra("appId", getPackageName());
-                break;
-
-            // 二维码被扫
-            case R.id.btn_generate_alipay:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 2);
-                intent.putExtra("amount", 1L);
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_generate_wechat:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 4);
-                intent.putExtra("amount", 1L);
                 intent.putExtra("appId", getPackageName());
                 break;
             //签退

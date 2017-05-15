@@ -2,41 +2,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white" >
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_consume_bank"
+            android:id="@+id/btn_consume"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="银行卡消费"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_consume_alipay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="支付宝消费"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_consume_wechat"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="微信消费"
+            android:text="@string/consume"
             android:textSize="14sp" />
 
         <Button
@@ -50,73 +30,23 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_return_good_bank"
+            android:id="@+id/btn_return_goods"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="银行卡退货"
+            android:text="@string/return_goods"
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_return_good_alipay"
+            android:id="@+id/btn_pre_auth"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="支付宝退货"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_return_good_wechat"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="微信退货"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_pre_authorize"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="预授权"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_pre_authorize_revoke"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="预授权撤销"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_pre_authorize_complete"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="预授权完成"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_pre_authorize_complete_revoke"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="预授权完成撤销"
+            android:text="@string/pro_auth"
             android:textSize="14sp" />
 
         <Button
