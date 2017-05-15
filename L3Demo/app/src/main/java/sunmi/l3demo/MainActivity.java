@@ -30,11 +30,7 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.btn_print).setOnClickListener(this);
         findViewById(R.id.btn_last_transaction_query).setOnClickListener(this);
         findViewById(R.id.btn_query_merchant).setOnClickListener(this);
-
-        findViewById(R.id.btn_generate_alipay).setOnClickListener(this);
-        findViewById(R.id.btn_generate_wechat).setOnClickListener(this);
         findViewById(R.id.btn_sign_out).setOnClickListener(this);
-
         findViewById(R.id.btn_select_consumption).setOnClickListener(this);
     }
 
@@ -47,19 +43,19 @@ public class MainActivity extends Activity implements OnClickListener {
             // 消费
             case R.id.btn_consume:
                 startActivity(new Intent(this, ConsumeActivity.class));
-                break;
+                return;
             //消费撤销
             case R.id.btn_revoke:
                 startActivity(new Intent(this, RevokeActivity.class));
-                break;
+                return;
             // 退货
             case R.id.btn_return_goods:
                 startActivity(new Intent(this, ReturnGoodsActivity.class));
-                break;
+                return;
             // 预授权
             case R.id.btn_pre_auth:
                 startActivity(new Intent(this, PreAuthActivity.class));
-                break;
+                return;
             // 结算
             case R.id.btn_settlement:
                 intent.putExtra("transType", 7);
@@ -106,8 +102,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 intent.putExtra("appId", getPackageName());
                 break;
             case R.id.btn_select_consumption:
-                startActivity(new Intent(this,CustomConsumeActivity.class));
-                break;
+                startActivity(new Intent(this, CustomConsumeActivity.class));
+                return;
             default:
                 break;
         }

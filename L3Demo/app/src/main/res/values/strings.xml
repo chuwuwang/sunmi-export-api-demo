@@ -4,6 +4,7 @@
     <string name="consume">消费</string>
     <string name="select_mode_payment">选择交易方式</string>
     <string name="input_money">输入交易金额(单位：分)</string>
+    <string name="input_trans_id">输入交易ID</string>
     <string name="bank_card">银行卡</string>
     <string name="wechat_scan">微信扫码</string>
     <string name="alipay_scan">支付宝扫码</string>
@@ -13,6 +14,8 @@
     <string name="input_ori_voucher_no">输入原交易凭证号</string>
     <string name="input_ori_reference_no">输入原交易参考号</string>
     <string name="input_ori_date">输入原交易日期</string>
+    <string name="input_ori_QROrderNo">输入原扫码消费订单号</string>
+    <string name="input_app_id">输入应用包名</string>
     <string name="user_optional">用户自选</string>
     <!-- 撤销-->
     <string name="consume_revoke">消费撤销</string>

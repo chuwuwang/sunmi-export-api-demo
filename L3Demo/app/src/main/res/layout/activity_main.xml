@@ -120,26 +120,6 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_generate_alipay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="支付宝二维码被扫"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_generate_wechat"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="微信二维码被扫"
-            android:textSize="14sp" />
-
-        <Button
             android:id="@+id/btn_sign_out"
             android:layout_width="match_parent"
             android:layout_height="50dp"

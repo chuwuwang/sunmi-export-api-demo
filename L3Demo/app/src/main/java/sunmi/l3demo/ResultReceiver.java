@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * 结果接收者
@@ -36,13 +35,13 @@ public class ResultReceiver extends BroadcastReceiver {
             String merchantNameEn = intent.getStringExtra("merchantNameEn");
             int paymentType = intent.getIntExtra("paymentType", 1);
             String transTime = intent.getStringExtra("transTime");
-            int errorCode = intent.getIntExtra("errorCode",0);
+            int errorCode = intent.getIntExtra("errorCode", 0);
             final String errorMsg = intent.getStringExtra("errorMsg");
             long balance = intent.getLongExtra("balance", 0);
             int transNum = intent.getIntExtra("transNum", 0);
             long totalAmount = intent.getLongExtra("totalAmount", 0L);
 
-            String resultInfo = "resultCode:" + resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
+            String resultInfo = resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
                     + "\nreferenceNo:" + referenceNo + "\nbatchNo:" + batchNo + "\ncardNo:" + cardNo + "\ncardType:"
                     + cardType + "\nissue:" + issue + "\nterminalId:" + terminalId + "\nmerchantId:" + merchantId
                     + "\nmerchantName:" + merchantName + "\npaymentType:" + paymentType + "\ntransDate:" + date

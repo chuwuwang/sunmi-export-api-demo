@@ -13,18 +13,22 @@ import android.widget.Toast;
  * @author by 47673 on 2017/5/15.
  */
 public class CustomConsumeActivity extends Activity implements View.OnClickListener {
-    private EditText amountEdit, transTypeEdit, paymentTypeEdit, oriVoucherNoEdit, oriReferenceNoEdit, oriDateEdit;
+    private EditText transTypeEdit, paymentTypeEdit, amountEdit, transID, oriVoucherNoEdit, oriDateEdit, oriReferenceNoEdit, QROrderNoEdit, appIDEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_consume);
-        amountEdit = (EditText) findViewById(R.id.input_money_edt);
         transTypeEdit = (EditText) findViewById(R.id.input_trans_type_edt);
         paymentTypeEdit = (EditText) findViewById(R.id.input_payment_type_edt);
+        amountEdit = (EditText) findViewById(R.id.input_money_edt);
+        transID = (EditText) findViewById(R.id.input_trans_id);
         oriVoucherNoEdit = (EditText) findViewById(R.id.input_ori_voucher_no);
-        oriReferenceNoEdit = (EditText) findViewById(R.id.ori_reference_no_edt);
         oriDateEdit = (EditText) findViewById(R.id.ori_date_edt);
+        oriReferenceNoEdit = (EditText) findViewById(R.id.ori_reference_no_edt);
+        QROrderNoEdit = (EditText) findViewById(R.id.ori_QROrderNo_edt);
+        appIDEdit = (EditText) findViewById(R.id.appId);
+        appIDEdit.setText(getPackageName());
         Button ok = (Button) findViewById(R.id.ok_btn);
         ok.setOnClickListener(this);
     }
@@ -46,23 +50,31 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                     if (!TextUtils.isEmpty(amountEdit.getText())) {
                         intent.putExtra("amount", Long.parseLong(amountEdit.getText().toString()));
                     }
-                    intent.putExtra("appId", getPackageName());
-                    if (!TextUtils.isEmpty(oriReferenceNoEdit.getText())) {
-                        intent.putExtra("oriReferenceNo", oriReferenceNoEdit.getText());//oriReferenceNo不能为"",否则交易失败
+                    if (!TextUtils.isEmpty(transID.getText())) {
+                        intent.putExtra("transId", Long.parseLong(transID.getText().toString()));
+                    }
+                    if (!TextUtils.isEmpty(oriVoucherNoEdit.getText())) {
+                        intent.putExtra("oriVoucherNo", oriVoucherNoEdit.getText());
                     }
                     if (!TextUtils.isEmpty(oriDateEdit.getText())) {
                         intent.putExtra("oriTransDate", oriDateEdit.getText());
                     }
-                    if (!TextUtils.isEmpty(oriVoucherNoEdit.getText())) {
-                        intent.putExtra("oriVoucherNo", oriVoucherNoEdit.getText());
+                    if (!TextUtils.isEmpty(oriReferenceNoEdit.getText())) {
+                        intent.putExtra("oriReferenceNo", oriReferenceNoEdit.getText());//oriReferenceNo不能为"",否则交易失败
+                    }
+                    if (!TextUtils.isEmpty(QROrderNoEdit.getText())) {
+                        intent.putExtra("oriQROrderNo", QROrderNoEdit.getText());//oriReferenceNo不能为"",否则交易失败
+                    }
+                    if (!TextUtils.isEmpty(appIDEdit.getText())) {
+                        intent.putExtra("appId", appIDEdit.getText());
                     }
                     if (Util.isIntentExisting(intent, this)) {
                         startActivity(intent);
                     } else {
                         Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
                     }
-                }catch (Exception exception){
-                    Toast.makeText(this,"输入错误",Toast.LENGTH_LONG).show();
+                } catch (Exception exception) {
+                    Toast.makeText(this, "输入错误", Toast.LENGTH_LONG).show();
                 }
 
                 break;
