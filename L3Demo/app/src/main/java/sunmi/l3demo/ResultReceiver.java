@@ -36,7 +36,7 @@ public class ResultReceiver extends BroadcastReceiver {
             String merchantNameEn = intent.getStringExtra("merchantNameEn");
             int paymentType = intent.getIntExtra("paymentType", 1);
             String transTime = intent.getStringExtra("transTime");
-            String errorCode = intent.getStringExtra("errorId");
+            int errorCode = intent.getIntExtra("errorCode",0);
             final String errorMsg = intent.getStringExtra("errorMsg");
             long balance = intent.getLongExtra("balance", 0);
             int transNum = intent.getIntExtra("transNum", 0);

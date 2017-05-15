@@ -26,7 +26,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         findViewById(R.id.btn_consume).setOnClickListener(this);
         findViewById(R.id.btn_revoke).setOnClickListener(this);
-
+        findViewById(R.id.btn_return_goods).setOnClickListener(this);
         findViewById(R.id.btn_settlement).setOnClickListener(this);
         findViewById(R.id.btn_sign).setOnClickListener(this);
         findViewById(R.id.btn_query_balance).setOnClickListener(this);
