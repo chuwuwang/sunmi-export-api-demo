@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">L3Demo</string>
+    <string name="select_mode_payment">选择支付方式</string>
+    <string name="input_money">输入交易金额</string>
+    <string name="bank_card">银行卡支付</string>
+    <string name="wechat">微信支付</string>
+    <string name="alipay">支付宝支付</string>
+    <string name="qr_code">二维码</string>
+    <string name="scan_qr_code">扫码</string>
+    <string name="ok">确认</string>
 </resources>
