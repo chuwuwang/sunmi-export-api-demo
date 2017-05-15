@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -19,18 +18,6 @@ import java.util.List;
 public class MainActivity extends Activity implements OnClickListener {
 
     public static final String TAG = "MainActivity";
-
-    // 原交易凭证号
-    private String voucherNo;
-    // 原参考号
-    private String referenceNo;
-    private String date;
-    // 扫码消费订单号
-    private String QROrderNo;
-    // 交易ID
-    private String transId;
-
-    private long amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,80 +40,8 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.btn_sign_out).setOnClickListener(this);
 
         findViewById(R.id.btn_select_consumption).setOnClickListener(this);
-
-        // 注册广播
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("sunmi.payment.L3Route.RESULT");
-        registerReceiver(receiver, filter);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (receiver != null) {
-            unregisterReceiver(receiver);
-        }
-    }
-
-    private Handler mHandler = new Handler();
-
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals("sunmi.payment.L3Route.RESULT")) {
-                int resultCode = intent.getIntExtra("resultCode", -1);
-                amount = intent.getLongExtra("amount", 0);
-                voucherNo = intent.getStringExtra("voucherNo");
-                referenceNo = intent.getStringExtra("referenceNo");
-                date = intent.getStringExtra("transDate");
-                transId = intent.getStringExtra("transId");
-                String batchNo = intent.getStringExtra("batchNo");
-                String cardNo = intent.getStringExtra("cardNo");
-                String cardType = intent.getStringExtra("cardType");
-                String issue = intent.getStringExtra("issue");
-                String terminalId = intent.getStringExtra("terminalId");
-                String merchantId = intent.getStringExtra("merchantId");
-                String merchantName = intent.getStringExtra("merchantName");
-                String merchantNameEn = intent.getStringExtra("merchantNameEn");
-                int paymentType = intent.getIntExtra("paymentType", 1);
-                String transTime = intent.getStringExtra("transTime");
-                String errorCode = intent.getStringExtra("errorId");
-                final String errorMsg = intent.getStringExtra("errorMsg");
-                long balance = intent.getLongExtra("balance", 0);
-                int transNum = intent.getIntExtra("transNum", 0);
-                long totalAmount = intent.getLongExtra("totalAmount", 0L);
-
-                if (resultCode == 0) {
-                    // 交易成功
-                    Toast.makeText(MainActivity.this, "交易成功, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "交易成功");
-
-                } else if (resultCode == -1) {
-                    // 交易失败
-                    mHandler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            Toast.makeText(MainActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
-                        }
-
-                    }, 1000);
-
-                    Log.e(TAG, errorMsg);
-                }
-                Log.e(TAG, "resultCode:" + resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
-                        + "\nreferenceNo:" + referenceNo + "\nbatchNo:" + batchNo + "\ncardNo:" + cardNo + "\ncardType:"
-                        + cardType + "\nissue:" + issue + "\nterminalId:" + terminalId + "\nmerchantId:" + merchantId
-                        + "\nmerchantName:" + merchantName + "\npaymentType:" + paymentType + "\ntransDate:" + date
-                        + "\ntransTime:" + transTime + "\nerrorCode:" + errorCode + "\nerrorMsg:" + errorMsg
-                        + "\nbalance:" + balance + "\ntransId:" + transId + "\nmerchantNameEn:" + merchantNameEn
-                        + "\ntransNum:" + transNum + "\ntotalAmount:" + totalAmount);
-            }
-        }
-
-    };
 
     @Override
     public void onClick(View v) {
