@@ -21,4 +21,6 @@
     <string name="return_goods">退货</string>
     <!-- 预授权-->
     <string name="pro_auth">预授权</string>
+    <string name="trans_type">输入交易类型</string>
+    <string name="payment_type">输入交易方式</string>
 </resources>

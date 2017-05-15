@@ -62,22 +62,11 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         intent.putExtra("paymentType", paymentType);
         intent.putExtra("oriVoucherNo", voucherNo);
         intent.putExtra("appId", getPackageName());
-        if (isIntentExisting(intent)) {
+        if (Util.isIntentExisting(intent,this)) {
             startActivity(intent);
         } else {
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    public boolean isIntentExisting(Intent intent) {
-        final PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> resolveInfo =
-                packageManager.queryIntentActivities(intent,
-                        PackageManager.MATCH_DEFAULT_ONLY);
-        if (resolveInfo.size() > 0) {
-            return true;
-        }
-        return false;
     }
 }

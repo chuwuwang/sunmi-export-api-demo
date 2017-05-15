@@ -54,12 +54,6 @@ public class MainActivity extends Activity implements OnClickListener {
             // 退货
             case R.id.btn_return_goods:
                 startActivity(new Intent(this, ReturnGoodsActivity.class));
-//                intent.putExtra("transType", 2);
-//                intent.putExtra("paymentType", 0);
-//                intent.putExtra("amount", amount);
-//                intent.putExtra("oriReferenceNo", voucherNo);//oriReferenceNo不能为"",否则交易失败
-//                intent.putExtra("oriTransDate", "0429");
-//                intent.putExtra("appId", getPackageName());
                 break;
             // 预授权
             case R.id.btn_pre_auth:
@@ -115,6 +109,9 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.btn_sign_out:
                 intent.putExtra("transType", 15);
                 intent.putExtra("appId", getPackageName());
+                break;
+            case R.id.btn_select_consumption:
+                startActivity(new Intent(this,CustomConsumeActivity.class));
                 break;
             default:
                 break;
