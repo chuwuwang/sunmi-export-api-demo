@@ -24,6 +24,12 @@
         <activity android:name=".QRCordSweptActivity" />
         <activity android:name=".ReturnGoodsActivity" />
         <activity android:name=".RevokeActivity" />
+
+        <receiver android:name=".ResultReceiver">
+            <intent-filter>
+                <action android:name="sunmi.payment.L3Route.RESULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
