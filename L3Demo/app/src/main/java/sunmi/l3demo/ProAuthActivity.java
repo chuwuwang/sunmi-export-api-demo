@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by xurong on 2017/5/15.
+ * @author  by xurong on 2017/5/15.
  */
 
 public class ProAuthActivity extends Activity {

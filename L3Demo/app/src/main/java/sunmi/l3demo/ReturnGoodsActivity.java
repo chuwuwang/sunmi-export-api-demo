@@ -12,12 +12,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import static sunmi.l3demo.R.id.wechat_code_rb;
 
 /**
- * Created by xurong on 2017/5/15.
+ * @author  by xurong on 2017/5/15.
  */
 
 public class ReturnGoodsActivity extends Activity implements View.OnClickListener {
