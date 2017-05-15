@@ -41,9 +41,7 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.btn_consume_alipay).setOnClickListener(this);
         findViewById(R.id.btn_consume_wechat).setOnClickListener(this);
 
-        findViewById(R.id.btn_revoke_bank).setOnClickListener(this);
-        findViewById(R.id.btn_revoke_alipay).setOnClickListener(this);
-        findViewById(R.id.btn_revoke_wechat).setOnClickListener(this);
+        findViewById(R.id.btn_revoke).setOnClickListener(this);
 
         findViewById(R.id.btn_return_good_bank).setOnClickListener(this);
         findViewById(R.id.btn_return_good_alipay).setOnClickListener(this);
@@ -172,27 +170,10 @@ public class MainActivity extends Activity implements OnClickListener {
                 intent.putExtra("amount", 1L);
                 intent.putExtra("appId", getPackageName());
                 break;
-
-            // 撤销
-            case R.id.btn_revoke_bank:
-                intent.putExtra("transType", 1);
-                intent.putExtra("paymentType", 0);
-                intent.putExtra("oriVoucherNo", voucherNo);//如果有值则会直接跳转到刷卡界面，为""则跳转到选择交易列表界面
-                intent.putExtra("appId", getPackageName());
+            //消费撤销
+            case R.id.btn_revoke:
+                startActivity(new Intent(this, RevokeActivity.class));
                 break;
-            case R.id.btn_revoke_alipay:
-                intent.putExtra("transType", 1);
-                intent.putExtra("paymentType", 1);
-                intent.putExtra("oriVoucherNo", voucherNo);//如果有值则会直接跳转到刷卡界面，为""则跳转到选择交易列表界面
-                intent.putExtra("appId", getPackageName());
-                break;
-            case R.id.btn_revoke_wechat:
-                intent.putExtra("transType", 1);
-                intent.putExtra("paymentType", 2);
-                intent.putExtra("oriVoucherNo", voucherNo);//如果有值则会直接跳转到刷卡界面，为""则跳转到选择交易列表界面
-                intent.putExtra("appId", getPackageName());
-                break;
-
             // 退货
             case R.id.btn_return_good_bank:
                 intent.putExtra("transType", 2);
