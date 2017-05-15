@@ -149,16 +149,14 @@ public class MainActivity extends Activity implements OnClickListener {
         switch (v.getId()) {
             // 消费
             case R.id.btn_select_consumption:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", -1);
-                intent.putExtra("amount", 1234L);
-                intent.putExtra("appId", getPackageName());
+//                intent.putExtra("transType", 0);
+//                intent.putExtra("paymentType", -1);
+//                intent.putExtra("amount", 1234L);
+//                intent.putExtra("appId", getPackageName());
+
                 break;
             case R.id.btn_consume_bank:
-                intent.putExtra("transType", 0);
-                intent.putExtra("paymentType", 0);
-                intent.putExtra("amount", 45678L);
-                intent.putExtra("appId", getPackageName());
+                startActivity(new Intent(this,ConsumeActivity.class));
                 break;
             case R.id.btn_consume_alipay:
                 intent.putExtra("transType", 0);
