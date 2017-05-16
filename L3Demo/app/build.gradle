@@ -3,6 +3,10 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.3'
+    lintOptions {
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "sunmi.l3demo"
         minSdkVersion 10
