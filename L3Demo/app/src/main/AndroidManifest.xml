@@ -28,7 +28,7 @@
         <!--接收结果广播-->
         <receiver android:name=".ResultReceiver">
             <intent-filter>
-                <action android:name="sunmi.payment.L3Route.RESULT" />
+                <action android:name="sunmi.payment.L3.RESULT" />
             </intent-filter>
         </receiver>
     </application>
