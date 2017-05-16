@@ -45,25 +45,6 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
         wechatCodeRb = (RadioButton) findViewById(wechat_code_rb);
         okBtn = (Button) findViewById(R.id.ok_btn);
         okBtn.setOnClickListener(this);
-        okBtn.setEnabled(false);
-        amountEdit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (!TextUtils.isEmpty(editable.toString())) {
-                    okBtn.setEnabled(true);
-                }
-            }
-        });
     }
 
     @Override
@@ -75,7 +56,9 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
                 intent.putExtra("transId", "L3 demo transId");
                 intent.putExtra("transType", 0);
                 intent.putExtra("paymentType", paymentType);
-                intent.putExtra("amount", Long.parseLong(amountEdit.getText().toString()));
+                if (TextUtils.isEmpty(amountEdit.getText().toString())) {
+                    intent.putExtra("amount", Long.parseLong(amountEdit.getText().toString()));
+                }
                 intent.putExtra("appId", getPackageName());
                 if (Util.isIntentExisting(intent, this)) {
                     startActivity(intent);

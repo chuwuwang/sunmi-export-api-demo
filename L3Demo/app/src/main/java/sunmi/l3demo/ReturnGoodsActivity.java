@@ -15,7 +15,7 @@ import android.widget.Toast;
 import static sunmi.l3demo.R.id.wechat_code_rb;
 
 /**
- * @author  by xurong on 2017/5/15.
+ * @author by xurong on 2017/5/15.
  */
 
 public class ReturnGoodsActivity extends Activity implements View.OnClickListener {
@@ -46,28 +46,8 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
         wechatCodeRb = (RadioButton) findViewById(wechat_code_rb);
         okBtn = (Button) findViewById(R.id.ok_btn);
         okBtn.setOnClickListener(this);
-        okBtn.setEnabled(false);
-        moneyEdt.addTextChangedListener(mTextWatcher);
-        oriDateEdt.addTextChangedListener(mTextWatcher);
-        oriReferenceNoEdt.addTextChangedListener(mTextWatcher);
     }
 
-    private TextWatcher mTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            checkEdit();
-        }
-    };
 
     @Override
     public void onClick(View view) {
@@ -78,10 +58,17 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
                 intent.putExtra("transId", "L3 demo transId");
                 intent.putExtra("transType", 2);
                 intent.putExtra("paymentType", paymentType);
-                intent.putExtra("amount", Long.parseLong(moneyEdt.getText().toString()));
+                if (!TextUtils.isEmpty(moneyEdt.getText().toString())) {
+                    intent.putExtra("amount", Long.parseLong(moneyEdt.getText().toString()));
+                }
+
                 intent.putExtra("appId", getPackageName());
-                intent.putExtra("oriReferenceNo", oriReferenceNoEdt.getText());//oriReferenceNo不能为"",否则交易失败
-                intent.putExtra("oriTransDate", oriDateEdt.getText());
+                if (!TextUtils.isEmpty(oriReferenceNoEdt.getText().toString())) {
+                    intent.putExtra("oriReferenceNo", oriReferenceNoEdt.getText().toString());//oriReferenceNo不能为"",否则交易失败
+                }
+                if (!TextUtils.isEmpty(oriDateEdt.getText().toString())) {
+                    intent.putExtra("oriTransDate", oriDateEdt.getText().toString());
+                }
                 if (Util.isIntentExisting(intent, this)) {
                     startActivity(intent);
                 } else {
