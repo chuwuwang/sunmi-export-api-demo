@@ -87,6 +87,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:text="系统管理"
+            android:visibility="gone"
             android:textSize="14sp" />
 
         <Button
@@ -126,6 +127,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:visibility="gone"
             android:text="签退"
             android:textSize="14sp" />
 
