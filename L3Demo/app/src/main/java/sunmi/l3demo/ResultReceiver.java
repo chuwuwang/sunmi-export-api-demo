@@ -72,7 +72,7 @@ public class ResultReceiver extends BroadcastReceiver {
             if (!TextUtils.isEmpty(merchantId)) {
                 resultInfo = resultInfo + "\nmerchantName:" + merchantName;
             }
-            if (paymentType == -2) {
+            if (paymentType != -2) {
                 resultInfo = resultInfo + "\npaymentType:" + paymentType;
             }
             if (!TextUtils.isEmpty(date)) {
@@ -81,13 +81,13 @@ public class ResultReceiver extends BroadcastReceiver {
             if (!TextUtils.isEmpty(transTime)) {
                 resultInfo = resultInfo + "\ntransTime:" + transTime;
             }
-            if (errorCode == 0) {
+            if (errorCode != 0) {
                 resultInfo = resultInfo + "\nerrorCode:" + errorCode;
             }
             if (!TextUtils.isEmpty(errorMsg)) {
                 resultInfo = resultInfo + "\nerrorMsg:" + errorMsg;
             }
-            if (balance == 0) {
+            if (balance != 0) {
                 resultInfo = resultInfo + "\nbalance:" + balance;
             }
             if (TextUtils.isEmpty(transId)) {
@@ -96,10 +96,10 @@ public class ResultReceiver extends BroadcastReceiver {
             if (!TextUtils.isEmpty(merchantNameEn)) {
                 resultInfo = resultInfo + "\nmerchantNameEn:" + merchantNameEn;
             }
-            if (transNum == 0) {
+            if (transNum != 0) {
                 resultInfo = resultInfo + "\ntransNum:" + transNum;
             }
-            if (totalAmount == 0) {
+            if (totalAmount != 0) {
                 resultInfo = resultInfo + "\ntotalAmount:" + totalAmount;
             }
 
