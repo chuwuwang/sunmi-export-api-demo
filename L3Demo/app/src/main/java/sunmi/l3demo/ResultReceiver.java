@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 
 /**
@@ -13,6 +14,7 @@ import android.util.Log;
 public class ResultReceiver extends BroadcastReceiver {
 
     private static final String TAG = "ResultReceiver";
+    private String resultInfo;
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -34,7 +36,7 @@ public class ResultReceiver extends BroadcastReceiver {
             String merchantId = intent.getStringExtra("merchantId");
             String merchantName = intent.getStringExtra("merchantName");
             String merchantNameEn = intent.getStringExtra("merchantNameEn");
-            int paymentType = intent.getIntExtra("paymentType", 1);
+            int paymentType = intent.getIntExtra("paymentType", -2);
             String transTime = intent.getStringExtra("transTime");
             int errorCode = intent.getIntExtra("errorCode", 0);
             final String errorMsg = intent.getStringExtra("errorMsg");
@@ -42,13 +44,64 @@ public class ResultReceiver extends BroadcastReceiver {
             int transNum = intent.getIntExtra("transNum", 0);
             long totalAmount = intent.getLongExtra("totalAmount", 0L);
 
-            final String resultInfo = resultCode + "\namount:" + amount + "\nvoucherNo:" + voucherNo
-                    + "\nreferenceNo:" + referenceNo + "\nbatchNo:" + batchNo + "\ncardNo:" + cardNo + "\ncardType:"
-                    + cardType + "\nissue:" + issue + "\nterminalId:" + terminalId + "\nmerchantId:" + merchantId
-                    + "\nmerchantName:" + merchantName + "\npaymentType:" + paymentType + "\ntransDate:" + date
-                    + "\ntransTime:" + transTime + "\nerrorCode:" + errorCode + "\nerrorMsg:" + errorMsg
-                    + "\nbalance:" + balance + "\ntransId:" + transId + "\nmerchantNameEn:" + merchantNameEn
-                    + "\ntransNum:" + transNum + "\ntotalAmount:" + totalAmount;
+            resultInfo = resultCode + "";
+            if (amount != 0) {
+                resultInfo = resultInfo + "\namount:" + amount;
+            }
+            if (!TextUtils.isEmpty(voucherNo)) {
+                resultInfo = resultInfo + "\nvoucherNo:" + voucherNo;
+            }
+            if (!TextUtils.isEmpty(referenceNo)) {
+                resultInfo = resultInfo + "\nreferenceNo:" + referenceNo;
+            }
+            if (!TextUtils.isEmpty(batchNo)) {
+                resultInfo = resultInfo + "\nbatchNo:" + batchNo;
+            }
+            if (!TextUtils.isEmpty(cardNo)) {
+                resultInfo = resultInfo + "\ncardNo:" + cardNo;
+            }
+            if (!TextUtils.isEmpty(cardType)) {
+                resultInfo = resultInfo + "\ncardType:" + cardType;
+            }
+            if (!TextUtils.isEmpty(issue)) {
+                resultInfo = resultInfo + "\nissue:" + issue;
+            }
+            if (!TextUtils.isEmpty(terminalId)) {
+                resultInfo = resultInfo + "\nterminalId:" + terminalId;
+            }
+            if (!TextUtils.isEmpty(merchantId)) {
+                resultInfo = resultInfo + "\nmerchantName:" + merchantName;
+            }
+            if (paymentType == -2) {
+                resultInfo = resultInfo + "\npaymentType:" + paymentType;
+            }
+            if (!TextUtils.isEmpty(date)) {
+                resultInfo = resultInfo + "\ntransDate:" + date;
+            }
+            if (!TextUtils.isEmpty(transTime)) {
+                resultInfo = resultInfo + "\ntransTime:" + transTime;
+            }
+            if (errorCode == 0) {
+                resultInfo = resultInfo + "\nerrorCode:" + errorCode;
+            }
+            if (!TextUtils.isEmpty(errorMsg)) {
+                resultInfo = resultInfo + "\nerrorMsg:" + errorMsg;
+            }
+            if (balance == 0) {
+                resultInfo = resultInfo + "\nbalance:" + balance;
+            }
+            if (TextUtils.isEmpty(transId)) {
+                resultInfo = resultInfo + "\ntransId:" + transId;
+            }
+            if (!TextUtils.isEmpty(merchantNameEn)) {
+                resultInfo = resultInfo + "\nmerchantNameEn:" + merchantNameEn;
+            }
+            if (transNum == 0) {
+                resultInfo = resultInfo + "\ntransNum:" + transNum;
+            }
+            if (totalAmount == 0) {
+                resultInfo = resultInfo + "\ntotalAmount:" + totalAmount;
+            }
 
             Log.e(TAG, resultInfo);
             new Handler().postDelayed(new Runnable() {
