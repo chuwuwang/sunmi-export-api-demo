@@ -61,16 +61,20 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
                 try {
                     intent.putExtra("amount", Long.parseLong(moneyEdt.getText().toString()));
                 }catch (Exception e) {
-                    Toast.makeText(this, "消费金额填写错误", Toast.LENGTH_SHORT).show();
-                    return;
+                    if(paymentType == 0) {
+                        Toast.makeText(this, "消费金额填写错误", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
 
                 intent.putExtra("appId", getPackageName());
                 if (!TextUtils.isEmpty(oriReferenceNoEdt.getText().toString())) {
                     intent.putExtra("oriReferenceNo", oriReferenceNoEdt.getText().toString());//oriReferenceNo不能为"",否则交易失败
                 }else{
-                    Toast.makeText(this,"原交易参考号不能为空",Toast.LENGTH_LONG).show();
-                    return;
+                    if(paymentType == 0) {
+                        Toast.makeText(this, "原交易参考号不能为空", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                 }
                 if (!TextUtils.isEmpty(oriDateEdt.getText().toString())) {
                     intent.putExtra("oriTransDate", oriDateEdt.getText().toString());
