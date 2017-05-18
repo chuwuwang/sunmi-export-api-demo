@@ -11,8 +11,8 @@ android {
         applicationId "sunmi.l3demo"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 5
-        versionName "v1.0.5"
+        versionCode 6
+        versionName "v1.0.6"
     }
     buildTypes {
         release {
