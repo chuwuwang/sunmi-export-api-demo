@@ -70,6 +70,9 @@ public class ResultReceiver extends BroadcastReceiver {
                 resultInfo = resultInfo + "\nterminalId:" + terminalId;
             }
             if (!TextUtils.isEmpty(merchantId)) {
+                resultInfo = resultInfo + "\nmerchantId:" + merchantId;
+            }
+            if(!TextUtils.isEmpty(merchantName)){
                 resultInfo = resultInfo + "\nmerchantName:" + merchantName;
             }
             if (paymentType != -2) {
