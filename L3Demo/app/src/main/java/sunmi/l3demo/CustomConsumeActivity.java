@@ -70,6 +70,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                         }
                     } catch (Exception e) {
                         Toast.makeText(this, "输入错误", Toast.LENGTH_LONG).show();
+                        return;
                     }
                     if (Util.isIntentExisting(intent, this)) {
                         startActivity(intent);
