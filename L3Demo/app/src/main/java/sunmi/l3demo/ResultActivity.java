@@ -7,11 +7,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Created by xurong on 2017/5/15.
+ * @author xurong on 2017/5/15.
  */
 
 public class ResultActivity extends Activity {
+
     private static final String TAG = "ResultActivity";
+
     TextView result_tv;
 
     @Override

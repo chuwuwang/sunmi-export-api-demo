@@ -3,25 +3,24 @@ package sunmi.l3demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import static sunmi.l3demo.R.id.wechat_code_rb;
 
 /**
- * Created by xurong on 2017/5/15.
+ * @author xurong on 2017/5/15.
  */
 
 public class ConsumeActivity extends Activity implements View.OnClickListener {
+
     private EditText amountEdit;
-    private RadioButton bankCardRb, alipayScanRb, wechatScanRb, userOptionalRb, alipayCodeRb, wechatCodeRb;
+
+    private RadioButton bankCardRb, aliPayScanRb, weChatScanRb, userOptionalRb, aliPayCodeRb, weChatCodeRb;
+
     private int paymentType;
 
     @Override
@@ -38,32 +37,13 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
         final Button okBtn;
         amountEdit = (EditText) findViewById(R.id.input_money_edt);
         bankCardRb = (RadioButton) findViewById(R.id.bank_card_rb);
-        alipayScanRb = (RadioButton) findViewById(R.id.alipay_scan_rb);
-        wechatScanRb = (RadioButton) findViewById(R.id.wechat_scan_rb);
+        aliPayScanRb = (RadioButton) findViewById(R.id.alipay_scan_rb);
+        weChatScanRb = (RadioButton) findViewById(R.id.wechat_scan_rb);
         userOptionalRb = (RadioButton) findViewById(R.id.optional_rb);
-        alipayCodeRb = (RadioButton) findViewById(R.id.alipay_code_rb);
-        wechatCodeRb = (RadioButton) findViewById(wechat_code_rb);
+        aliPayCodeRb = (RadioButton) findViewById(R.id.alipay_code_rb);
+        weChatCodeRb = (RadioButton) findViewById(wechat_code_rb);
         okBtn = (Button) findViewById(R.id.ok_btn);
         okBtn.setOnClickListener(this);
-        okBtn.setEnabled(false);
-        amountEdit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (!TextUtils.isEmpty(editable.toString())) {
-                    okBtn.setEnabled(true);
-                }
-            }
-        });
     }
 
     @Override
@@ -75,7 +55,14 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
                 intent.putExtra("transId", "L3 demo transId");
                 intent.putExtra("transType", 0);
                 intent.putExtra("paymentType", paymentType);
-                intent.putExtra("amount", Long.parseLong(amountEdit.getText().toString()));
+
+                String amount = amountEdit.getText().toString();
+                try {
+                    intent.putExtra("amount", Long.parseLong(amount));
+                } catch (Exception e) {
+                    Toast.makeText(this, "消费金额填写错误", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 intent.putExtra("appId", getPackageName());
                 if (Util.isIntentExisting(intent, this)) {
                     startActivity(intent);
@@ -83,21 +70,23 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
                     Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
                 }
         }
+
     }
 
     private void setPaymentType() {
         if (bankCardRb.isChecked()) {
             paymentType = 0;
-        } else if (alipayScanRb.isChecked()) {
+        } else if (aliPayScanRb.isChecked()) {
             paymentType = 1;
-        } else if (wechatScanRb.isChecked()) {
+        } else if (weChatScanRb.isChecked()) {
             paymentType = 3;
-        } else if (alipayCodeRb.isChecked()) {
+        } else if (aliPayCodeRb.isChecked()) {
             paymentType = 2;
-        } else if (wechatCodeRb.isChecked()) {
+        } else if (weChatCodeRb.isChecked()) {
             paymentType = 4;
         } else if (userOptionalRb.isChecked()) {
             paymentType = -1;
         }
     }
+
 }

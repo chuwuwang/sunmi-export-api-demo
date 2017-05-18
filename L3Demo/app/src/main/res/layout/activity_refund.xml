@@ -60,6 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/user_optional"
             android:textSize="14dp"
+            android:visibility="gone"
             android:textColor="#000000"/>
     </RadioGroup>
     <TextView

@@ -11,13 +11,27 @@ android {
         applicationId "sunmi.l3demo"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 1
-        versionName "v1.0.1"
+        versionCode 6
+        versionName "v1.0.6"
+    }
+    signingConfigs {
+        sign {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../app/V1.keystore')
+            storePassword 'android'
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sign
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.sign
         }
     }
     android.applicationVariants.all {

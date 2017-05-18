@@ -40,33 +40,37 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                 try {
                     Intent intent = new Intent("sunmi.payment.L3");
                     intent.putExtra("transId", "L3 demo transId");
-
-                    if (!TextUtils.isEmpty(transTypeEdit.getText())) {
-                        intent.putExtra("transType", Integer.parseInt(String.valueOf(transTypeEdit.getText())));
-                    }
-                    if (!TextUtils.isEmpty(paymentTypeEdit.getText())) {
-                        intent.putExtra("paymentType", Integer.parseInt(String.valueOf(paymentTypeEdit.getText())));
-                    }
-                    if (!TextUtils.isEmpty(amountEdit.getText())) {
-                        intent.putExtra("amount", Long.parseLong(amountEdit.getText().toString()));
-                    }
-                    if (!TextUtils.isEmpty(transID.getText())) {
-                        intent.putExtra("transId", Long.parseLong(transID.getText().toString()));
-                    }
-                    if (!TextUtils.isEmpty(oriVoucherNoEdit.getText())) {
-                        intent.putExtra("oriVoucherNo", oriVoucherNoEdit.getText());
-                    }
-                    if (!TextUtils.isEmpty(oriDateEdit.getText())) {
-                        intent.putExtra("oriTransDate", oriDateEdit.getText());
-                    }
-                    if (!TextUtils.isEmpty(oriReferenceNoEdit.getText())) {
-                        intent.putExtra("oriReferenceNo", oriReferenceNoEdit.getText());//oriReferenceNo不能为"",否则交易失败
-                    }
-                    if (!TextUtils.isEmpty(QROrderNoEdit.getText())) {
-                        intent.putExtra("oriQROrderNo", QROrderNoEdit.getText());//oriReferenceNo不能为"",否则交易失败
-                    }
-                    if (!TextUtils.isEmpty(appIDEdit.getText())) {
-                        intent.putExtra("appId", appIDEdit.getText());
+                    try {
+                        if (!TextUtils.isEmpty(transTypeEdit.getText().toString())) {
+                            intent.putExtra("transType", Integer.parseInt(String.valueOf(transTypeEdit.getText().toString())));
+                        }
+                        if (!TextUtils.isEmpty(paymentTypeEdit.getText().toString())) {
+                            intent.putExtra("paymentType", Integer.parseInt(String.valueOf(paymentTypeEdit.getText().toString())));
+                        }
+                        if (!TextUtils.isEmpty(amountEdit.getText().toString())) {
+                            intent.putExtra("amount", Long.parseLong(amountEdit.getText().toString()));
+                        }
+                        if (!TextUtils.isEmpty(transID.getText().toString())) {
+                            intent.putExtra("transId", Long.parseLong(transID.getText().toString()));
+                        }
+                        if (!TextUtils.isEmpty(oriVoucherNoEdit.getText().toString())) {
+                            intent.putExtra("oriVoucherNo", oriVoucherNoEdit.getText().toString());
+                        }
+                        if (!TextUtils.isEmpty(oriDateEdit.getText().toString())) {
+                            intent.putExtra("oriTransDate", oriDateEdit.getText().toString());
+                        }
+                        if (!TextUtils.isEmpty(oriReferenceNoEdit.getText().toString())) {
+                            intent.putExtra("oriReferenceNo", oriReferenceNoEdit.getText().toString());//oriReferenceNo不能为"",否则交易失败
+                        }
+                        if (!TextUtils.isEmpty(QROrderNoEdit.getText().toString())) {
+                            intent.putExtra("oriQROrderNo", QROrderNoEdit.getText().toString());//oriReferenceNo不能为"",否则交易失败
+                        }
+                        if (!TextUtils.isEmpty(appIDEdit.getText().toString())) {
+                            intent.putExtra("appId", appIDEdit.getText().toString());
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(this, "输入错误", Toast.LENGTH_LONG).show();
+                        return;
                     }
                     if (Util.isIntentExisting(intent, this)) {
                         startActivity(intent);
