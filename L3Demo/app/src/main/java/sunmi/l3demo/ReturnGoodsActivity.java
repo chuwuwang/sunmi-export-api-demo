@@ -66,10 +66,13 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
                         return;
                     }
                 }
-
                 intent.putExtra("appId", getPackageName());
                 if (!TextUtils.isEmpty(oriReferenceNoEdt.getText().toString())) {
-                    intent.putExtra("oriReferenceNo", oriReferenceNoEdt.getText().toString());//oriReferenceNo不能为"",否则交易失败
+                   if(paymentType == 1 || paymentType == 2 ||paymentType == 3 || paymentType == 4){
+                        intent.putExtra("oriQROrderNo", oriReferenceNoEdt.getText().toString());
+                    } else {
+                        intent.putExtra("oriReferenceNo", oriReferenceNoEdt.getText().toString());//oriReferenceNo不能为"",否则交易失败
+                    }
                 }else{
                     if(paymentType == 0) {
                         Toast.makeText(this, "原交易参考号不能为空", Toast.LENGTH_LONG).show();
