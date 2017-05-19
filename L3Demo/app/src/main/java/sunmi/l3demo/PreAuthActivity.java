@@ -82,7 +82,8 @@ public class PreAuthActivity extends Activity implements View.OnClickListener {
         }
 
         Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transId", "L3 demo transId");
+        String transId = System.currentTimeMillis()+ "";
+        intent.putExtra("transId",transId);
         intent.putExtra("transType", transType);
         intent.putExtra("amount", _amount);
         intent.putExtra("oriVoucherNo", voucherNo);

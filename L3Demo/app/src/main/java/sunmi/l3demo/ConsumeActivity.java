@@ -52,7 +52,8 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
             case R.id.ok_btn:
                 setPaymentType();
                 Intent intent = new Intent("sunmi.payment.L3");
-                intent.putExtra("transId", "L3 demo transId");
+                String transId = System.currentTimeMillis()+ "";
+                intent.putExtra("transId",transId);
                 intent.putExtra("transType", 0);
                 intent.putExtra("paymentType", paymentType);
 

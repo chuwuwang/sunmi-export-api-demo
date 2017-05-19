@@ -55,7 +55,8 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
             case R.id.ok_btn:
                 setPaymentType();
                 Intent intent = new Intent("sunmi.payment.L3");
-                intent.putExtra("transId", "L3 demo transId");
+                String transId = System.currentTimeMillis()+ "";
+                intent.putExtra("transId",transId);
                 intent.putExtra("transType", 2);
                 intent.putExtra("paymentType", paymentType);
                 try {

@@ -39,7 +39,8 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
             case R.id.ok_btn:
                 try {
                     Intent intent = new Intent("sunmi.payment.L3");
-                    intent.putExtra("transId", "L3 demo transId");
+                    String transId = System.currentTimeMillis()+ "";
+                    intent.putExtra("transId",transId);
                     try {
                         if (!TextUtils.isEmpty(transTypeEdit.getText().toString())) {
                             intent.putExtra("transType", Integer.parseInt(String.valueOf(transTypeEdit.getText().toString())));
