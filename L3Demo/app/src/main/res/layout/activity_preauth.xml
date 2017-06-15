@@ -53,6 +53,7 @@
     </RadioGroup>
 
     <TextView
+        android:id="@+id/input_ori_voucher_no_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/input_ori_voucher_no"
@@ -69,6 +70,7 @@
         android:textSize="14dp" />
 
     <TextView
+        android:id="@+id/input_money_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/input_money"
