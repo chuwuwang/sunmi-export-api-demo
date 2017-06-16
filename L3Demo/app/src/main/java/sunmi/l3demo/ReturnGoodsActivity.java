@@ -27,6 +27,7 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Constants.signBtnEnable = true;
         setContentView(R.layout.activity_refund);
         initView();
     }

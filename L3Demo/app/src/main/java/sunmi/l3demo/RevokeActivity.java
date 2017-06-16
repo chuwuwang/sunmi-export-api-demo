@@ -27,6 +27,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revoke);
+        Constants.signBtnEnable = true;
         bank_card_rb = (RadioButton) findViewById(R.id.bank_card_rb);
         alipay_scan_rb = (RadioButton) findViewById(R.id.alipay_scan_rb);
         wechat_scan_rb = (RadioButton) findViewById(R.id.wechat_scan_rb);

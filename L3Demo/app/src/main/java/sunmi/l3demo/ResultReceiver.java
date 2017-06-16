@@ -93,7 +93,7 @@ public class ResultReceiver extends BroadcastReceiver {
             if (balance != 0) {
                 resultInfo = resultInfo + "\nbalance:" + balance;
             }
-            if (TextUtils.isEmpty(transId)) {
+            if (!TextUtils.isEmpty(transId)) {
                 resultInfo = resultInfo + "\ntransId:" + transId;
             }
             if (!TextUtils.isEmpty(merchantNameEn)) {

@@ -19,6 +19,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_consume);
+        Constants.signBtnEnable = true;
         transTypeEdit = (EditText) findViewById(R.id.input_trans_type_edt);
         paymentTypeEdit = (EditText) findViewById(R.id.input_payment_type_edt);
         amountEdit = (EditText) findViewById(R.id.input_money_edt);
