@@ -21,7 +21,6 @@ public class ResultActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         result_tv = (TextView) findViewById(R.id.result_tv);
-        Constants.signBtnEnable = true;
         int resultCode = getIntent().getIntExtra("resultCode", -1);
         String errorMsg = getIntent().getStringExtra("errorMsg");
         String resultInfo = getIntent().getStringExtra("resultInfo");

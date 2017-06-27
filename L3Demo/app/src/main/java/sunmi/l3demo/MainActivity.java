@@ -133,6 +133,7 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
+        Constants.signBtnEnable = true;
         setEnable();
     }
 
