@@ -9,7 +9,8 @@ import android.util.Log;
 
 /**
  * 结果接收者
- * Created by xurong on 2017/5/15.
+ *
+ * @author xurong on 2017/5/15.
  */
 public class ResultReceiver extends BroadcastReceiver {
 
@@ -28,6 +29,7 @@ public class ResultReceiver extends BroadcastReceiver {
             String referenceNo = intent.getStringExtra("referenceNo");
             String date = intent.getStringExtra("transDate");
             String transId = intent.getStringExtra("transId");
+            int transType = intent.getIntExtra("transType", -10);
             String batchNo = intent.getStringExtra("batchNo");
             String cardNo = intent.getStringExtra("cardNo");
             String cardType = intent.getStringExtra("cardType");
@@ -46,68 +48,73 @@ public class ResultReceiver extends BroadcastReceiver {
 
             resultInfo = resultCode + "";
             if (amount != 0) {
-                resultInfo = resultInfo + "\namount:" + amount;
+                resultInfo = resultInfo + "\n amount:" + amount;
             }
             if (!TextUtils.isEmpty(voucherNo)) {
-                resultInfo = resultInfo + "\nvoucherNo:" + voucherNo;
+                resultInfo = resultInfo + "\n voucherNo:" + voucherNo;
             }
             if (!TextUtils.isEmpty(referenceNo)) {
-                resultInfo = resultInfo + "\nreferenceNo:" + referenceNo;
+                resultInfo = resultInfo + "\n referenceNo:" + referenceNo;
             }
             if (!TextUtils.isEmpty(batchNo)) {
-                resultInfo = resultInfo + "\nbatchNo:" + batchNo;
+                resultInfo = resultInfo + "\n batchNo:" + batchNo;
             }
             if (!TextUtils.isEmpty(cardNo)) {
-                resultInfo = resultInfo + "\ncardNo:" + cardNo;
+                resultInfo = resultInfo + "\n cardNo:" + cardNo;
             }
             if (!TextUtils.isEmpty(cardType)) {
-                resultInfo = resultInfo + "\ncardType:" + cardType;
+                resultInfo = resultInfo + "\n cardType:" + cardType;
             }
             if (!TextUtils.isEmpty(issue)) {
-                resultInfo = resultInfo + "\nissue:" + issue;
+                resultInfo = resultInfo + "\n issue:" + issue;
             }
             if (!TextUtils.isEmpty(terminalId)) {
-                resultInfo = resultInfo + "\nterminalId:" + terminalId;
+                resultInfo = resultInfo + "\n terminalId:" + terminalId;
             }
             if (!TextUtils.isEmpty(merchantId)) {
-                resultInfo = resultInfo + "\nmerchantId:" + merchantId;
+                resultInfo = resultInfo + "\n merchantId:" + merchantId;
             }
-            if(!TextUtils.isEmpty(merchantName)){
-                resultInfo = resultInfo + "\nmerchantName:" + merchantName;
+            if (!TextUtils.isEmpty(merchantName)) {
+                resultInfo = resultInfo + "\n merchantName:" + merchantName;
             }
             if (paymentType != -2) {
-                resultInfo = resultInfo + "\npaymentType:" + paymentType;
+                resultInfo = resultInfo + "\n paymentType:" + paymentType;
             }
             if (!TextUtils.isEmpty(date)) {
-                resultInfo = resultInfo + "\ntransDate:" + date;
+                resultInfo = resultInfo + "\n transDate:" + date;
             }
             if (!TextUtils.isEmpty(transTime)) {
-                resultInfo = resultInfo + "\ntransTime:" + transTime;
+                resultInfo = resultInfo + "\n transTime:" + transTime;
             }
             if (errorCode != 0) {
-                resultInfo = resultInfo + "\nerrorCode:" + errorCode;
+                resultInfo = resultInfo + "\n errorCode:" + errorCode;
             }
             if (!TextUtils.isEmpty(errorMsg)) {
-                resultInfo = resultInfo + "\nerrorMsg:" + errorMsg;
+                resultInfo = resultInfo + "\n errorMsg:" + errorMsg;
             }
             if (balance != 0) {
-                resultInfo = resultInfo + "\nbalance:" + balance;
+                resultInfo = resultInfo + "\n balance:" + balance;
             }
             if (!TextUtils.isEmpty(transId)) {
-                resultInfo = resultInfo + "\ntransId:" + transId;
+                resultInfo = resultInfo + "\n transId:" + transId;
             }
             if (!TextUtils.isEmpty(merchantNameEn)) {
-                resultInfo = resultInfo + "\nmerchantNameEn:" + merchantNameEn;
+                resultInfo = resultInfo + "\n merchantNameEn:" + merchantNameEn;
             }
             if (transNum != 0) {
-                resultInfo = resultInfo + "\ntransNum:" + transNum;
+                resultInfo = resultInfo + "\n transNum:" + transNum;
             }
             if (totalAmount != 0) {
-                resultInfo = resultInfo + "\ntotalAmount:" + totalAmount;
+                resultInfo = resultInfo + "\n totalAmount:" + totalAmount;
+            }
+            if (transType != -10) {
+                resultInfo = resultInfo + "\n transType:" + transType;
             }
 
             Log.e(TAG, resultInfo);
+
             new Handler().postDelayed(new Runnable() {
+
                 @Override
                 public void run() {
                     Intent myIntent = new Intent(context, ResultActivity.class);
@@ -117,8 +124,10 @@ public class ResultReceiver extends BroadcastReceiver {
                     myIntent.putExtra("errorMsg", errorMsg);
                     context.startActivity(myIntent);
                 }
-            }, 500);
 
+            }, 500);
         }
     }
+
+
 }

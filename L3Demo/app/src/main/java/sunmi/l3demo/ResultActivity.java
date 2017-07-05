@@ -25,12 +25,10 @@ public class ResultActivity extends Activity {
         String errorMsg = getIntent().getStringExtra("errorMsg");
         String resultInfo = getIntent().getStringExtra("resultInfo");
 
-
         if (resultCode == 0) {
             // 交易成功
             Toast.makeText(this, "交易成功, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
             Log.e(TAG, "交易成功");
-
         } else if (resultCode == -1) {
             // 交易失败
             Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
@@ -38,4 +36,5 @@ public class ResultActivity extends Activity {
         }
         result_tv.setText("Result:" + resultInfo);
     }
+
 }
