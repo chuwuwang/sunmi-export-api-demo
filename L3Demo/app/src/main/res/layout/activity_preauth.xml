@@ -19,35 +19,35 @@
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/preauth_rb"
+            android:id="@+id/pre_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/preauth_rb"
+            android:text="@string/pre_rb"
             android:textColor="#000000"
             android:textSize="14dp" />
 
         <RadioButton
-            android:id="@+id/preauth_revoke_rb"
+            android:id="@+id/pre_revoke_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/preauth_revoke_rb"
+            android:text="@string/pre_revoke_rb"
             android:textColor="#000000"
             android:textSize="14dp" />
 
         <RadioButton
-            android:id="@+id/preauth_complete_rb"
+            android:id="@+id/pre_complete_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/preauth_complete_rb"
+            android:text="@string/pre_complete_rb"
             android:textColor="#000000"
             android:textSize="14dp" />
 
         <RadioButton
-            android:id="@+id/preauth_complete_revoke_rb"
+            android:id="@+id/pre_complete_revoke_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/preauth_complete_revoke_rb"
+            android:text="@string/pre_complete_revoke_rb"
             android:textColor="#000000"
             android:textSize="14dp" />
     </RadioGroup>
@@ -88,9 +88,46 @@
         android:textColorHint="#666666"
         android:textSize="14dp" />
 
+    <TextView
+        android:id="@+id/input_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="输入交易时间（格式如：0205）"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/input_date_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入交易时间"
+        android:inputType="number"
+        android:maxLength="9"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/input_ori_auth_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="输入原交易授权号"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/input_ori_auth_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入原交易授权号"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp" />
+
     <Button
         android:id="@+id/ok_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ok" />
+
 </LinearLayout>

@@ -17,18 +17,24 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
- * Created by xurong on 2017/5/15.
+ * @author xurong
+ *         Created by xurong on 2017/5/15.
  */
 
 public class PreAuthActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    private RadioButton preauth_rb;
-    private RadioButton preauth_revoke_rb;
-    private RadioButton preauth_complete_rb;
-    private RadioButton preauth_complete_revoke_rb;
+
+    private RadioButton preAuth_rb;
+    private RadioButton preAuth_revoke_rb;
+    private RadioButton preAuth_complete_rb;
+    private RadioButton preAuth_complete_revoke_rb;
     private TextView input_money_tv;
     private TextView input_ori_voucher_no_tv;
     private EditText input_ori_voucher_no_edt;
     private EditText input_money_edt;
+    private TextView input_ori_date_tv;
+    private EditText input_date_edt;
+    private TextView input_auth_tv;
+    private EditText input_auth_edt;
     private Button ok_btn;
 
     @Override
@@ -36,22 +42,28 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preauth);
         Constants.signBtnEnable = true;
-        preauth_rb = (RadioButton) findViewById(R.id.preauth_rb);
-        preauth_revoke_rb = (RadioButton) findViewById(R.id.preauth_revoke_rb);
-        preauth_complete_rb = (RadioButton) findViewById(R.id.preauth_complete_rb);
-        preauth_complete_revoke_rb = (RadioButton) findViewById(R.id.preauth_complete_revoke_rb);
+        preAuth_rb = (RadioButton) findViewById(R.id.pre_rb);
+        preAuth_revoke_rb = (RadioButton) findViewById(R.id.pre_revoke_rb);
+        preAuth_complete_rb = (RadioButton) findViewById(R.id.pre_complete_rb);
+        preAuth_complete_revoke_rb = (RadioButton) findViewById(R.id.pre_complete_revoke_rb);
         input_money_tv = (TextView) findViewById(R.id.input_money_tv);
         input_ori_voucher_no_tv = (TextView) findViewById(R.id.input_ori_voucher_no_tv);
         input_money_edt = (EditText) findViewById(R.id.input_money_edt);
         input_ori_voucher_no_edt = (EditText) findViewById(R.id.input_ori_voucher_no_edt);
+        input_date_edt = (EditText) findViewById(R.id.input_date_edt);
+        input_ori_date_tv = (TextView) findViewById(R.id.input_date_tv);
+        input_auth_edt = (EditText) findViewById(R.id.input_ori_auth_edt);
+        input_auth_tv = (TextView) findViewById(R.id.input_ori_auth_tv);
         ok_btn = (Button) findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(this);
-        preauth_rb.setOnCheckedChangeListener(this);
-        preauth_revoke_rb.setOnCheckedChangeListener(this);
-        preauth_complete_rb.setOnCheckedChangeListener(this);
-        preauth_complete_revoke_rb.setOnCheckedChangeListener(this);
+        preAuth_rb.setOnCheckedChangeListener(this);
+        preAuth_revoke_rb.setOnCheckedChangeListener(this);
+        preAuth_complete_rb.setOnCheckedChangeListener(this);
+        preAuth_complete_revoke_rb.setOnCheckedChangeListener(this);
         isShowOriVoucherNo(false);
-        isShowMoney(true);
+        isShowMoney(false);
+        isShowOriDate(false);
+        isShowOriAuthNo(false);
     }
 
     /**
@@ -70,8 +82,6 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
 
     /**
      * 是否显示钱
-     *
-     * @param isShow
      */
     private void isShowMoney(boolean isShow) {
         if (isShow) {
@@ -84,24 +94,54 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         }
     }
 
-    private int getTransType() {
-        int transType;
-        if (preauth_rb.isChecked()) {
-            transType = 3;
-            isShowMoney(true);
-            isShowOriVoucherNo(false);
-        } else if (preauth_revoke_rb.isChecked()) {
-            transType = 4;
-            isShowMoney(false);
-            isShowOriVoucherNo(false);
-        } else if (preauth_complete_rb.isChecked()) {
-            transType = 5;
-            isShowMoney(false);
-            isShowOriVoucherNo(false);
+    private void isShowOriDate(boolean isShow) {
+        if (isShow) {
+            input_ori_date_tv.setVisibility(View.VISIBLE);
+            input_date_edt.setVisibility(View.VISIBLE);
         } else {
-            transType = 6;
+            input_ori_date_tv.setVisibility(View.GONE);
+            input_date_edt.setVisibility(View.GONE);
+            input_date_edt.setText("");
+        }
+    }
+
+    private void isShowOriAuthNo(boolean isShow) {
+        if (isShow) {
+            input_auth_tv.setVisibility(View.VISIBLE);
+            input_auth_edt.setVisibility(View.VISIBLE);
+        } else {
+            input_auth_tv.setVisibility(View.GONE);
+            input_auth_edt.setVisibility(View.GONE);
+            input_auth_edt.setText("");
+        }
+    }
+
+    private int getTransType() {
+        int transType = 3;
+        if (preAuth_rb.isChecked()) {
+            transType = 3;
+            isShowOriVoucherNo(false);
+            isShowOriDate(false);
+            isShowMoney(true);
+            isShowOriAuthNo(false);
+        } else if (preAuth_revoke_rb.isChecked()) {
+            transType = 4;
+            isShowOriVoucherNo(false);
+            isShowOriDate(true);
+            isShowMoney(true);
+            isShowOriAuthNo(true);
+        } else if (preAuth_complete_rb.isChecked()) {
+            transType = 5;
+            isShowOriVoucherNo(false);
+            isShowOriDate(true);
             isShowMoney(false);
+            isShowOriAuthNo(true);
+        } else if (preAuth_complete_revoke_rb.isChecked()) {
+            transType = 6;
             isShowOriVoucherNo(true);
+            isShowOriDate(false);
+            isShowMoney(false);
+            isShowOriAuthNo(false);
         }
         return transType;
     }
@@ -114,27 +154,16 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
     @Override
     public void onClick(View v) {
         Intent intent = new Intent("sunmi.payment.L3");
-
         int transType = getTransType();
-        String voucherNo = "";
-        String amount = "";
-        if (transType == 6) {
-            //预授权没有原凭证号
-            voucherNo = input_ori_voucher_no_edt.getText().toString();
-            intent.putExtra("oriVoucherNo", voucherNo);
-            if (TextUtils.isEmpty(voucherNo)) {
-                Toast.makeText(getBaseContext(), getString(R.string.please_input_voucher_no), Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
+        String oriVoucherNo = input_ori_voucher_no_edt.getText().toString();
+        String amount = input_money_edt.getText().toString();
+        String date = input_date_edt.getText().toString();
+        String authNo = input_auth_edt.getText().toString();
 
         long _amount = 0;
         try {
-            if (input_money_edt.isShown()) {
-                //预授权撤销和预授权完成撤销没有金额
-                amount = input_money_edt.getText().toString();
+            if (!TextUtils.isEmpty(amount)) {
                 _amount = Long.valueOf(amount);
-                intent.putExtra("amount", _amount);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,11 +171,14 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
             return;
         }
 
-
         String transId = System.currentTimeMillis() + "";
         intent.putExtra("transId", transId);
         intent.putExtra("transType", transType);
         intent.putExtra("appId", getPackageName());
+        intent.putExtra("amount", _amount);
+        intent.putExtra("oriTransDate", date);
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
+        intent.putExtra("oriAuthNo", authNo);
 
         if (isIntentExisting(intent)) {
             startActivity(intent);
@@ -165,4 +197,6 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         }
         return false;
     }
+
+
 }

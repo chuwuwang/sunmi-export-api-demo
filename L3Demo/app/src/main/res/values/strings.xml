@@ -22,16 +22,18 @@
     <string name="ori_voucher_no">原交易凭证号</string>
     <!-- 退货 -->
     <string name="return_goods">退货</string>
+
     <!-- 预授权-->
     <string name="input_voucher_no">输入原交易凭证号,如果没有可以不填</string>
     <string name="input_amount">输入凭证号,如果没有可以不填</string>
     <string name="please_input_voucher_no">请输入原交易凭证号</string>
     <string name="please_input_amount">请输入交易金额</string>
     <string name="pro_auth">预授权</string>
-    <string name="preauth_rb">预授权</string>
-    <string name="preauth_revoke_rb">预授权撤销</string>
-    <string name="preauth_complete_rb">预授权完成</string>
-    <string name="preauth_complete_revoke_rb">预授权完成撤销</string>
+    <string name="pre_rb">预授权</string>
+    <string name="pre_revoke_rb">预授权撤销</string>
+    <string name="pre_complete_rb">预授权完成</string>
+    <string name="pre_complete_revoke_rb">预授权完成撤销</string>
     <string name="trans_type">输入交易类型</string>
     <string name="payment_type">输入交易方式</string>
+
 </resources>
