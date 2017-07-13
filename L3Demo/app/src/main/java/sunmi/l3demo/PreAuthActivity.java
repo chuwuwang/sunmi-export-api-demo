@@ -37,11 +37,21 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
     private EditText input_auth_edt;
     private Button ok_btn;
 
+    private EditText userInfoEdit;
+    private EditText userCodeInfoEdit;
+    private EditText merchantInfoEdit;
+    private EditText merchantCodeInfoEdit;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preauth);
         Constants.signBtnEnable = true;
+        setContentView(R.layout.activity_preauth);
+        initView();
+    }
+
+    private void initView() {
         preAuth_rb = (RadioButton) findViewById(R.id.pre_rb);
         preAuth_revoke_rb = (RadioButton) findViewById(R.id.pre_revoke_rb);
         preAuth_complete_rb = (RadioButton) findViewById(R.id.pre_complete_rb);
@@ -61,9 +71,14 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         preAuth_complete_rb.setOnCheckedChangeListener(this);
         preAuth_complete_revoke_rb.setOnCheckedChangeListener(this);
         isShowOriVoucherNo(false);
-        isShowMoney(false);
+        isShowMoney(true);
         isShowOriDate(false);
         isShowOriAuthNo(false);
+
+        userInfoEdit = (EditText) findViewById(R.id.et_user_info);
+        userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
+        merchantInfoEdit = (EditText) findViewById(R.id.et_merchant_info);
+        merchantCodeInfoEdit = (EditText) findViewById(R.id.et_merchant_code_info);
     }
 
     /**
@@ -155,10 +170,10 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
     public void onClick(View v) {
         Intent intent = new Intent("sunmi.payment.L3");
         int transType = getTransType();
-        String oriVoucherNo = input_ori_voucher_no_edt.getText().toString();
         String amount = input_money_edt.getText().toString();
         String date = input_date_edt.getText().toString();
         String authNo = input_auth_edt.getText().toString();
+        String oriVoucherNo = input_ori_voucher_no_edt.getText().toString();
 
         long _amount = 0;
         try {
@@ -171,14 +186,22 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
             return;
         }
 
-        String transId = System.currentTimeMillis() + "";
-        intent.putExtra("transId", transId);
+        intent.putExtra("transId", "fuck you");
         intent.putExtra("transType", transType);
         intent.putExtra("appId", getPackageName());
         intent.putExtra("amount", _amount);
         intent.putExtra("oriTransDate", date);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
         intent.putExtra("oriAuthNo", authNo);
+
+        String printInfo = userInfoEdit.getText().toString();
+        String printInfo2 = userCodeInfoEdit.getText().toString();
+        String printMerchantInfo = merchantInfoEdit.getText().toString();
+        String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
+        intent.putExtra("printInfo", printInfo);
+        intent.putExtra("printInfo2", printInfo2);
+        intent.putExtra("printMerchantInfo", printMerchantInfo);
+        intent.putExtra("printMerchantInfo2", printMerchantInfo2);
 
         if (isIntentExisting(intent)) {
             startActivity(intent);

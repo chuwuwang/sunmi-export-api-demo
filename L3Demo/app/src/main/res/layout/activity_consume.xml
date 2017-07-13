@@ -28,38 +28,38 @@
             android:textSize="14dp" />
 
         <RadioButton
-            android:id="@+id/alipay_scan_rb"
+            android:id="@+id/aliPay_scan_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/alipay_scan"
+            android:text="@string/aliPay_scan"
             android:textColor="#000000"
             android:textSize="14dp" />
 
         <RadioButton
-            android:id="@+id/alipay_code_rb"
+            android:id="@+id/aliPay_code_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/alipay_code"
+            android:text="@string/aliPay_code"
             android:textColor="#000000"
             android:textSize="14dp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <RadioButton
-            android:id="@+id/wechat_scan_rb"
+            android:id="@+id/weChat_scan_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/wechat_scan"
+            android:text="@string/wx_scan"
             android:textColor="#000000"
             android:textSize="14dp" />
 
         <RadioButton
-            android:id="@+id/wechat_code_rb"
+            android:id="@+id/weChat_code_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/wechat_code"
+            android:text="@string/wx_code"
             android:textColor="#000000"
             android:textSize="14dp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <RadioButton
             android:id="@+id/optional_rb"
@@ -68,6 +68,7 @@
             android:text="@string/user_optional"
             android:textColor="#000000"
             android:textSize="14dp" />
+
     </RadioGroup>
 
     <TextView
@@ -88,9 +89,74 @@
         android:textColorHint="#666666"
         android:textSize="14dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户联追加打印"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/et_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="用户联追加打印"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户联追加二维码"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/et_user_code_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="用户联追加二维码"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="商户联追加打印"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/et_merchant_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="商户联追加打印"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="商户联追加二维码"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/et_merchant_code_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="商户联追加二维码"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp" />
+
     <Button
         android:id="@+id/ok_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ok" />
+
 </LinearLayout>

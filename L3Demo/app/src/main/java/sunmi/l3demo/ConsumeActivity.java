@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import static sunmi.l3demo.R.id.wechat_code_rb;
-
 /**
  * @author xurong on 2017/5/15.
  */
@@ -23,11 +21,16 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
 
     private int paymentType;
 
+    private EditText userInfoEdit;
+    private EditText userCodeInfoEdit;
+    private EditText merchantInfoEdit;
+    private EditText merchantCodeInfoEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consume);
         Constants.signBtnEnable = true;
+        setContentView(R.layout.activity_consume);
         initView();
     }
 
@@ -38,13 +41,20 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
         final Button okBtn;
         amountEdit = (EditText) findViewById(R.id.input_money_edt);
         bankCardRb = (RadioButton) findViewById(R.id.bank_card_rb);
-        aliPayScanRb = (RadioButton) findViewById(R.id.alipay_scan_rb);
-        weChatScanRb = (RadioButton) findViewById(R.id.wechat_scan_rb);
+        aliPayScanRb = (RadioButton) findViewById(R.id.aliPay_scan_rb);
+        weChatScanRb = (RadioButton) findViewById(R.id.weChat_scan_rb);
         userOptionalRb = (RadioButton) findViewById(R.id.optional_rb);
-        aliPayCodeRb = (RadioButton) findViewById(R.id.alipay_code_rb);
-        weChatCodeRb = (RadioButton) findViewById(wechat_code_rb);
+        aliPayCodeRb = (RadioButton) findViewById(R.id.aliPay_code_rb);
+        weChatCodeRb = (RadioButton) findViewById(R.id.weChat_code_rb);
         okBtn = (Button) findViewById(R.id.ok_btn);
         okBtn.setOnClickListener(this);
+        aliPayCodeRb.setVisibility(View.GONE);
+        weChatCodeRb.setVisibility(View.GONE);
+
+        userInfoEdit = (EditText) findViewById(R.id.et_user_info);
+        userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
+        merchantInfoEdit = (EditText) findViewById(R.id.et_merchant_info);
+        merchantCodeInfoEdit = (EditText) findViewById(R.id.et_merchant_code_info);
     }
 
     @Override
@@ -53,19 +63,28 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
             case R.id.ok_btn:
                 setPaymentType();
                 Intent intent = new Intent("sunmi.payment.L3");
-                String transId = System.currentTimeMillis()+ "";
-                intent.putExtra("transId",transId);
                 intent.putExtra("transType", 0);
+                intent.putExtra("transId", "fuck you");
+                intent.putExtra("appId", getPackageName());
                 intent.putExtra("paymentType", paymentType);
-
-                String amount = amountEdit.getText().toString();
                 try {
-                    intent.putExtra("amount", Long.parseLong(amount));
+                    String amount = amountEdit.getText().toString();
+                    long aLong = Long.parseLong(amount);
+                    intent.putExtra("amount", aLong);
                 } catch (Exception e) {
                     Toast.makeText(this, "消费金额填写错误", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                intent.putExtra("appId", getPackageName());
+
+                String printInfo = userInfoEdit.getText().toString();
+                String printInfo2 = userCodeInfoEdit.getText().toString();
+                String printMerchantInfo = merchantInfoEdit.getText().toString();
+                String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
+                intent.putExtra("printInfo", printInfo);
+                intent.putExtra("printInfo2", printInfo2);
+                intent.putExtra("printMerchantInfo", printMerchantInfo);
+                intent.putExtra("printMerchantInfo2", printMerchantInfo2);
+
                 if (Util.isIntentExisting(intent, this)) {
                     startActivity(intent);
                 } else {

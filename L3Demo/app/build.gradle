@@ -11,8 +11,8 @@ android {
         applicationId "sunmi.l3demo"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 12
-        versionName "v1.0.12"
+        versionCode 13
+        versionName "v1.0.13"
     }
     signingConfigs {
         sign {

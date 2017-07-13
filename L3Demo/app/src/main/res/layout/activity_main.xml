@@ -87,8 +87,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:text="系统管理"
-            android:visibility="gone"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_print"
@@ -127,9 +127,9 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:visibility="gone"
             android:text="签退"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_select_consumption"

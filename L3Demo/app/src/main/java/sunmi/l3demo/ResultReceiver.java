@@ -15,6 +15,7 @@ import android.util.Log;
 public class ResultReceiver extends BroadcastReceiver {
 
     private static final String TAG = "ResultReceiver";
+
     private String resultInfo;
 
     @Override
@@ -45,6 +46,8 @@ public class ResultReceiver extends BroadcastReceiver {
             long balance = intent.getLongExtra("balance", 0);
             int transNum = intent.getIntExtra("transNum", 0);
             long totalAmount = intent.getLongExtra("totalAmount", 0L);
+
+            String authNo = intent.getStringExtra("authNo");
 
             resultInfo = resultCode + "";
             if (amount != 0) {
@@ -109,6 +112,9 @@ public class ResultReceiver extends BroadcastReceiver {
             }
             if (transType != -10) {
                 resultInfo = resultInfo + "\n transType:" + transType;
+            }
+            if (!TextUtils.isEmpty(authNo)) {
+                resultInfo = resultInfo + "\n authNo:" + authNo;
             }
 
             Log.e(TAG, resultInfo);

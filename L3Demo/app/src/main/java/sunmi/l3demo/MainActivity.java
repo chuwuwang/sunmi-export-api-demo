@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends Activity implements OnClickListener {
+
     private Button signBtn, consumeBtn, revokeBtn, preAuthBtn, returnGoodsBtn, settlementBtn, queryBalanceBtn,
             systemManagerBtn, printBtn, lastTransactionQueryBtn, queryMerchantBtn, signOutBtn, selectConsumptionBtn;
 
