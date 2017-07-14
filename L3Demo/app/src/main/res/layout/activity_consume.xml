@@ -153,6 +153,15 @@
         android:textColorHint="#666666"
         android:textSize="14dp" />
 
+    <CheckBox
+        android:id="@+id/cb_code_print"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="二维码是否打印小票"
+        android:textColor="#000000"
+        android:textSize="14dp" />
+
     <Button
         android:id="@+id/ok_btn"
         android:layout_width="match_parent"

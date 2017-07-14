@@ -46,8 +46,9 @@ public class ResultReceiver extends BroadcastReceiver {
             long balance = intent.getLongExtra("balance", 0);
             int transNum = intent.getIntExtra("transNum", 0);
             long totalAmount = intent.getLongExtra("totalAmount", 0L);
-
+            String qrOrderNo = intent.getStringExtra("qrOrderNo");
             String authNo = intent.getStringExtra("authNo");
+            int transactionType = intent.getIntExtra("transactionType", 0);
 
             resultInfo = resultCode + "";
             if (amount != 0) {
@@ -115,6 +116,12 @@ public class ResultReceiver extends BroadcastReceiver {
             }
             if (!TextUtils.isEmpty(authNo)) {
                 resultInfo = resultInfo + "\n authNo:" + authNo;
+            }
+            if (!TextUtils.isEmpty(qrOrderNo)) {
+                resultInfo = resultInfo + "\n qrOrderNo:" + qrOrderNo;
+            }
+            if (transactionType != 0) {
+                resultInfo = resultInfo + "\n transactionType:" + transactionType;
             }
 
             Log.e(TAG, resultInfo);

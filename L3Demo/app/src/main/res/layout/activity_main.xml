@@ -129,7 +129,7 @@
             android:layout_marginTop="5dp"
             android:text="签退"
             android:textSize="14sp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/btn_select_consumption"

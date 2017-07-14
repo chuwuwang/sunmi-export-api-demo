@@ -110,7 +110,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 intent.putExtra("transType", 13);
                 intent.putExtra("appId", getPackageName());
                 break;
-            //签退
+            // 签退
             case R.id.btn_sign_out:
                 intent.putExtra("transType", 15);
                 intent.putExtra("appId", getPackageName());
@@ -128,7 +128,6 @@ public class MainActivity extends Activity implements OnClickListener {
             setEnable();
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override

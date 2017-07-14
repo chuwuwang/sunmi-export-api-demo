@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -175,21 +174,17 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         String authNo = input_auth_edt.getText().toString();
         String oriVoucherNo = input_ori_voucher_no_edt.getText().toString();
 
-        long _amount = 0;
         try {
-            if (!TextUtils.isEmpty(amount)) {
-                _amount = Long.valueOf(amount);
-            }
+            long money = Long.valueOf(amount);
+            intent.putExtra("amount", money);
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), getString(R.string.please_input_amount), Toast.LENGTH_SHORT).show();
             return;
         }
 
         intent.putExtra("transId", "fuck you");
         intent.putExtra("transType", transType);
         intent.putExtra("appId", getPackageName());
-        intent.putExtra("amount", _amount);
         intent.putExtra("oriTransDate", date);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
         intent.putExtra("oriAuthNo", authNo);

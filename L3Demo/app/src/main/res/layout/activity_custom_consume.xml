@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -168,6 +170,33 @@
             android:hint="更改打印抬头文字"
             android:textColor="#000000"
             android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <CheckBox
+            android:id="@+id/cb_code_print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="二维码是否打印小票"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+
+        <CheckBox
+            android:id="@+id/cb_settle_print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="结算是否打印小票"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+
+        <CheckBox
+            android:id="@+id/cb_manage_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="是否输入管理员密码"
+            android:textColor="#000000"
             android:textSize="14dp" />
 
         <Button

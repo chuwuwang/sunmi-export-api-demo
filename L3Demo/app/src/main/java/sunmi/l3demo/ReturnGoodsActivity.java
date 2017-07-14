@@ -74,24 +74,16 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
                     long aLong = Long.parseLong(amount);
                     intent.putExtra("amount", aLong);
                 } catch (Exception e) {
-                    if (paymentType == 0) {
-                        Toast.makeText(this, "消费金额填写错误", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                    e.printStackTrace();
                 }
+
                 String referenceNo = oriReferenceNoEdt.getText().toString();
-                if (TextUtils.isEmpty(referenceNo)) {
-                    if (paymentType == 0) {
-                        Toast.makeText(this, "原交易参考号不能为空", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+                if (paymentType == 1 || paymentType == 2 || paymentType == 3 || paymentType == 4) {
+                    intent.putExtra("oriQROrderNo", referenceNo);
                 } else {
-                    if (paymentType == 1 || paymentType == 2 || paymentType == 3 || paymentType == 4) {
-                        intent.putExtra("oriQROrderNo", referenceNo);
-                    } else {
-                        intent.putExtra("oriReferenceNo", referenceNo);
-                    }
+                    intent.putExtra("oriReferenceNo", referenceNo);
                 }
+
                 String date = oriDateEdt.getText().toString();
                 intent.putExtra("oriTransDate", date);
 

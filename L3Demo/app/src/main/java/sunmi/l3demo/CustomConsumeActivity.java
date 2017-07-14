@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,6 +22,10 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
     private EditText merchantCodeInfoEdit;
 
     private EditText printHeaderEdit;
+
+    private CheckBox isPrintCb;
+    private CheckBox isSettlePrintCb;
+    private CheckBox isManagePwdCb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +55,20 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
         merchantCodeInfoEdit = (EditText) findViewById(R.id.et_merchant_code_info);
 
         printHeaderEdit = (EditText) findViewById(R.id.et_print_header);
+
+        isPrintCb = (CheckBox) findViewById(R.id.cb_code_print);
+        isSettlePrintCb = (CheckBox) findViewById(R.id.cb_settle_print);
+        isManagePwdCb = (CheckBox) findViewById(R.id.cb_manage_pwd);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ok_btn:
-                try {
-                    Intent intent = new Intent("sunmi.payment.L3");
-                    intent.putExtra("transId", "fuck you");
+                Intent intent = new Intent("sunmi.payment.L3");
+                intent.putExtra("transId", "fuck you");
 
+                try {
                     String transType = transTypeEdit.getText().toString();
                     intent.putExtra("transType", Integer.parseInt(transType));
 
@@ -72,41 +81,46 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                     String transId = transID.getText().toString();
                     intent.putExtra("transId", Long.parseLong(transId));
 
-                    String voucherNo = oriVoucherNoEdit.getText().toString();
-                    intent.putExtra("oriVoucherNo", voucherNo);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-                    String date = oriDateEdit.getText().toString();
-                    intent.putExtra("oriTransDate", date);
+                String voucherNo = oriVoucherNoEdit.getText().toString();
+                intent.putExtra("oriVoucherNo", voucherNo);
 
-                    String referenceNo = oriReferenceNoEdit.getText().toString();
-                    intent.putExtra("oriReferenceNo", referenceNo);
+                String date = oriDateEdit.getText().toString();
+                intent.putExtra("oriTransDate", date);
 
-                    String qrOrder = QROrderNoEdit.getText().toString();
-                    intent.putExtra("oriQROrderNo", qrOrder);
+                String referenceNo = oriReferenceNoEdit.getText().toString();
+                intent.putExtra("oriReferenceNo", referenceNo);
 
-                    String appId = appIDEdit.getText().toString();
-                    intent.putExtra("appId", appId);
+                String qrOrder = QROrderNoEdit.getText().toString();
+                intent.putExtra("oriQROrderNo", qrOrder);
 
-                    String printInfo = userInfoEdit.getText().toString();
-                    String printInfo2 = userCodeInfoEdit.getText().toString();
-                    String printMerchantInfo = merchantInfoEdit.getText().toString();
-                    String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
-                    intent.putExtra("printInfo", printInfo);
-                    intent.putExtra("printInfo2", printInfo2);
-                    intent.putExtra("printMerchantInfo", printMerchantInfo);
-                    intent.putExtra("printMerchantInfo2", printMerchantInfo2);
+                String appId = appIDEdit.getText().toString();
+                intent.putExtra("appId", appId);
 
-                    String header = printHeaderEdit.getText().toString();
-                    intent.putExtra("riseString", header);
+                String printInfo = userInfoEdit.getText().toString();
+                String printInfo2 = userCodeInfoEdit.getText().toString();
+                String printMerchantInfo = merchantInfoEdit.getText().toString();
+                String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
+                intent.putExtra("printInfo", printInfo);
+                intent.putExtra("printInfo2", printInfo2);
+                intent.putExtra("printMerchantInfo", printMerchantInfo);
+                intent.putExtra("printMerchantInfo2", printMerchantInfo2);
 
-                    if (Util.isIntentExisting(intent, this)) {
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
-                    }
 
-                } catch (Exception exception) {
-                    Toast.makeText(this, "输入错误", Toast.LENGTH_LONG).show();
+                String header = printHeaderEdit.getText().toString();
+                intent.putExtra("riseString", header);
+
+                intent.putExtra("isPrintTicket", isPrintCb.isChecked());
+                intent.putExtra("isPrintSettleTicket", isSettlePrintCb.isChecked());
+                intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
+
+                if (Util.isIntentExisting(intent, this)) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
