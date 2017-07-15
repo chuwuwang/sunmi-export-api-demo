@@ -179,7 +179,6 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
             intent.putExtra("amount", money);
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
 
         intent.putExtra("transId", "fuck you");
