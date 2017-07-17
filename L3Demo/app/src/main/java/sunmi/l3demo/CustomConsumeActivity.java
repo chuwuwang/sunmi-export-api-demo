@@ -26,6 +26,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
     private CheckBox isPrintCb;
     private CheckBox isSettlePrintCb;
     private CheckBox isManagePwdCb;
+    private CheckBox isLastTradeCb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
         isPrintCb = (CheckBox) findViewById(R.id.cb_code_print);
         isSettlePrintCb = (CheckBox) findViewById(R.id.cb_settle_print);
         isManagePwdCb = (CheckBox) findViewById(R.id.cb_manage_pwd);
+        isLastTradeCb = (CheckBox) findViewById(R.id.cb_last_trade);
     }
 
     @Override
@@ -104,11 +106,16 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                 String printInfo2 = userCodeInfoEdit.getText().toString();
                 String printMerchantInfo = merchantInfoEdit.getText().toString();
                 String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
+                if (printInfo.length() > 100) {
+                    Toast.makeText(this, "用户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
+                }
+                if (printMerchantInfo.length() > 100) {
+                    Toast.makeText(this, "商户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
+                }
                 intent.putExtra("printInfo", printInfo);
                 intent.putExtra("printInfo2", printInfo2);
                 intent.putExtra("printMerchantInfo", printMerchantInfo);
                 intent.putExtra("printMerchantInfo2", printMerchantInfo2);
-
 
                 String header = printHeaderEdit.getText().toString();
                 intent.putExtra("riseString", header);
@@ -116,6 +123,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                 intent.putExtra("isPrintTicket", isPrintCb.isChecked());
                 intent.putExtra("isPrintSettleTicket", isSettlePrintCb.isChecked());
                 intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
+                intent.putExtra("isLastTrade", isLastTradeCb.isChecked());
 
                 if (Util.isIntentExisting(intent, this)) {
                     startActivity(intent);

@@ -79,6 +79,12 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         String printInfo2 = userCodeInfoEdit.getText().toString();
         String printMerchantInfo = merchantInfoEdit.getText().toString();
         String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
+        if (printInfo.length() > 100) {
+            Toast.makeText(this, "用户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
+        }
+        if (printMerchantInfo.length() > 100) {
+            Toast.makeText(this, "商户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
+        }
         intent.putExtra("printInfo", printInfo);
         intent.putExtra("printInfo2", printInfo2);
         intent.putExtra("printMerchantInfo", printMerchantInfo);

@@ -199,6 +199,15 @@
             android:textColor="#000000"
             android:textSize="14dp" />
 
+        <CheckBox
+            android:id="@+id/cb_last_trade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="是否为最后一笔"
+            android:textColor="#000000"
+            android:textSize="14dp" />
+
         <Button
             android:id="@+id/ok_btn"
             android:layout_width="match_parent"
