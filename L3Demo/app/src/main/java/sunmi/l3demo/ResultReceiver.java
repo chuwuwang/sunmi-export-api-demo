@@ -49,6 +49,8 @@ public class ResultReceiver extends BroadcastReceiver {
             String qrOrderNo = intent.getStringExtra("qrOrderNo");
             String authNo = intent.getStringExtra("authNo");
             int transactionType = intent.getIntExtra("transactionType", 0);
+            int qrCodeTransactionType = intent.getIntExtra("qrCodeTransactionType", 0);
+            String settleJson = intent.getStringExtra("settleJson");
 
             resultInfo = resultCode + "";
             if (amount != 0) {
@@ -122,6 +124,12 @@ public class ResultReceiver extends BroadcastReceiver {
             }
             if (transactionType != 0) {
                 resultInfo = resultInfo + "\n transactionType:" + transactionType;
+            }
+            if (transactionType != 0) {
+                resultInfo = resultInfo + "\n qrCodeTransactionType:" + qrCodeTransactionType;
+            }
+            if (!TextUtils.isEmpty(settleJson)) {
+                resultInfo = resultInfo + "\n settleJson:" + settleJson;
             }
 
             Log.e(TAG, resultInfo);

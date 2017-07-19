@@ -27,6 +27,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
     private CheckBox isSettlePrintCb;
     private CheckBox isManagePwdCb;
     private CheckBox isLastTradeCb;
+    private CheckBox isOrderDetailCb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
         isSettlePrintCb = (CheckBox) findViewById(R.id.cb_settle_print);
         isManagePwdCb = (CheckBox) findViewById(R.id.cb_manage_pwd);
         isLastTradeCb = (CheckBox) findViewById(R.id.cb_last_trade);
+        isOrderDetailCb = (CheckBox) findViewById(R.id.cb_order_detail);
     }
 
     @Override
@@ -124,6 +126,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                 intent.putExtra("isPrintSettleTicket", isSettlePrintCb.isChecked());
                 intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
                 intent.putExtra("isLastTrade", isLastTradeCb.isChecked());
+                intent.putExtra("isSettlementDetail", isOrderDetailCb.isChecked());
 
                 if (Util.isIntentExisting(intent, this)) {
                     startActivity(intent);
