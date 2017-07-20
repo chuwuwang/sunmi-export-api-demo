@@ -44,8 +44,8 @@ public class ResultReceiver extends BroadcastReceiver {
             int errorCode = intent.getIntExtra("errorCode", 0);
             final String errorMsg = intent.getStringExtra("errorMsg");
             long balance = intent.getLongExtra("balance", 0);
-            int transNum = intent.getIntExtra("transNum", 0);
-            long totalAmount = intent.getLongExtra("totalAmount", 0L);
+            int transNum = intent.getIntExtra("transNum", -1);
+            long totalAmount = intent.getLongExtra("totalAmount", -1L);
             String qrOrderNo = intent.getStringExtra("qrOrderNo");
             String authNo = intent.getStringExtra("authNo");
             int transactionType = intent.getIntExtra("transactionType", 0);
@@ -107,10 +107,10 @@ public class ResultReceiver extends BroadcastReceiver {
             if (!TextUtils.isEmpty(merchantNameEn)) {
                 resultInfo = resultInfo + "\n merchantNameEn:" + merchantNameEn;
             }
-            if (transNum != 0) {
+            if (transNum != -1) {
                 resultInfo = resultInfo + "\n transNum:" + transNum;
             }
-            if (totalAmount != 0) {
+            if (totalAmount != -1) {
                 resultInfo = resultInfo + "\n totalAmount:" + totalAmount;
             }
             if (transType != -10) {

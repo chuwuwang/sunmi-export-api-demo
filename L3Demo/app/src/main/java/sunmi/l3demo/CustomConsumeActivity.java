@@ -82,12 +82,12 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                     String amount = amountEdit.getText().toString();
                     intent.putExtra("amount", Long.parseLong(amount));
 
-                    String transId = transID.getText().toString();
-                    intent.putExtra("transId", Long.parseLong(transId));
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                String transId = transID.getText().toString();
+                intent.putExtra("transId", transId);
 
                 String voucherNo = oriVoucherNoEdit.getText().toString();
                 intent.putExtra("oriVoucherNo", voucherNo);
