@@ -75,13 +75,18 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
                 try {
                     String transType = transTypeEdit.getText().toString();
                     intent.putExtra("transType", Integer.parseInt(transType));
-
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
                     String paymentType = paymentTypeEdit.getText().toString();
                     intent.putExtra("paymentType", Integer.parseInt(paymentType));
-
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
                     String amount = amountEdit.getText().toString();
                     intent.putExtra("amount", Long.parseLong(amount));
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
