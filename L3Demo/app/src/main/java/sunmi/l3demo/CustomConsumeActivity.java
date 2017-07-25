@@ -70,7 +70,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.ok_btn:
                 Intent intent = new Intent("sunmi.payment.L3");
-                intent.putExtra("transId", "fuck you");
+                intent.putExtra("transId", System.currentTimeMillis() + "");
 
                 try {
                     String transType = transTypeEdit.getText().toString();

@@ -69,7 +69,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         String voucherNo = input_ori_voucher_no.getText().toString();
 
         Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transId", "fuck you");
+        intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("transType", 1);
         intent.putExtra("paymentType", paymentType);
         intent.putExtra("oriVoucherNo", voucherNo);

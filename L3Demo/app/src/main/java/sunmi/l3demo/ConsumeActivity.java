@@ -3,6 +3,7 @@ package sunmi.l3demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -68,7 +69,9 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
                 setPaymentType();
                 Intent intent = new Intent("sunmi.payment.L3");
                 intent.putExtra("transType", 0);
-                intent.putExtra("transId", "fuck you");
+                intent.putExtra("transId", System.currentTimeMillis() + "");
+
+
                 intent.putExtra("appId", getPackageName());
                 intent.putExtra("paymentType", paymentType);
                 try {

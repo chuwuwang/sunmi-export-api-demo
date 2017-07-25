@@ -181,7 +181,7 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
             e.printStackTrace();
         }
 
-        intent.putExtra("transId", "fuck you");
+        intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("transType", transType);
         intent.putExtra("appId", getPackageName());
         intent.putExtra("oriTransDate", date);
