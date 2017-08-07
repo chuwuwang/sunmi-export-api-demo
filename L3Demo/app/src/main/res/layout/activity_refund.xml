@@ -1,198 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_mode_payment"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <RadioGroup
-        android:id="@+id/mode_payment_rg"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/select_mode_payment"
         android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/bank_card_rb"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_mode_payment"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <RadioGroup
+            android:id="@+id/mode_payment_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/select_mode_payment"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/bank_card_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/bank_card"
+                android:textColor="#000000"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:id="@+id/aliPay_scan_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aliPay_scan"
+                android:textColor="#000000"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:id="@+id/aliPay_code_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aliPay_code"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/weChat_scan_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wx_scan"
+                android:textColor="#000000"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:id="@+id/weChat_code_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wx_code"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/optional_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_optional"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:visibility="gone" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_ori_reference_no"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/ori_reference_no_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_ori_reference_no"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_ori_date"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/ori_date_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_ori_date"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_money"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/input_money_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_money"
+            android:inputType="number"
+            android:maxLength="9"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户联追加打印"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="用户联追加打印"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户联追加二维码"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_user_code_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="用户联追加二维码"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商户联追加打印"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_merchant_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="商户联追加打印"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商户联追加二维码"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_merchant_code_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="商户联追加二维码"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok" />
+
+        <CheckBox
+            android:id="@+id/cb_manage_pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/bank_card"
+            android:text="是否输入管理员密码"
             android:textColor="#000000"
             android:textSize="14dp" />
 
-        <RadioButton
-            android:id="@+id/aliPay_scan_rb"
+        <CheckBox
+            android:id="@+id/cb_code_print"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/aliPay_scan"
+            android:checked="true"
+            android:text="二维码是否打印小票"
             android:textColor="#000000"
             android:textSize="14dp" />
 
-        <RadioButton
-            android:id="@+id/aliPay_code_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/aliPay_code"
-            android:textColor="#000000"
-            android:textSize="14dp"
-            android:visibility="visible" />
-
-        <RadioButton
-            android:id="@+id/weChat_scan_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wx_scan"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-
-        <RadioButton
-            android:id="@+id/weChat_code_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wx_code"
-            android:textColor="#000000"
-            android:textSize="14dp"
-            android:visibility="visible" />
-
-        <RadioButton
-            android:id="@+id/optional_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_optional"
-            android:textColor="#000000"
-            android:textSize="14dp"
-            android:visibility="gone" />
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/input_ori_reference_no"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/ori_reference_no_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_ori_reference_no"
-        android:inputType="number"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/input_ori_date"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/ori_date_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_ori_date"
-        android:inputType="number"
-        android:maxLength="4"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/input_money"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/input_money_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_money"
-        android:inputType="number"
-        android:maxLength="9"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户联追加打印"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_user_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="用户联追加打印"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户联追加二维码"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_user_code_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="用户联追加二维码"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="商户联追加打印"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_merchant_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="商户联追加打印"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="商户联追加二维码"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_merchant_code_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="商户联追加二维码"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <Button
-        android:id="@+id/ok_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ok" />
-
-</LinearLayout>
+    </LinearLayout>
+    
+</ScrollView>

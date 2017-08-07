@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -24,6 +25,9 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
     private EditText userCodeInfoEdit;
     private EditText merchantInfoEdit;
     private EditText merchantCodeInfoEdit;
+
+    private CheckBox isPrintCb;
+    private CheckBox isManagePwdCb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,9 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
         merchantInfoEdit = (EditText) findViewById(R.id.et_merchant_info);
         merchantCodeInfoEdit = (EditText) findViewById(R.id.et_merchant_code_info);
+
+        isPrintCb = (CheckBox) findViewById(R.id.cb_code_print);
+        isManagePwdCb = (CheckBox) findViewById(R.id.cb_manage_pwd);
     }
 
     private int getType() {
@@ -89,6 +96,13 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         intent.putExtra("printInfo2", printInfo2);
         intent.putExtra("printMerchantInfo", printMerchantInfo);
         intent.putExtra("printMerchantInfo2", printMerchantInfo2);
+
+        intent.putExtra("isPrintTicket", isPrintCb.isChecked());
+        if (isManagePwdCb.isChecked()) {
+            intent.putExtra("isManagePwd", 1);
+        } else {
+            intent.putExtra("isManagePwd", 0);
+        }
 
         if (Util.isIntentExisting(intent, this)) {
             startActivity(intent);
