@@ -129,11 +129,7 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
 
                 intent.putExtra("isPrintTicket", isPrintCb.isChecked());
                 intent.putExtra("isPrintSettleTicket", isSettlePrintCb.isChecked());
-                if (isManagePwdCb.isChecked()) {
-                    intent.putExtra("isManagePwd", 1);
-                } else {
-                    intent.putExtra("isManagePwd", 0);
-                }
+                intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
                 intent.putExtra("isLastTrade", isLastTradeCb.isChecked());
                 intent.putExtra("isSettlementDetail", isOrderDetailCb.isChecked());
 

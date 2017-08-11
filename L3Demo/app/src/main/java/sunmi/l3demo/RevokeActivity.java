@@ -98,11 +98,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         intent.putExtra("printMerchantInfo2", printMerchantInfo2);
 
         intent.putExtra("isPrintTicket", isPrintCb.isChecked());
-        if (isManagePwdCb.isChecked()) {
-            intent.putExtra("isManagePwd", 1);
-        } else {
-            intent.putExtra("isManagePwd", 0);
-        }
+        intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
 
         if (Util.isIntentExisting(intent, this)) {
             startActivity(intent);
