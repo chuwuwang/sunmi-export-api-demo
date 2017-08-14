@@ -48,8 +48,9 @@ public class ResultReceiver extends BroadcastReceiver {
             long totalAmount = intent.getLongExtra("totalAmount", -1L);
             String qrOrderNo = intent.getStringExtra("qrOrderNo");
             String authNo = intent.getStringExtra("authNo");
-            int transactionType = intent.getIntExtra("transactionType", 0);
-            int qrCodeTransactionType = intent.getIntExtra("qrCodeTransactionType", 0);
+            int transactionType = intent.getIntExtra("transactionType", -1);
+            int transactionPlatform = intent.getIntExtra("transactionPlatform", -1);
+            int qrCodeScanModel = intent.getIntExtra("qrCodeScanModel", -1);
             String settleJson = intent.getStringExtra("settleJson");
 
             resultInfo = resultCode + "";
@@ -122,11 +123,14 @@ public class ResultReceiver extends BroadcastReceiver {
             if (!TextUtils.isEmpty(qrOrderNo)) {
                 resultInfo = resultInfo + "\n qrOrderNo:" + qrOrderNo;
             }
-            if (transactionType != 0) {
+            if (transactionType != -1) {
                 resultInfo = resultInfo + "\n transactionType:" + transactionType;
             }
-            if (transactionType != 0) {
-                resultInfo = resultInfo + "\n qrCodeTransactionType:" + qrCodeTransactionType;
+            if (transactionPlatform != -1) {
+                resultInfo = resultInfo + "\n transactionPlatform:" + transactionPlatform;
+            }
+            if (qrCodeScanModel != -1) {
+                resultInfo = resultInfo + "\n qrCodeScanModel:" + qrCodeScanModel;
             }
             if (!TextUtils.isEmpty(settleJson)) {
                 resultInfo = resultInfo + "\n settleJson:" + settleJson;
