@@ -51,6 +51,7 @@ public class ResultReceiver extends BroadcastReceiver {
             int transactionType = intent.getIntExtra("transactionType", -1);
             int transactionPlatform = intent.getIntExtra("transactionPlatform", -1);
             int qrCodeScanModel = intent.getIntExtra("qrCodeScanModel", -1);
+            String accountType = intent.getStringExtra("accountType");
             String settleJson = intent.getStringExtra("settleJson");
 
             resultInfo = resultCode + "";
@@ -131,6 +132,9 @@ public class ResultReceiver extends BroadcastReceiver {
             }
             if (qrCodeScanModel != -1) {
                 resultInfo = resultInfo + "\n qrCodeScanModel:" + qrCodeScanModel;
+            }
+            if (!TextUtils.isEmpty(accountType)) {
+                resultInfo = resultInfo + "\n accountType:" + accountType;
             }
             if (!TextUtils.isEmpty(settleJson)) {
                 resultInfo = resultInfo + "\n settleJson:" + settleJson;
