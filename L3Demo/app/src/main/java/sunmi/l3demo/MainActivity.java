@@ -77,8 +77,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 return;
             // 结算
             case R.id.btn_settlement:
-                intent.putExtra("transType", 7);
-                break;
+                startActivity(new Intent(this, SettlementActivity.class));
+                return;
             // 签到
             case R.id.btn_sign:
                 intent.putExtra("transType", 8);
@@ -93,8 +93,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
             // 打印
             case R.id.btn_print:
-                intent.putExtra("transType", 11);
-                break;
+                startActivity(new Intent(this, PrintActivity.class));
+                return;
             // 末笔查询
             case R.id.btn_last_transaction_query:
                 intent.putExtra("transType", 12);
