@@ -32,7 +32,6 @@ public class CustomConsumeActivity extends Activity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Constants.signBtnEnable = true;
         setContentView(R.layout.activity_custom_consume);
         initView();
     }

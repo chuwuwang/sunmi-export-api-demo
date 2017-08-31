@@ -45,7 +45,6 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Constants.signBtnEnable = true;
         setContentView(R.layout.activity_preauth);
         initView();
     }

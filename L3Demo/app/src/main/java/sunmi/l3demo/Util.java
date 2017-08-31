@@ -8,9 +8,10 @@ import android.content.pm.ResolveInfo;
 import java.util.List;
 
 /**
- * @author  by lj on 2017/5/15.
+ * @author by lj on 2017/5/15.
  */
 public class Util {
+
     public static boolean isIntentExisting(Intent intent, Context context) {
         final PackageManager packageManager = context.getPackageManager();
         List<ResolveInfo> resolveInfo =
@@ -21,4 +22,5 @@ public class Util {
         }
         return false;
     }
+
 }

@@ -87,8 +87,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:text="系统管理"
-            android:textSize="14sp"
-            android:visibility="gone" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_print"
@@ -107,7 +106,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="末笔查询"
+            android:text="扫码交易末笔查询"
             android:textSize="14sp" />
 
         <Button
@@ -128,8 +127,37 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:text="签退"
-            android:textSize="14sp"
-            android:visibility="visible" />
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_query_qrCode_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:text="扫码交易查询"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_query_transaction_fy"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:text="交易查询（仅富友支持，发报文查询后台支付状态）"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_query_transaction_local_record"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:text="本地交易记录查询"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_select_consumption"

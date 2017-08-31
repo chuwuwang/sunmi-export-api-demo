@@ -2,20 +2,17 @@ package sunmi.l3demo;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.List;
-
 public class MainActivity extends Activity implements OnClickListener {
 
     private Button signBtn, consumeBtn, revokeBtn, preAuthBtn, returnGoodsBtn, settlementBtn, queryBalanceBtn,
             systemManagerBtn, printBtn, lastTransactionQueryBtn, queryMerchantBtn, signOutBtn, selectConsumptionBtn;
+    private Button qrCodeTransactionQueryBtn, fyTransactionQueryBtn, localRecordTransactionQueryBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +30,9 @@ public class MainActivity extends Activity implements OnClickListener {
         lastTransactionQueryBtn = (Button) findViewById(R.id.btn_last_transaction_query);
         queryMerchantBtn = (Button) findViewById(R.id.btn_query_merchant);
         signOutBtn = (Button) findViewById(R.id.btn_sign_out);
+        qrCodeTransactionQueryBtn = (Button) findViewById(R.id.btn_query_qrCode_transaction);
+        fyTransactionQueryBtn = (Button) findViewById(R.id.btn_query_transaction_fy);
+        localRecordTransactionQueryBtn = (Button) findViewById(R.id.btn_query_transaction_local_record);
         selectConsumptionBtn = (Button) findViewById(R.id.btn_select_consumption);
 
         settlementBtn.setOnClickListener(this);
@@ -48,22 +48,22 @@ public class MainActivity extends Activity implements OnClickListener {
         revokeBtn.setOnClickListener(this);
         preAuthBtn.setOnClickListener(this);
         returnGoodsBtn.setOnClickListener(this);
+        qrCodeTransactionQueryBtn.setOnClickListener(this);
+        fyTransactionQueryBtn.setOnClickListener(this);
+        localRecordTransactionQueryBtn.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
+        setEnable(false);
         Intent intent = new Intent("sunmi.payment.L3");
-        String transId = System.currentTimeMillis() + "";
-        intent.putExtra("transId", transId);
-        Constants.signBtnEnable = false;
-        setEnable();
         switch (v.getId()) {
             // 消费
             case R.id.btn_consume:
                 startActivity(new Intent(this, ConsumeActivity.class));
                 return;
-            //消费撤销
+            // 消费撤销
             case R.id.btn_revoke:
                 startActivity(new Intent(this, RevokeActivity.class));
                 return;
@@ -78,54 +78,60 @@ public class MainActivity extends Activity implements OnClickListener {
             // 结算
             case R.id.btn_settlement:
                 intent.putExtra("transType", 7);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 签到
             case R.id.btn_sign:
                 intent.putExtra("transType", 8);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 余额查询
             case R.id.btn_query_balance:
                 intent.putExtra("transType", 9);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 系统管理
             case R.id.btn_system_manager:
                 intent.putExtra("transType", 10);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 打印
             case R.id.btn_print:
                 intent.putExtra("transType", 11);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 末笔查询
             case R.id.btn_last_transaction_query:
                 intent.putExtra("transType", 12);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 商户信息查询
             case R.id.btn_query_merchant:
                 intent.putExtra("transType", 13);
-                intent.putExtra("appId", getPackageName());
                 break;
             // 签退
             case R.id.btn_sign_out:
                 intent.putExtra("transType", 15);
-                intent.putExtra("appId", getPackageName());
                 break;
+            // 扫码交易查询
+            case R.id.btn_query_qrCode_transaction:
+                startActivity(new Intent(this, QrCodeTransactionQueryActivity.class));
+                return;
+            // 交易查询（仅富友支持，发报文查询后台支付状态）
+            case R.id.btn_query_transaction_fy:
+                intent.putExtra("transType", 17);
+                break;
+            // 本地交易记录查询
+            case R.id.btn_query_transaction_local_record:
+                startActivity(new Intent(this, LocalRecordTransactionQueryActivity.class));
+                return;
+            // 自定义交易
             case R.id.btn_select_consumption:
                 startActivity(new Intent(this, CustomConsumeActivity.class));
                 return;
             default:
                 break;
         }
-        if (isIntentExisting(intent)) {
+        intent.putExtra("appId", getPackageName());
+        intent.putExtra("transId", System.currentTimeMillis() + "");
+        if (Util.isIntentExisting(intent, this)) {
             startActivity(intent);
         } else {
-            Constants.signBtnEnable = true;
-            setEnable();
+            setEnable(true);
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
         }
     }
@@ -133,32 +139,27 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        Constants.signBtnEnable = true;
-        setEnable();
+        setEnable(true);
     }
 
-    private void setEnable() {
-        signBtn.setEnabled(Constants.signBtnEnable);
-        consumeBtn.setEnabled(Constants.signBtnEnable);
-        revokeBtn.setEnabled(Constants.signBtnEnable);
-        preAuthBtn.setEnabled(Constants.signBtnEnable);
-        returnGoodsBtn.setEnabled(Constants.signBtnEnable);
-        settlementBtn.setEnabled(Constants.signBtnEnable);
-        queryBalanceBtn.setEnabled(Constants.signBtnEnable);
-        systemManagerBtn.setEnabled(Constants.signBtnEnable);
-        printBtn.setEnabled(Constants.signBtnEnable);
-        lastTransactionQueryBtn.setEnabled(Constants.signBtnEnable);
-        queryMerchantBtn.setEnabled(Constants.signBtnEnable);
-        signOutBtn.setEnabled(Constants.signBtnEnable);
-        selectConsumptionBtn.setEnabled(Constants.signBtnEnable);
+    private void setEnable(boolean enable) {
+        signBtn.setEnabled(enable);
+        consumeBtn.setEnabled(enable);
+        revokeBtn.setEnabled(enable);
+        preAuthBtn.setEnabled(enable);
+        returnGoodsBtn.setEnabled(enable);
+        settlementBtn.setEnabled(enable);
+        queryBalanceBtn.setEnabled(enable);
+        systemManagerBtn.setEnabled(enable);
+        printBtn.setEnabled(enable);
+        lastTransactionQueryBtn.setEnabled(enable);
+        queryMerchantBtn.setEnabled(enable);
+        signOutBtn.setEnabled(enable);
+        selectConsumptionBtn.setEnabled(enable);
+        qrCodeTransactionQueryBtn.setEnabled(enable);
+        fyTransactionQueryBtn.setEnabled(enable);
+        localRecordTransactionQueryBtn.setEnabled(enable);
     }
 
-    public boolean isIntentExisting(Intent intent) {
-        final PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> resolveInfo =
-                packageManager.queryIntentActivities(intent,
-                        PackageManager.MATCH_DEFAULT_ONLY);
-        return resolveInfo.size() > 0;
-    }
 
 }

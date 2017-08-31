@@ -20,6 +20,8 @@
         <activity android:name=".RevokeActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".CustomConsumeActivity" />
+        <activity android:name=".QrCodeTransactionQueryActivity" />
+        <activity android:name=".LocalRecordTransactionQueryActivity" />
 
         <!--接收结果广播-->
         <receiver android:name=".ResultReceiver">
