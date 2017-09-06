@@ -18,10 +18,10 @@ android {
 
     signingConfigs {
         sign {
-            keyAlias 'sunmidemo'
-            keyPassword '123456'
-            storeFile file('../app/sunmidemo.jks')
-            storePassword '123456'
+            keyAlias 'sunmi'
+            keyPassword 'SunmiPay'
+            storeFile file('../app/sunmi.jks')
+            storePassword 'sunmipay'
         }
     }
 
