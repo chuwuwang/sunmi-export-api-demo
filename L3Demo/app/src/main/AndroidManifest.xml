@@ -24,6 +24,7 @@
         <activity android:name=".LocalRecordTransactionQueryActivity" />
         <activity android:name=".SettlementActivity" />
         <activity android:name=".PrintActivity" />
+        <activity android:name=".QueryAllTradeActivity" />
 
         <!--接收结果广播-->
         <receiver android:name=".ResultReceiver">

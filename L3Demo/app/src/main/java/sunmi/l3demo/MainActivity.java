@@ -113,8 +113,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 return;
             // 交易查询（仅富友支持，发报文查询后台支付状态）
             case R.id.btn_query_transaction_fy:
-                intent.putExtra("transType", 17);
-                break;
+                startActivity(new Intent(this, QueryAllTradeActivity.class));
+                return;
             // 本地交易记录查询
             case R.id.btn_query_transaction_local_record:
                 startActivity(new Intent(this, LocalRecordTransactionQueryActivity.class));

@@ -16,6 +16,17 @@
         android:textColorHint="#666666"
         android:textSize="14dp" />
 
+    <EditText
+        android:id="@+id/input_last"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="查询最后一笔(1:银行卡 2:支付宝 3:微信)"
+        android:textColor="#000000"
+        android:textColorHint="#666666"
+        android:textSize="14dp"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/ok_btn"
         android:layout_width="match_parent"
