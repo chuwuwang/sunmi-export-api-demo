@@ -25,7 +25,7 @@
         <activity android:name=".SettlementActivity" />
         <activity android:name=".PrintActivity" />
         <activity android:name=".QueryAllTradeActivity" />
-        <activity android:name=".PrintSummary4DateActivity"/>
+
         <!--接收结果广播-->
         <receiver android:name=".ResultReceiver">
             <intent-filter>

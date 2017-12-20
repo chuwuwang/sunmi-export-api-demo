@@ -12,7 +12,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private Button signBtn, consumeBtn, revokeBtn, preAuthBtn, returnGoodsBtn, settlementBtn, queryBalanceBtn,
             systemManagerBtn, printBtn, lastTransactionQueryBtn, queryMerchantBtn, signOutBtn, selectConsumptionBtn;
-    private Button qrCodeTransactionQueryBtn, fyTransactionQueryBtn, localRecordTransactionQueryBtn,printSummary4DateBtn;
+    private Button qrCodeTransactionQueryBtn, fyTransactionQueryBtn, localRecordTransactionQueryBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class MainActivity extends Activity implements OnClickListener {
         fyTransactionQueryBtn = (Button) findViewById(R.id.btn_query_transaction_fy);
         localRecordTransactionQueryBtn = (Button) findViewById(R.id.btn_query_transaction_local_record);
         selectConsumptionBtn = (Button) findViewById(R.id.btn_select_consumption);
-        printSummary4DateBtn = (Button) findViewById(R.id.btn_print_summary_4_date);
 
         settlementBtn.setOnClickListener(this);
         queryBalanceBtn.setOnClickListener(this);
@@ -52,7 +51,6 @@ public class MainActivity extends Activity implements OnClickListener {
         qrCodeTransactionQueryBtn.setOnClickListener(this);
         fyTransactionQueryBtn.setOnClickListener(this);
         localRecordTransactionQueryBtn.setOnClickListener(this);
-        printSummary4DateBtn.setOnClickListener(this);
     }
 
 
@@ -125,9 +123,6 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.btn_select_consumption:
                 startActivity(new Intent(this, CustomConsumeActivity.class));
                 return;
-            case R.id.btn_print_summary_4_date:
-                startActivity(new Intent(this, PrintSummary4DateActivity.class));
-                return;
             default:
                 break;
         }
@@ -164,7 +159,6 @@ public class MainActivity extends Activity implements OnClickListener {
         qrCodeTransactionQueryBtn.setEnabled(enable);
         fyTransactionQueryBtn.setEnabled(enable);
         localRecordTransactionQueryBtn.setEnabled(enable);
-        printSummary4DateBtn.setEnabled(enable);
     }
 
 

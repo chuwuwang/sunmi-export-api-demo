@@ -169,16 +169,6 @@
             android:text="自定义交易"
             android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btn_print_summary_4_date"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="按日期打印交易汇总单据（重庆通联）"
-            android:textSize="14sp" />
-
     </LinearLayout>
 
 </ScrollView>
