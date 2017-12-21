@@ -117,7 +117,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 return;
             // 本地交易记录查询
             case R.id.btn_query_transaction_local_record:
-                startActivity(new Intent(this, LocalRecordTransactionQueryActivity.class));
+                startActivity(new Intent(this, LocalTradeQueryActivity.class));
                 return;
             // 自定义交易
             case R.id.btn_select_consumption:

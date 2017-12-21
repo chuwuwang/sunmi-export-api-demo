@@ -11,29 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:hint="输入原交易凭证号"
+        android:singleLine="true"
         android:textColor="#000000"
         android:textColorHint="#666666"
         android:textSize="14sp" />
 
-    <CheckBox
-        android:id="@+id/cb_last_print"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:checked="false"
-        android:text="是否打印最后一笔交易"
+    <EditText
+        android:id="@+id/edit_trade"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:hint="输入第三方订单号"
+        android:singleLine="true"
         android:textColor="#000000"
-        android:textSize="14sp" />
-
-    <CheckBox
-        android:id="@+id/cb_only_print"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:checked="false"
-        android:text="是否打印"
-        android:textColor="#000000"
+        android:textColorHint="#666666"
         android:textSize="14sp" />
 
     <TextView
@@ -41,12 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="
-     \n * 如果传入凭证号，则打印指定的一笔交易
-     \n * 如果指定最后一笔交易，则打印最后一笔交易
-     \n * 如果传入为空，则查询失败
-     \n * 如果传入isOnlyPrint为false，则不打印直接返回
-     \n * 打印顺序：凭证号，最后一笔交易
-     \n * 注意：只打印成功的交易"
+      \n * 如果传入凭证号，则按凭证号查询
+      \n * 如果传入第三方订单号，则按第三方订单号查询
+      \n * 如果传入为空，则为查询全部
+      \n * 查询顺序：凭证号，第三方订单号"
         android:textSize="14sp" />
 
     <Button

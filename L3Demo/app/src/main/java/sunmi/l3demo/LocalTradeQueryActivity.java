@@ -14,23 +14,31 @@ import android.widget.EditText;
  * @author Created by Lee64 on 2017/8/31.
  */
 
-public class LocalRecordTransactionQueryActivity extends Activity {
+public class LocalTradeQueryActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qr_code_transaction_query);
-        final EditText editText = (EditText) findViewById(R.id.input_ori_voucher_edt);
+        setContentView(R.layout.activity_local_trade_query);
+        initView();
+    }
+
+    private void initView() {
+        final EditText voucherEdit = (EditText) findViewById(R.id.edit_voucher);
+        final EditText tradeEdit = (EditText) findViewById(R.id.edit_trade);
         Button button = (Button) findViewById(R.id.ok_btn);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                String packageName = getPackageName();
+                String transId = tradeEdit.getText().toString();
+                String voucherNo = voucherEdit.getText().toString();
                 Intent intent = new Intent("sunmi.payment.L3");
-                intent.putExtra("transId", System.currentTimeMillis() + "");
                 intent.putExtra("transType", 18);
-                intent.putExtra("appId", getPackageName());
-                intent.putExtra("oriVoucherNo", editText.getText().toString());
+                intent.putExtra("appId", packageName);
+                intent.putExtra("transId", transId);
+                intent.putExtra("oriVoucherNo", voucherNo);
                 startActivity(intent);
             }
 

@@ -21,7 +21,7 @@
         <activity android:name=".ResultActivity" />
         <activity android:name=".CustomConsumeActivity" />
         <activity android:name=".QrCodeTransactionQueryActivity" />
-        <activity android:name=".LocalRecordTransactionQueryActivity" />
+        <activity android:name=".LocalTradeQueryActivity" />
         <activity android:name=".SettlementActivity" />
         <activity android:name=".PrintActivity" />
         <activity android:name=".QueryAllTradeActivity" />
