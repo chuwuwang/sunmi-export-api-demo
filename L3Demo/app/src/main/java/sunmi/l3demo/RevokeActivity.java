@@ -41,9 +41,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         aliPay_scan_rb = (RadioButton) findViewById(R.id.aliPay_scan_rb);
         wx_scan_rb = (RadioButton) findViewById(R.id.wx_scan_rb);
         input_ori_voucher_no = (EditText) findViewById(R.id.input_ori_voucher_no);
-        Button ok_btn;
-        ok_btn = (Button) findViewById(R.id.ok_btn);
-        ok_btn.setOnClickListener(this);
+
 
         userInfoEdit = (EditText) findViewById(R.id.et_user_info);
         userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
@@ -52,6 +50,9 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
 
         isPrintCb = (CheckBox) findViewById(R.id.cb_code_print);
         isManagePwdCb = (CheckBox) findViewById(R.id.cb_manage_pwd);
+
+        Button ok = (Button) findViewById(R.id.btn_ok);
+        ok.setOnClickListener(this);
     }
 
     private int getType() {
@@ -71,15 +72,18 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         // 支付类型
         int paymentType = getType();
         // 原交易凭证号
-        // 如果有值则会直接跳转到刷卡界面，为""则跳转到选择交易列表界面
+        // 如果有值则会直接跳转到刷卡界面,为""则跳转到选择交易列表界面
         String voucherNo = input_ori_voucher_no.getText().toString();
 
         Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("transType", 1);
+        String transId = System.currentTimeMillis() + "";
+        intent.putExtra("transId", transId);
+        String packageName = getPackageName();
+        intent.putExtra("appId", packageName);
+
         intent.putExtra("paymentType", paymentType);
         intent.putExtra("oriVoucherNo", voucherNo);
-        intent.putExtra("appId", getPackageName());
 
         String printInfo = userInfoEdit.getText().toString();
         String printInfo2 = userCodeInfoEdit.getText().toString();
@@ -99,7 +103,8 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         intent.putExtra("isPrintTicket", isPrintCb.isChecked());
         intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
 
-        if (Util.isIntentExisting(intent, this)) {
+        boolean existing = Util.isIntentExisting(intent, this);
+        if (existing) {
             startActivity(intent);
         } else {
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();

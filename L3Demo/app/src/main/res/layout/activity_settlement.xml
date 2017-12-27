@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:layout_marginEnd="20dp"
     android:layout_marginStart="20dp"
-    android:background="@android:color/white"
     android:orientation="vertical">
 
     <CheckBox
@@ -15,7 +14,7 @@
         android:checked="true"
         android:text="结算是否打印结算单"
         android:textColor="#000000"
-        android:textSize="14dp" />
+        android:textSize="14sp" />
 
     <CheckBox
         android:id="@+id/cb_settlement_detail_print"
@@ -25,10 +24,10 @@
         android:checked="true"
         android:text="结算是否返回结算明细"
         android:textColor="#000000"
-        android:textSize="14dp" />
+        android:textSize="14sp" />
 
     <Button
-        android:id="@+id/ok_btn"
+        android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

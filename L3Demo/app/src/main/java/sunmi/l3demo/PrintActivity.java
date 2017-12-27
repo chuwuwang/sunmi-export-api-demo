@@ -29,7 +29,7 @@ public class PrintActivity extends Activity {
         final CheckBox lastPrintCb = (CheckBox) findViewById(R.id.cb_last_print);
         final CheckBox onlyPrintCb = (CheckBox) findViewById(R.id.cb_only_print);
         onlyPrintCb.setChecked(true);
-        Button ok = (Button) findViewById(R.id.ok_btn);
+        Button ok = (Button) findViewById(R.id.btn_ok);
         ok.setOnClickListener(new View.OnClickListener() {
 
             @Override

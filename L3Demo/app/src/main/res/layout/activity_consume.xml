@@ -2,176 +2,142 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_mode_payment"
-        android:textColor="#999999"
-        android:textSize="12sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/input_select_mode_payment"
+            android:textColor="#999999"
+            android:textSize="12sp" />
 
-    <RadioGroup
-        android:id="@+id/mode_payment_rg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/select_mode_payment"
-        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/mode_payment_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/bank_card_rb"
+            <RadioButton
+                android:id="@+id/bank_card_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/type_bank_card"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/aliPay_scan_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_aliPay_scan"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/aliPay_code_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_aliPay_code"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/weChat_scan_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_wx_scan"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/weChat_code_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_wx_code"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/optional_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/input_user_optional"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/input_money_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_money"
+            android:inputType="number"
+            android:maxLength="9"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="用户联追加打印"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_user_code_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="用户联追加二维码"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_merchant_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="商户联追加打印"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_merchant_code_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="商户联追加二维码"
+            android:textColor="#000000"
+            android:textColorHint="#666666"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/cb_code_print"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/bank_card"
+            android:text="二维码是否打印小票"
             android:textColor="#000000"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
-        <RadioButton
-            android:id="@+id/aliPay_scan_rb"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/aliPay_scan"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-
-        <RadioButton
-            android:id="@+id/aliPay_code_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/aliPay_code"
-            android:textColor="#000000"
-            android:textSize="14dp"
-            android:visibility="visible" />
-
-        <RadioButton
-            android:id="@+id/weChat_scan_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wx_scan"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-
-        <RadioButton
-            android:id="@+id/weChat_code_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wx_code"
-            android:textColor="#000000"
-            android:textSize="14dp"
-            android:visibility="visible" />
-
-        <RadioButton
-            android:id="@+id/optional_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_optional"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/input_money"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/input_money_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_money"
-        android:inputType="number"
-        android:maxLength="9"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户联追加打印"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_user_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="用户联追加打印"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户联追加二维码"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_user_code_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="用户联追加二维码"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="商户联追加打印"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_merchant_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="商户联追加打印"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="商户联追加二维码"
-        android:textColor="#999999"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/et_merchant_code_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="商户联追加二维码"
-        android:textColor="#000000"
-        android:textColorHint="#666666"
-        android:textSize="14dp" />
-
-    <CheckBox
-        android:id="@+id/cb_code_print"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="二维码是否打印小票"
-        android:textColor="#000000"
-        android:textSize="14dp" />
-
-    <Button
-        android:id="@+id/ok_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ok" />
+            android:text="@string/ok" />
 
     </LinearLayout>
 

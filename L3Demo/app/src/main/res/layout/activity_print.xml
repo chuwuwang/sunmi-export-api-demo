@@ -50,7 +50,7 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/ok_btn"
+        android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

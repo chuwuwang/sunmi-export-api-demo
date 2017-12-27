@@ -26,7 +26,7 @@ public class LocalTradeQueryActivity extends Activity {
     private void initView() {
         final EditText voucherEdit = (EditText) findViewById(R.id.edit_voucher);
         final EditText tradeEdit = (EditText) findViewById(R.id.edit_trade);
-        Button button = (Button) findViewById(R.id.ok_btn);
+        Button button = (Button) findViewById(R.id.btn_ok);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override

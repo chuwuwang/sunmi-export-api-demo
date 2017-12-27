@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +12,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_mode_payment"
+            android:layout_marginStart="8dp"
+            android:text="@string/input_select_mode_payment"
             android:textColor="#999999"
             android:textSize="12sp" />
 
@@ -19,7 +21,8 @@
             android:id="@+id/mode_payment_rg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/select_mode_payment"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/input_select_mode_payment"
             android:orientation="vertical">
 
             <RadioButton
@@ -27,33 +30,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/pre_rb"
+                android:text="@string/pre_auth"
                 android:textColor="#000000"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/pre_revoke_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_revoke_rb"
+                android:text="@string/pre_revoke"
                 android:textColor="#000000"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/pre_complete_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_complete_rb"
+                android:text="@string/pre_complete"
                 android:textColor="#000000"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/pre_complete_revoke_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_complete_revoke_rb"
+                android:text="@string/pre_complete_revoke"
                 android:textColor="#000000"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
         </RadioGroup>
 
@@ -61,6 +64,8 @@
             android:id="@+id/input_ori_voucher_no_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="@string/input_ori_voucher_no"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -72,12 +77,14 @@
             android:hint="@string/input_ori_voucher_no"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/input_money_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="@string/input_money"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -90,12 +97,14 @@
             android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/input_date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="输入交易时间（格式如：0205）"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -108,15 +117,17 @@
             android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/input_ori_auth_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="输入原交易授权号"
             android:textColor="#999999"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/input_ori_auth_edt"
@@ -125,14 +136,16 @@
             android:hint="输入原交易授权号"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="用户联追加打印"
             android:textColor="#999999"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/et_user_info"
@@ -141,11 +154,13 @@
             android:hint="用户联追加打印"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="用户联追加二维码"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -157,11 +172,13 @@
             android:hint="用户联追加二维码"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="商户联追加打印"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -173,11 +190,13 @@
             android:hint="商户联追加打印"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:text="商户联追加二维码"
             android:textColor="#999999"
             android:textSize="12sp" />
@@ -189,10 +208,10 @@
             android:hint="商户联追加二维码"
             android:textColor="#000000"
             android:textColorHint="#666666"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <Button
-            android:id="@+id/ok_btn"
+            android:id="@+id/btn_ok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ok" />

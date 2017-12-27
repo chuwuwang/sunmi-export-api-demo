@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +45,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/pro_auth"
+            android:text="@string/pre_auth"
             android:textSize="14sp" />
 
         <Button
@@ -56,7 +55,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="结算"
+            android:text="@string/settlement"
             android:textSize="14sp" />
 
         <Button
@@ -66,7 +65,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="签到"
+            android:text="@string/sign"
             android:textSize="14sp" />
 
         <Button
@@ -76,7 +75,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="余额查询"
+            android:text="@string/balance"
             android:textSize="14sp" />
 
         <Button
@@ -86,7 +85,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="系统管理"
+            android:text="@string/system_manager"
             android:textSize="14sp" />
 
         <Button
@@ -96,7 +95,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="打印"
+            android:text="@string/print"
             android:textSize="14sp" />
 
         <Button
@@ -106,7 +105,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="扫码交易末笔查询"
+            android:text="@string/last_transaction_query"
             android:textSize="14sp" />
 
         <Button
@@ -116,7 +115,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="商户信息查询"
+            android:text="@string/query_merchant"
             android:textSize="14sp" />
 
         <Button
@@ -126,7 +125,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="签退"
+            android:text="@string/sign_out"
             android:textSize="14sp" />
 
         <Button
@@ -136,7 +135,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="扫码交易查询"
+            android:text="@string/query_qrCode_transaction"
             android:textSize="14sp" />
 
         <Button
@@ -146,7 +145,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="交易查询（仅富友支持，发报文查询后台支付状态）"
+            android:text="@string/query_transaction_fy"
             android:textSize="14sp" />
 
         <Button
@@ -156,7 +155,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="本地交易记录查询"
+            android:text="@string/query_transaction_local_record"
             android:textSize="14sp" />
 
         <Button
@@ -166,7 +165,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="自定义交易"
+            android:text="@string/custom"
             android:textSize="14sp" />
 
     </LinearLayout>

@@ -23,19 +23,24 @@ public class QueryAllTradeActivity extends Activity {
         final EditText voucherNoEditText = (EditText) findViewById(R.id.input_ori_voucher_edt);
         final EditText lastEditText = (EditText) findViewById(R.id.input_last);
         lastEditText.setVisibility(View.VISIBLE);
-        Button button = (Button) findViewById(R.id.ok_btn);
+        Button button = (Button) findViewById(R.id.btn_ok);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("sunmi.payment.L3");
-                intent.putExtra("transId", System.currentTimeMillis() + "");
                 intent.putExtra("transType", 17);
-                intent.putExtra("appId", getPackageName());
-                intent.putExtra("oriVoucherNo", voucherNoEditText.getText().toString());
+                String transId = System.currentTimeMillis() + "";
+                intent.putExtra("transId", transId);
+                String packageName = getPackageName();
+                intent.putExtra("appId", packageName);
+
+                String oriVoucherNo = voucherNoEditText.getText().toString();
+                intent.putExtra("oriVoucherNo", oriVoucherNo);
                 int parseInt;
                 try {
-                    parseInt = Integer.parseInt(lastEditText.getText().toString());
+                    String str = lastEditText.getText().toString();
+                    parseInt = Integer.parseInt(str);
                 } catch (Exception e) {
                     parseInt = 0;
                 }

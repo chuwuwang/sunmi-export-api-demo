@@ -2,8 +2,6 @@ package sunmi.l3demo;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +10,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
 
 /**
  * @author xurong
@@ -34,7 +30,6 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
     private EditText input_date_edt;
     private TextView input_auth_tv;
     private EditText input_auth_edt;
-    private Button ok_btn;
 
     private EditText userInfoEdit;
     private EditText userCodeInfoEdit;
@@ -62,8 +57,6 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         input_ori_date_tv = (TextView) findViewById(R.id.input_date_tv);
         input_auth_edt = (EditText) findViewById(R.id.input_ori_auth_edt);
         input_auth_tv = (TextView) findViewById(R.id.input_ori_auth_tv);
-        ok_btn = (Button) findViewById(R.id.ok_btn);
-        ok_btn.setOnClickListener(this);
         preAuth_rb.setOnCheckedChangeListener(this);
         preAuth_revoke_rb.setOnCheckedChangeListener(this);
         preAuth_complete_rb.setOnCheckedChangeListener(this);
@@ -77,6 +70,9 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
         merchantInfoEdit = (EditText) findViewById(R.id.et_merchant_info);
         merchantCodeInfoEdit = (EditText) findViewById(R.id.et_merchant_code_info);
+
+        Button ok = (Button) findViewById(R.id.btn_ok);
+        ok.setOnClickListener(this);
     }
 
     /**
@@ -168,8 +164,8 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
     public void onClick(View v) {
         Intent intent = new Intent("sunmi.payment.L3");
         int transType = getTransType();
-        String amount = input_money_edt.getText().toString();
         String date = input_date_edt.getText().toString();
+        String amount = input_money_edt.getText().toString();
         String authNo = input_auth_edt.getText().toString();
         String oriVoucherNo = input_ori_voucher_no_edt.getText().toString();
 
@@ -180,9 +176,11 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
             e.printStackTrace();
         }
 
-        intent.putExtra("transId", System.currentTimeMillis() + "");
+        String transId = System.currentTimeMillis() + "";
+        intent.putExtra("transId", transId);
         intent.putExtra("transType", transType);
-        intent.putExtra("appId", getPackageName());
+        String packageName = getPackageName();
+        intent.putExtra("appId", packageName);
         intent.putExtra("oriTransDate", date);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
         intent.putExtra("oriAuthNo", authNo);
@@ -202,22 +200,12 @@ public class PreAuthActivity extends Activity implements View.OnClickListener, C
         intent.putExtra("printMerchantInfo", printMerchantInfo);
         intent.putExtra("printMerchantInfo2", printMerchantInfo2);
 
-        if (isIntentExisting(intent)) {
+        boolean existing = Util.isIntentExisting(intent, this);
+        if (existing) {
             startActivity(intent);
         } else {
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public boolean isIntentExisting(Intent intent) {
-        final PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> resolveInfo =
-                packageManager.queryIntentActivities(intent,
-                        PackageManager.MATCH_DEFAULT_ONLY);
-        if (resolveInfo.size() > 0) {
-            return true;
-        }
-        return false;
     }
 
 

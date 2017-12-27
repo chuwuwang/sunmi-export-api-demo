@@ -2,43 +2,47 @@
 
     <string name="app_name">L3Demo</string>
 
-    <!--消费-->
+
     <string name="consume">消费</string>
-    <string name="select_mode_payment">选择交易方式</string>
-    <string name="input_money">输入交易金额(单位：分)</string>
+    <string name="consume_revoke">消费撤销</string>
+    <string name="return_goods">退货</string>
+    <string name="pre_auth">预授权</string>
+    <string name="pre_revoke">预授权撤销</string>
+    <string name="pre_complete">预授权完成</string>
+    <string name="pre_complete_revoke">预授权完成撤销</string>
+    <string name="settlement">结算</string>
+    <string name="sign">签到</string>
+    <string name="balance">余额查询</string>
+    <string name="system_manager">系统管理</string>
+    <string name="print">打印</string>
+    <string name="last_transaction_query">扫码交易末笔查询</string>
+    <string name="query_merchant">商户信息查询</string>
+    <string name="sign_out">签退</string>
+    <string name="query_qrCode_transaction">扫码交易查询</string>
+    <string name="query_transaction_fy">交易查询（仅富友支持,发报文查询后台支付状态）</string>
+    <string name="query_transaction_local_record">本地交易记录查询</string>
+    <string name="custom">自定义交易</string>
+
+    <string name="type_wx_scan">微信扫码</string>
+    <string name="type_bank_card">银行卡</string>
+    <string name="type_wx_code">微信二维码</string>
+    <string name="type_aliPay_scan">支付宝扫码</string>
+    <string name="input_user_optional">用户自选</string>
+    <string name="type_aliPay_code">支付宝二维码</string>
+
+    <string name="input_app_id">输入应用包名</string>
     <string name="input_trans_id">输入交易ID</string>
-    <string name="bank_card">银行卡</string>
-    <string name="wx_scan">微信扫码</string>
-    <string name="aliPay_scan">支付宝扫码</string>
-    <string name="wx_code">微信二维码</string>
-    <string name="aliPay_code">支付宝二维码</string>
+    <string name="input_ori_date">输入原交易日期</string>
+    <string name="input_trans_type">输入交易类型</string>
+    <string name="input_payment_type">输入交易方式</string>
+    <string name="input_money">输入交易金额(单位：分)</string>
+    <string name="input_ori_auth_no">输入原交易授权号</string>
+    <string name="input_ori_voucher_no">输入原交易凭证号</string>
+    <string name="input_select_mode_payment">选择交易方式</string>
+    <string name="input_ori_qr_order_no">输入原扫码消费订单号</string>
+    <string name="input_ori_reference_no">输入原交易参考号(扫码交易请输入原扫码消费订单号)</string>
 
     <string name="ok">确认</string>
-    <string name="input_ori_voucher_no">输入原交易凭证号</string>
-    <string name="input_ori_reference_no">输入原交易参考号(扫码交易请输入源扫码消费订单号)</string>
-    <string name="input_ori_date">输入原交易日期</string>
-    <string name="input_ori_QROrderNo">输入原扫码消费订单号</string>
-    <string name="input_app_id">输入应用包名</string>
-    <string name="user_optional">用户自选</string>
 
-    <!-- 撤销-->
-    <string name="consume_revoke">消费撤销</string>
-    <string name="ori_voucher_no">原交易凭证号</string>
-
-    <!-- 退货 -->
-    <string name="return_goods">退货</string>
-
-    <!-- 预授权-->
-    <string name="input_voucher_no">输入原交易凭证号,如果没有可以不填</string>
-    <string name="input_amount">输入凭证号,如果没有可以不填</string>
-    <string name="please_input_voucher_no">请输入原交易凭证号</string>
-    <string name="please_input_amount">请输入交易金额</string>
-    <string name="pro_auth">预授权</string>
-    <string name="pre_rb">预授权</string>
-    <string name="pre_revoke_rb">预授权撤销</string>
-    <string name="pre_complete_rb">预授权完成</string>
-    <string name="pre_complete_revoke_rb">预授权完成撤销</string>
-    <string name="trans_type">输入交易类型</string>
-    <string name="payment_type">输入交易方式</string>
 
 </resources>

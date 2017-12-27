@@ -21,16 +21,19 @@ public class QrCodeTransactionQueryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_code_transaction_query);
         final EditText editText = (EditText) findViewById(R.id.input_ori_voucher_edt);
-        Button button = (Button) findViewById(R.id.ok_btn);
+        Button button = (Button) findViewById(R.id.btn_ok);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("sunmi.payment.L3");
-                intent.putExtra("transId", System.currentTimeMillis() + "");
                 intent.putExtra("transType", 16);
-                intent.putExtra("appId", getPackageName());
-                intent.putExtra("oriVoucherNo", editText.getText().toString());
+                String transId = System.currentTimeMillis() + "";
+                intent.putExtra("transId", transId);
+                String packageName = getPackageName();
+                intent.putExtra("appId", packageName);
+                String oriVoucherNo = editText.getText().toString();
+                intent.putExtra("oriVoucherNo", oriVoucherNo);
                 startActivity(intent);
             }
 

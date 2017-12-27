@@ -20,15 +20,17 @@ public class SettlementActivity extends Activity {
         setContentView(R.layout.activity_settlement);
         final CheckBox isPrintCb = (CheckBox) findViewById(R.id.cb_settlement_print);
         final CheckBox isSettlePrintCb = (CheckBox) findViewById(R.id.cb_settlement_detail_print);
-        Button ok = (Button) findViewById(R.id.ok_btn);
+        Button ok = (Button) findViewById(R.id.btn_ok);
         ok.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("sunmi.payment.L3");
                 intent.putExtra("transType", 7);
-                intent.putExtra("appId", getPackageName());
-                intent.putExtra("transId", System.currentTimeMillis() + "");
+                String transId = System.currentTimeMillis() + "";
+                intent.putExtra("transId", transId);
+                String packageName = getPackageName();
+                intent.putExtra("appId", packageName);
                 intent.putExtra("isPrintSettleTicket", isPrintCb.isChecked());
                 intent.putExtra("isSettlementDetail", isSettlePrintCb.isChecked());
                 startActivity(intent);

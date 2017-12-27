@@ -121,7 +121,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 return;
             // 自定义交易
             case R.id.btn_select_consumption:
-                startActivity(new Intent(this, CustomConsumeActivity.class));
+                startActivity(new Intent(this, CustomActivity.class));
                 return;
             default:
                 break;
