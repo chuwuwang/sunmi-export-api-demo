@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class ConsumeActivity extends Activity implements View.OnClickListener {
 
     private EditText amountEdit;
-    private RadioButton bankCardRb, aliPayScanRb, weChatScanRb, userOptionalRb, aliPayCodeRb, weChatCodeRb;
+    private RadioButton bankCardRb, aliPayScanRb, weChatScanRb, userOptionalRb, aliPayCodeRb, weChatCodeRb, unionScanRb;
     private EditText userInfoEdit;
     private EditText userCodeInfoEdit;
     private EditText merchantInfoEdit;
@@ -41,6 +41,8 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
         userOptionalRb = (RadioButton) findViewById(R.id.optional_rb);
         aliPayCodeRb = (RadioButton) findViewById(R.id.aliPay_code_rb);
         weChatCodeRb = (RadioButton) findViewById(R.id.weChat_code_rb);
+        unionScanRb = (RadioButton) findViewById(R.id.union_scan_rb);
+
         aliPayCodeRb.setVisibility(View.GONE);
         weChatCodeRb.setVisibility(View.GONE);
 
@@ -109,6 +111,8 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
             paymentType = 2;
         } else if (weChatCodeRb.isChecked()) {
             paymentType = 4;
+        } else if (unionScanRb.isChecked()) {
+            paymentType = 5;
         } else if (userOptionalRb.isChecked()) {
             paymentType = -1;
         }

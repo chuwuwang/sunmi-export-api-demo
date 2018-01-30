@@ -26,6 +26,8 @@
     <string name="type_wx_scan">微信扫码</string>
     <string name="type_bank_card">银行卡</string>
     <string name="type_wx_code">微信二维码</string>
+    <string name="type_union_code">银联二维码</string>
+    <string name="type_union_scan">银联扫码</string>
     <string name="type_aliPay_scan">支付宝扫码</string>
     <string name="input_user_optional">用户自选</string>
     <string name="type_aliPay_code">支付宝二维码</string>

@@ -19,6 +19,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
     private RadioButton bank_card_rb;
     private RadioButton aliPay_scan_rb;
     private RadioButton wx_scan_rb;
+    private RadioButton union_scan_rb;
     private EditText input_ori_voucher_no;
 
     private EditText userInfoEdit;
@@ -41,7 +42,7 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         aliPay_scan_rb = (RadioButton) findViewById(R.id.aliPay_scan_rb);
         wx_scan_rb = (RadioButton) findViewById(R.id.wx_scan_rb);
         input_ori_voucher_no = (EditText) findViewById(R.id.input_ori_voucher_no);
-
+        union_scan_rb = (RadioButton) findViewById(R.id.union_scan_rb);
 
         userInfoEdit = (EditText) findViewById(R.id.et_user_info);
         userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
@@ -62,7 +63,9 @@ public class RevokeActivity extends Activity implements View.OnClickListener {
         } else if (aliPay_scan_rb.isChecked()) {
             paymentType = 1;
         } else if (wx_scan_rb.isChecked()) {
-            paymentType = 2;
+            paymentType = 3;
+        }else if(union_scan_rb.isChecked()){
+            paymentType = 5;
         }
         return paymentType;
     }
