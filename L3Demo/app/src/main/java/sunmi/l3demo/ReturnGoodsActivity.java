@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class ReturnGoodsActivity extends Activity implements View.OnClickListener {
 
     private EditText oriReferenceNoEdt, oriDateEdt, moneyEdt;
-    private RadioButton bankCardRb, aliPayScanRb, weChatScanRb, userOptionalRb, aliPayCodeRb, weChatCodeRb;
+    private RadioButton bankCardRb, aliPayScanRb, weChatScanRb, userOptionalRb, aliPayCodeRb, weChatCodeRb, unionScanRb;
 
     private int paymentType;
 
@@ -49,6 +49,7 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
         userOptionalRb = (RadioButton) findViewById(R.id.optional_rb);
         aliPayCodeRb = (RadioButton) findViewById(R.id.aliPay_code_rb);
         weChatCodeRb = (RadioButton) findViewById(R.id.weChat_code_rb);
+        unionScanRb = (RadioButton) findViewById(R.id.union_scan_rb);
         aliPayCodeRb.setVisibility(View.GONE);
         weChatCodeRb.setVisibility(View.GONE);
 
@@ -84,7 +85,7 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
         }
 
         String referenceNo = oriReferenceNoEdt.getText().toString();
-        if (paymentType == 1 || paymentType == 2 || paymentType == 3 || paymentType == 4) {
+        if (paymentType == 1 || paymentType == 2 || paymentType == 3 || paymentType == 4 || paymentType == 5) {
             intent.putExtra("oriQROrderNo", referenceNo);
         } else {
             intent.putExtra("oriReferenceNo", referenceNo);
@@ -130,6 +131,8 @@ public class ReturnGoodsActivity extends Activity implements View.OnClickListene
             paymentType = 3;
         } else if (weChatCodeRb.isChecked()) {
             paymentType = 4;
+        } else if (unionScanRb.isChecked()) {
+            paymentType = 5;
         } else if (userOptionalRb.isChecked()) {
             paymentType = -1;
         }
