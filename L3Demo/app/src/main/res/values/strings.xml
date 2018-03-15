@@ -2,19 +2,18 @@
 
     <string name="app_name">L3Demo</string>
 
-
-    <string name="consume">消费</string>
-    <string name="consume_revoke">消费撤销</string>
-    <string name="return_goods">退货</string>
-    <string name="pre_auth">预授权</string>
-    <string name="pre_revoke">预授权撤销</string>
-    <string name="pre_complete">预授权完成</string>
-    <string name="pre_complete_revoke">预授权完成撤销</string>
-    <string name="settlement">结算</string>
-    <string name="sign">签到</string>
-    <string name="balance">余额查询</string>
-    <string name="system_manager">系统管理</string>
-    <string name="print">打印</string>
+    <string name="request_consume">消费</string>
+    <string name="request_consume_revoke">消费撤销</string>
+    <string name="request_return_goods">退货</string>
+    <string name="request_pre_auth">预授权</string>
+    <string name="request_pre_revoke">预授权撤销</string>
+    <string name="request_pre_complete">预授权完成</string>
+    <string name="request_pre_complete_revoke">预授权完成撤销</string>
+    <string name="request_settlement">结算</string>
+    <string name="request_sign">签到</string>
+    <string name="request_balance">余额查询</string>
+    <string name="request_system_manager">系统管理</string>
+    <string name="request_print">打印</string>
     <string name="last_transaction_query">扫码交易末笔查询</string>
     <string name="query_merchant">商户信息查询</string>
     <string name="sign_out">签退</string>
@@ -23,14 +22,15 @@
     <string name="query_transaction_local_record">本地交易记录查询</string>
     <string name="custom">自定义交易</string>
 
-    <string name="type_wx_scan">微信扫码</string>
-    <string name="type_bank_card">银行卡</string>
-    <string name="type_wx_code">微信二维码</string>
-    <string name="type_union_code">银联二维码</string>
-    <string name="type_union_scan">银联扫码</string>
-    <string name="type_aliPay_scan">支付宝扫码</string>
-    <string name="input_user_optional">用户自选</string>
-    <string name="type_aliPay_code">支付宝二维码</string>
+    <string name="pay_user_optional">用户自选</string>
+    <string name="pay_bank_card">银行卡</string>
+    <string name="pay_wx_scan">微信扫码</string>
+    <string name="pay_wx_code">微信二维码</string>
+    <string name="pay_aliPay_scan">支付宝扫码</string>
+    <string name="pay_aliPay_code">支付宝二维码</string>
+    <string name="pay_union_scan">银联扫码</string>
+    <string name="pay_union_code">银联二维码</string>
+    <string name="pay_scan_and_scan">扫一扫</string>
 
     <string name="input_app_id">输入应用包名</string>
     <string name="input_trans_id">输入交易ID</string>

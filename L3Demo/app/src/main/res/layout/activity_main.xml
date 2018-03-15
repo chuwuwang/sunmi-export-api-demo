@@ -15,7 +15,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/consume"
+            android:text="@string/request_consume"
             android:textSize="14sp" />
 
         <Button
@@ -25,7 +25,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/consume_revoke"
+            android:text="@string/request_consume_revoke"
             android:textSize="14sp" />
 
         <Button
@@ -35,7 +35,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/return_goods"
+            android:text="@string/request_return_goods"
             android:textSize="14sp" />
 
         <Button
@@ -45,7 +45,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/pre_auth"
+            android:text="@string/request_pre_auth"
             android:textSize="14sp" />
 
         <Button
@@ -55,7 +55,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/settlement"
+            android:text="@string/request_settlement"
             android:textSize="14sp" />
 
         <Button
@@ -65,7 +65,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/sign"
+            android:text="@string/request_sign"
             android:textSize="14sp" />
 
         <Button
@@ -75,7 +75,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/balance"
+            android:text="@string/request_balance"
             android:textSize="14sp" />
 
         <Button
@@ -85,7 +85,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/system_manager"
+            android:text="@string/request_system_manager"
             android:textSize="14sp" />
 
         <Button
@@ -95,7 +95,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/print"
+            android:text="@string/request_print"
             android:textSize="14sp" />
 
         <Button

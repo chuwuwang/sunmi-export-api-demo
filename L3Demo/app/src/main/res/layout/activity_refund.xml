@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/type_bank_card"
+                android:text="@string/pay_bank_card"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -38,7 +38,7 @@
                 android:id="@+id/aliPay_scan_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_aliPay_scan"
+                android:text="@string/pay_aliPay_scan"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -46,7 +46,7 @@
                 android:id="@+id/aliPay_code_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_aliPay_code"
+                android:text="@string/pay_aliPay_code"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:visibility="visible" />
@@ -55,7 +55,7 @@
                 android:id="@+id/weChat_scan_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_wx_scan"
+                android:text="@string/pay_wx_scan"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -63,7 +63,7 @@
                 android:id="@+id/weChat_code_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_wx_code"
+                android:text="@string/pay_wx_code"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:visibility="visible" />
@@ -72,7 +72,7 @@
                 android:id="@+id/optional_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/input_user_optional"
+                android:text="@string/pay_user_optional"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:visibility="gone" />
@@ -81,7 +81,7 @@
                 android:id="@+id/union_scan_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_union_scan"
+                android:text="@string/pay_union_scan"
                 android:textColor="#000000"
                 android:textSize="14sp" />
         </RadioGroup>

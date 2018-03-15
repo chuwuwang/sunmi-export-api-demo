@@ -1,30 +1,35 @@
 package sunmi.l3demo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
 
 /**
  * @author xurong on 2017/5/15.
  */
 
-public class ConsumeActivity extends Activity implements View.OnClickListener {
+public class ConsumeActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText amountEdit;
-    private RadioButton bankCardRb, aliPayScanRb, weChatScanRb, userOptionalRb, aliPayCodeRb, weChatCodeRb, unionScanRb;
-    private EditText userInfoEdit;
-    private EditText userCodeInfoEdit;
-    private EditText merchantInfoEdit;
-    private EditText merchantCodeInfoEdit;
-    private CheckBox isPrintCb;
+    private EditText mEditAmount;
 
-    private int paymentType;
+    private RadioGroup mRadioGroup;
+
+    private RadioButton mRBUserOptional;
+    private RadioButton mRbBankCard;
+    private RadioButton mRbAliPayScan;
+    private RadioButton mRbAliPayCode;
+    private RadioButton mRbWeChatScan;
+    private RadioButton mRbWeChatCode;
+    private RadioButton mRbUnionScan;
+    private RadioButton mRbUnionCode;
+    private RadioButton mRbScanAndScan;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,40 +39,68 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        amountEdit = (EditText) findViewById(R.id.input_money_edt);
-        bankCardRb = (RadioButton) findViewById(R.id.bank_card_rb);
-        aliPayScanRb = (RadioButton) findViewById(R.id.aliPay_scan_rb);
-        weChatScanRb = (RadioButton) findViewById(R.id.weChat_scan_rb);
-        userOptionalRb = (RadioButton) findViewById(R.id.optional_rb);
-        aliPayCodeRb = (RadioButton) findViewById(R.id.aliPay_code_rb);
-        weChatCodeRb = (RadioButton) findViewById(R.id.weChat_code_rb);
-        unionScanRb = (RadioButton) findViewById(R.id.union_scan_rb);
+        mEditAmount = (EditText) findViewById(R.id.ed_input_money);
 
-        aliPayCodeRb.setVisibility(View.GONE);
-        weChatCodeRb.setVisibility(View.GONE);
+        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
 
-        userInfoEdit = (EditText) findViewById(R.id.et_user_info);
-        userCodeInfoEdit = (EditText) findViewById(R.id.et_user_code_info);
-        merchantInfoEdit = (EditText) findViewById(R.id.et_merchant_info);
-        merchantCodeInfoEdit = (EditText) findViewById(R.id.et_merchant_code_info);
-        isPrintCb = (CheckBox) findViewById(R.id.cb_code_print);
+        mRBUserOptional = (RadioButton) findViewById(R.id.rb_user_optional);
+        mRbBankCard = (RadioButton) findViewById(R.id.rb_bank_card);
+        mRbAliPayScan = (RadioButton) findViewById(R.id.rb_aliPay_scan);
+        mRbAliPayCode = (RadioButton) findViewById(R.id.rb_aliPay_code);
+        mRbWeChatScan = (RadioButton) findViewById(R.id.rb_weChat_scan);
+        mRbWeChatCode = (RadioButton) findViewById(R.id.rb_weChat_code);
+        mRbUnionScan = (RadioButton) findViewById(R.id.rb_union_scan);
+        mRbUnionCode = (RadioButton) findViewById(R.id.rb_union_code);
+        mRbScanAndScan = (RadioButton) findViewById(R.id.rb_scan_and_scan);
 
-        Button okBtn = (Button) findViewById(R.id.btn_ok);
-        okBtn.setOnClickListener(this);
+        Button btnOk = (Button) findViewById(R.id.btn_ok);
+        btnOk.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        setPaymentType();
+        int paymentType;
+        int buttonId = mRadioGroup.getCheckedRadioButtonId();
+        switch (buttonId) {
+            case R.id.rb_user_optional:
+                paymentType = -1;
+                break;
+            case R.id.rb_bank_card:
+                paymentType = 0;
+                break;
+            case R.id.rb_aliPay_scan:
+                paymentType = 1;
+                break;
+            case R.id.rb_aliPay_code:
+                paymentType = 2;
+                break;
+            case R.id.rb_weChat_scan:
+                paymentType = 3;
+                break;
+            case R.id.rb_weChat_code:
+                paymentType = 4;
+                break;
+            case R.id.rb_union_scan:
+                paymentType = 5;
+                break;
+            case R.id.rb_union_code:
+                paymentType = 6;
+                break;
+            case R.id.rb_scan_and_scan:
+                paymentType = 7;
+                break;
+            default:
+                paymentType = -1;
+                break;
+        }
+
         Intent intent = new Intent("sunmi.payment.L3");
         intent.putExtra("transType", 0);
-        String transId = System.currentTimeMillis() + "";
-        intent.putExtra("transId", transId);
-
         intent.putExtra("appId", getPackageName());
         intent.putExtra("paymentType", paymentType);
+        intent.putExtra("transId", "sunmi_123456789");
         try {
-            String amount = amountEdit.getText().toString();
+            String amount = mEditAmount.getText().toString();
             long aLong = Long.parseLong(amount);
             intent.putExtra("amount", aLong);
         } catch (Exception e) {
@@ -75,22 +108,8 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
             return;
         }
 
-        String printInfo = userInfoEdit.getText().toString();
-        String printInfo2 = userCodeInfoEdit.getText().toString();
-        String printMerchantInfo = merchantInfoEdit.getText().toString();
-        String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
-        if (printInfo.length() > 100) {
-            Toast.makeText(this, "用户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
-        }
-        if (printMerchantInfo.length() > 100) {
-            Toast.makeText(this, "商户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
-        }
-        intent.putExtra("printInfo", printInfo);
-        intent.putExtra("printInfo2", printInfo2);
-        intent.putExtra("printMerchantInfo", printMerchantInfo);
-        intent.putExtra("printMerchantInfo2", printMerchantInfo2);
-
-        intent.putExtra("isPrintTicket", isPrintCb.isChecked());
+        // 添加用户自定义小票内容
+        intent = addUserCustomTicketContent(intent);
 
         boolean existing = Util.isIntentExisting(intent, this);
         if (existing) {
@@ -100,22 +119,5 @@ public class ConsumeActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void setPaymentType() {
-        if (bankCardRb.isChecked()) {
-            paymentType = 0;
-        } else if (aliPayScanRb.isChecked()) {
-            paymentType = 1;
-        } else if (weChatScanRb.isChecked()) {
-            paymentType = 3;
-        } else if (aliPayCodeRb.isChecked()) {
-            paymentType = 2;
-        } else if (weChatCodeRb.isChecked()) {
-            paymentType = 4;
-        } else if (unionScanRb.isChecked()) {
-            paymentType = 5;
-        } else if (userOptionalRb.isChecked()) {
-            paymentType = -1;
-        }
-    }
 
 }

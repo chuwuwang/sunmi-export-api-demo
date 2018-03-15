@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/pre_auth"
+                android:text="@string/request_pre_auth"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -38,7 +38,7 @@
                 android:id="@+id/pre_revoke_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_revoke"
+                android:text="@string/request_pre_revoke"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -46,7 +46,7 @@
                 android:id="@+id/pre_complete_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_complete"
+                android:text="@string/request_pre_complete"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -54,7 +54,7 @@
                 android:id="@+id/pre_complete_revoke_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_complete_revoke"
+                android:text="@string/request_pre_complete_revoke"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 

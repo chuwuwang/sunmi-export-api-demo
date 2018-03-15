@@ -18,75 +18,92 @@
             android:textSize="12sp" />
 
         <RadioGroup
-            android:id="@+id/mode_payment_rg"
+            android:id="@+id/radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/bank_card_rb"
+                android:id="@+id/rb_user_optional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pay_user_optional"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_bank_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/type_bank_card"
+                android:text="@string/pay_bank_card"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/aliPay_scan_rb"
+                android:id="@+id/rb_aliPay_scan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_aliPay_scan"
+                android:text="@string/pay_aliPay_scan"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/aliPay_code_rb"
+                android:id="@+id/rb_aliPay_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_aliPay_code"
+                android:text="@string/pay_aliPay_code"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:visibility="visible" />
 
             <RadioButton
-                android:id="@+id/weChat_scan_rb"
+                android:id="@+id/rb_weChat_scan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_wx_scan"
+                android:text="@string/pay_wx_scan"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/union_scan_rb"
+                android:id="@+id/rb_weChat_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type_union_scan"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/weChat_code_rb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/type_wx_code"
+                android:text="@string/pay_wx_code"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:visibility="visible" />
 
             <RadioButton
-                android:id="@+id/optional_rb"
+                android:id="@+id/rb_union_scan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/input_user_optional"
+                android:text="@string/pay_union_scan"
                 android:textColor="#000000"
                 android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_union_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pay_union_code"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_scan_and_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pay_scan_and_scan"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:visibility="visible" />
 
         </RadioGroup>
 
         <EditText
-            android:id="@+id/input_money_edt"
+            android:id="@+id/ed_input_money"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_money"
@@ -96,50 +113,8 @@
             android:textColorHint="#666666"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/et_user_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="用户联追加打印"
-            android:textColor="#000000"
-            android:textColorHint="#666666"
-            android:textSize="14sp" />
+        <include layout="@layout/include_add_print_footer" />
 
-        <EditText
-            android:id="@+id/et_user_code_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="用户联追加二维码"
-            android:textColor="#000000"
-            android:textColorHint="#666666"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/et_merchant_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="商户联追加打印"
-            android:textColor="#000000"
-            android:textColorHint="#666666"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/et_merchant_code_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="商户联追加二维码"
-            android:textColor="#000000"
-            android:textColorHint="#666666"
-            android:textSize="14sp" />
-
-        <CheckBox
-            android:id="@+id/cb_code_print"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="二维码是否打印小票"
-            android:textColor="#000000"
-            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_ok"
