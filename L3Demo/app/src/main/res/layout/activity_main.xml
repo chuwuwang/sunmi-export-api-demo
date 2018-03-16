@@ -59,7 +59,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_sign"
+            android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
@@ -99,16 +99,6 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_last_transaction_query"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/last_transaction_query"
-            android:textSize="14sp" />
-
-        <Button
             android:id="@+id/btn_query_merchant"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -125,47 +115,37 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/sign_out"
+            android:text="@string/request_sign_out"
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_query_qrCode_transaction"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/query_qrCode_transaction"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btn_query_transaction_fy"
+            android:id="@+id/btn_query_trade_online"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/query_transaction_fy"
+            android:text="@string/request_query_trade_online"
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_query_transaction_local_record"
+            android:id="@+id/btn_query_trade_local"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/query_transaction_local_record"
+            android:text="@string/request_query_trade_local"
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_select_consumption"
+            android:id="@+id/btn_custom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:text="@string/custom"
+            android:text="@string/request_custom"
             android:textSize="14sp" />
 
     </LinearLayout>

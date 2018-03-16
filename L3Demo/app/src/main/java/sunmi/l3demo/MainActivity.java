@@ -10,129 +10,123 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-    private Button signBtn, consumeBtn, revokeBtn, preAuthBtn, returnGoodsBtn, settlementBtn, queryBalanceBtn,
-            systemManagerBtn, printBtn, lastTransactionQueryBtn, queryMerchantBtn, signOutBtn, selectConsumptionBtn;
-    private Button qrCodeTransactionQueryBtn, fyTransactionQueryBtn, localRecordTransactionQueryBtn;
+    private Button mBtnConsume;
+    private Button mBtnRevoke;
+    private Button mBtnReturnGood;
+    private Button mBtnPreAuth;
+    private Button mBtnSettlement;
+    private Button mBtnSignIn;
+    private Button mBtnQueryBalance;
+    private Button mBtnSystemManager;
+    private Button mBtnPrint;
+    private Button mBtnQueryMerchant;
+    private Button mBtnSignOut;
+    private Button mBtnTradeQueryOnline;
+    private Button mBtnTradeQueryLocal;
+    private Button mBtnCustom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        signBtn = (Button) findViewById(R.id.btn_sign);
-        consumeBtn = (Button) findViewById(R.id.btn_consume);
-        revokeBtn = (Button) findViewById(R.id.btn_revoke);
-        preAuthBtn = (Button) findViewById(R.id.btn_pre_auth);
-        returnGoodsBtn = (Button) findViewById(R.id.btn_return_goods);
-        settlementBtn = (Button) findViewById(R.id.btn_settlement);
-        queryBalanceBtn = (Button) findViewById(R.id.btn_query_balance);
-        systemManagerBtn = (Button) findViewById(R.id.btn_system_manager);
-        printBtn = (Button) findViewById(R.id.btn_print);
-        lastTransactionQueryBtn = (Button) findViewById(R.id.btn_last_transaction_query);
-        queryMerchantBtn = (Button) findViewById(R.id.btn_query_merchant);
-        signOutBtn = (Button) findViewById(R.id.btn_sign_out);
-        qrCodeTransactionQueryBtn = (Button) findViewById(R.id.btn_query_qrCode_transaction);
-        fyTransactionQueryBtn = (Button) findViewById(R.id.btn_query_transaction_fy);
-        localRecordTransactionQueryBtn = (Button) findViewById(R.id.btn_query_transaction_local_record);
-        selectConsumptionBtn = (Button) findViewById(R.id.btn_select_consumption);
+        mBtnSignIn = (Button) findViewById(R.id.btn_sign_in);
+        mBtnConsume = (Button) findViewById(R.id.btn_consume);
+        mBtnRevoke = (Button) findViewById(R.id.btn_revoke);
+        mBtnPreAuth = (Button) findViewById(R.id.btn_pre_auth);
+        mBtnReturnGood = (Button) findViewById(R.id.btn_return_goods);
+        mBtnSettlement = (Button) findViewById(R.id.btn_settlement);
+        mBtnQueryBalance = (Button) findViewById(R.id.btn_query_balance);
+        mBtnSystemManager = (Button) findViewById(R.id.btn_system_manager);
+        mBtnPrint = (Button) findViewById(R.id.btn_print);
+        mBtnQueryMerchant = (Button) findViewById(R.id.btn_query_merchant);
+        mBtnSignOut = (Button) findViewById(R.id.btn_sign_out);
+        mBtnTradeQueryOnline = (Button) findViewById(R.id.btn_query_trade_online);
+        mBtnTradeQueryLocal = (Button) findViewById(R.id.btn_query_trade_local);
+        mBtnCustom = (Button) findViewById(R.id.btn_custom);
 
-        settlementBtn.setOnClickListener(this);
-        queryBalanceBtn.setOnClickListener(this);
-        systemManagerBtn.setOnClickListener(this);
-        printBtn.setOnClickListener(this);
-        lastTransactionQueryBtn.setOnClickListener(this);
-        queryMerchantBtn.setOnClickListener(this);
-        signOutBtn.setOnClickListener(this);
-        selectConsumptionBtn.setOnClickListener(this);
-        signBtn.setOnClickListener(this);
-        consumeBtn.setOnClickListener(this);
-        revokeBtn.setOnClickListener(this);
-        preAuthBtn.setOnClickListener(this);
-        returnGoodsBtn.setOnClickListener(this);
-        qrCodeTransactionQueryBtn.setOnClickListener(this);
-        fyTransactionQueryBtn.setOnClickListener(this);
-        localRecordTransactionQueryBtn.setOnClickListener(this);
+        mBtnSettlement.setOnClickListener(this);
+        mBtnQueryBalance.setOnClickListener(this);
+        mBtnSystemManager.setOnClickListener(this);
+        mBtnPrint.setOnClickListener(this);
+        mBtnQueryMerchant.setOnClickListener(this);
+        mBtnSignOut.setOnClickListener(this);
+        mBtnCustom.setOnClickListener(this);
+        mBtnSignIn.setOnClickListener(this);
+        mBtnConsume.setOnClickListener(this);
+        mBtnRevoke.setOnClickListener(this);
+        mBtnPreAuth.setOnClickListener(this);
+        mBtnReturnGood.setOnClickListener(this);
+        mBtnTradeQueryOnline.setOnClickListener(this);
+        mBtnTradeQueryLocal.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
+        boolean isOpen = true;
         setEnable(false);
+        int id = v.getId();
         Intent intent = new Intent("sunmi.payment.L3");
-        switch (v.getId()) {
+        if (id == R.id.btn_consume) {
             // 消费
-            case R.id.btn_consume:
-                startActivity(new Intent(this, ConsumeActivity.class));
-                return;
+            isOpen = false;
+            openActivity(ConsumeActivity.class);
+        } else if (id == R.id.btn_revoke) {
             // 消费撤销
-            case R.id.btn_revoke:
-                startActivity(new Intent(this, RevokeActivity.class));
-                return;
+            isOpen = false;
+            openActivity(RevokeActivity.class);
+        } else if (id == R.id.btn_return_goods) {
             // 退货
-            case R.id.btn_return_goods:
-                startActivity(new Intent(this, ReturnGoodsActivity.class));
-                return;
+            isOpen = false;
+            openActivity(ReturnGoodsActivity.class);
+        } else if (id == R.id.btn_pre_auth) {
             // 预授权
-            case R.id.btn_pre_auth:
-                startActivity(new Intent(this, PreAuthActivity.class));
-                return;
+            isOpen = false;
+            openActivity(PreAuthActivity.class);
+        } else if (id == R.id.btn_settlement) {
             // 结算
-            case R.id.btn_settlement:
-                startActivity(new Intent(this, SettlementActivity.class));
-                return;
+            isOpen = false;
+            openActivity(SettlementActivity.class);
+        } else if (id == R.id.btn_sign_in) {
             // 签到
-            case R.id.btn_sign:
-                intent.putExtra("transType", 8);
-                break;
+            intent.putExtra("transType", 8);
+        } else if (id == R.id.btn_query_balance) {
             // 余额查询
-            case R.id.btn_query_balance:
-                intent.putExtra("transType", 9);
-                break;
+            intent.putExtra("transType", 9);
+        } else if (id == R.id.btn_system_manager) {
             // 系统管理
-            case R.id.btn_system_manager:
-                intent.putExtra("transType", 10);
-                break;
+            intent.putExtra("transType", 10);
+        } else if (id == R.id.btn_print) {
             // 打印
-            case R.id.btn_print:
-                startActivity(new Intent(this, PrintActivity.class));
-                return;
-            // 末笔查询
-            case R.id.btn_last_transaction_query:
-                intent.putExtra("transType", 12);
-                break;
+            openActivity(PrintActivity.class);
+        } else if (id == R.id.btn_query_merchant) {
             // 商户信息查询
-            case R.id.btn_query_merchant:
-                intent.putExtra("transType", 13);
-                break;
+            intent.putExtra("transType", 13);
+        } else if (id == R.id.btn_sign_out) {
             // 签退
-            case R.id.btn_sign_out:
-                intent.putExtra("transType", 15);
-                break;
-            // 扫码交易查询
-            case R.id.btn_query_qrCode_transaction:
-                startActivity(new Intent(this, QrCodeTransactionQueryActivity.class));
-                return;
-            // 交易查询（仅富友支持，发报文查询后台支付状态）
-            case R.id.btn_query_transaction_fy:
-                startActivity(new Intent(this, QueryAllTradeActivity.class));
-                return;
+            intent.putExtra("transType", 15);
+        } else if (id == R.id.btn_query_trade_online) {
+            // 联机交易记录查询
+            isOpen = false;
+            openActivity(QueryAllTradeActivity.class);
+        } else if (id == R.id.btn_query_trade_local) {
             // 本地交易记录查询
-            case R.id.btn_query_transaction_local_record:
-                startActivity(new Intent(this, LocalTradeQueryActivity.class));
-                return;
-            // 自定义交易
-            case R.id.btn_select_consumption:
-                startActivity(new Intent(this, CustomActivity.class));
-                return;
-            default:
-                break;
+            isOpen = false;
+            openActivity(LocalTradeQueryActivity.class);
+        } else if (id == R.id.btn_custom) {
+            isOpen = false;
+            openActivity(CustomActivity.class);
         }
-        intent.putExtra("appId", getPackageName());
-        intent.putExtra("transId", System.currentTimeMillis() + "");
-        if (Util.isIntentExisting(intent, this)) {
-            startActivity(intent);
-        } else {
-            setEnable(true);
-            Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
+        if (isOpen) {
+            String packageName = getPackageName();
+            intent.putExtra("appId", packageName);
+            intent.putExtra("transId", "Sunmi_123456789");
+            boolean existing = Util.isIntentExisting(intent, this);
+            if (existing) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -143,23 +137,25 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     private void setEnable(boolean enable) {
-        signBtn.setEnabled(enable);
-        consumeBtn.setEnabled(enable);
-        revokeBtn.setEnabled(enable);
-        preAuthBtn.setEnabled(enable);
-        returnGoodsBtn.setEnabled(enable);
-        settlementBtn.setEnabled(enable);
-        queryBalanceBtn.setEnabled(enable);
-        systemManagerBtn.setEnabled(enable);
-        printBtn.setEnabled(enable);
-        lastTransactionQueryBtn.setEnabled(enable);
-        queryMerchantBtn.setEnabled(enable);
-        signOutBtn.setEnabled(enable);
-        selectConsumptionBtn.setEnabled(enable);
-        qrCodeTransactionQueryBtn.setEnabled(enable);
-        fyTransactionQueryBtn.setEnabled(enable);
-        localRecordTransactionQueryBtn.setEnabled(enable);
+        mBtnSignIn.setEnabled(enable);
+        mBtnConsume.setEnabled(enable);
+        mBtnRevoke.setEnabled(enable);
+        mBtnPreAuth.setEnabled(enable);
+        mBtnReturnGood.setEnabled(enable);
+        mBtnSettlement.setEnabled(enable);
+        mBtnQueryBalance.setEnabled(enable);
+        mBtnSystemManager.setEnabled(enable);
+        mBtnPrint.setEnabled(enable);
+        mBtnQueryMerchant.setEnabled(enable);
+        mBtnSignOut.setEnabled(enable);
+        mBtnCustom.setEnabled(enable);
+        mBtnTradeQueryOnline.setEnabled(enable);
+        mBtnTradeQueryLocal.setEnabled(enable);
     }
 
+    private void openActivity(Class clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
+    }
 
 }

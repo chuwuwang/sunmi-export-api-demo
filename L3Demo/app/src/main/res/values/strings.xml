@@ -14,13 +14,11 @@
     <string name="request_balance">余额查询</string>
     <string name="request_system_manager">系统管理</string>
     <string name="request_print">打印</string>
-    <string name="last_transaction_query">扫码交易末笔查询</string>
     <string name="query_merchant">商户信息查询</string>
-    <string name="sign_out">签退</string>
-    <string name="query_qrCode_transaction">扫码交易查询</string>
-    <string name="query_transaction_fy">交易查询（仅富友支持,发报文查询后台支付状态）</string>
-    <string name="query_transaction_local_record">本地交易记录查询</string>
-    <string name="custom">自定义交易</string>
+    <string name="request_sign_out">签退</string>
+    <string name="request_query_trade_online">联机交易记录查询</string>
+    <string name="request_query_trade_local">本地交易记录查询</string>
+    <string name="request_custom">自定义交易</string>
 
     <string name="pay_user_optional">用户自选</string>
     <string name="pay_bank_card">银行卡</string>
