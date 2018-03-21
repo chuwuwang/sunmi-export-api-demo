@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 /**
+ * 结算界面
+ *
  * @author Created by Lee64 on 2017/8/31.
  */
 
@@ -27,11 +29,9 @@ public class SettlementActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent("sunmi.payment.L3");
                 intent.putExtra("transType", 7);
-                String transId = System.currentTimeMillis() + "";
-                intent.putExtra("transId", transId);
-                String packageName = getPackageName();
-                intent.putExtra("appId", packageName);
-                intent.putExtra("isPrintSettleTicket", isPrintCb.isChecked());
+                intent.putExtra("transId", "Sunmi_123456789");
+                intent.putExtra("appId", getPackageName());
+                intent.putExtra("isPrintTicket", isPrintCb.isChecked());
                 intent.putExtra("isSettlementDetail", isSettlePrintCb.isChecked());
                 startActivity(intent);
             }

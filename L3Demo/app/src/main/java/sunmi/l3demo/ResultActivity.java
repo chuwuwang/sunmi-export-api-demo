@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * @author xurong on 2017/5/15.
@@ -27,10 +26,8 @@ public class ResultActivity extends Activity {
         int code = intent.getIntExtra("resultCode", -99999);
         if (code == 0) {
             sb.append("交易成功, 具体信息请查看控制台的Log \n");
-            Toast.makeText(this, "交易成功, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
         } else {
             sb.append("交易失败, 具体信息请查看控制台的Log \n");
-            Toast.makeText(this, "交易失败, 具体信息请查看控制台的Log", Toast.LENGTH_SHORT).show();
         }
 
         sb.append("transType: " + intent.getIntExtra("transType", -99999) + "\n");
@@ -64,6 +61,11 @@ public class ResultActivity extends Activity {
         sb.append("transactionPlatform: " + intent.getIntExtra("transactionPlatform", -99999) + "\n");
         sb.append("qrCodeScanModel: " + intent.getIntExtra("qrCodeScanModel", -99999) + "\n");
         sb.append("qrCodeTransactionState: " + intent.getIntExtra("qrCodeTransactionState", -99999) + "\n");
+
+        sb.append("结算相关数据 \n");
+        sb.append("transNum: " + intent.getIntExtra("transNum", -99999) + "\n");
+        sb.append("totalAmount: " + intent.getLongExtra("totalAmount", -99999) + "\n");
+        sb.append("settleJson: " + intent.getStringExtra("settleJson") + "\n");
 
         String result = sb.toString();
         Log.e(TAG, "result: " + result);

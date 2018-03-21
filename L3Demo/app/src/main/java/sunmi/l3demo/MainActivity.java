@@ -60,12 +60,12 @@ public class MainActivity extends Activity implements OnClickListener {
         mBtnTradeQueryLocal.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
-        boolean isOpen = true;
         setEnable(false);
         int id = v.getId();
+        boolean isOpen = true;
+
         Intent intent = new Intent("sunmi.payment.L3");
         if (id == R.id.btn_consume) {
             // 消费
