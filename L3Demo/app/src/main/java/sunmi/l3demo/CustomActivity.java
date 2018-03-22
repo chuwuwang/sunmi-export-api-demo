@@ -1,35 +1,33 @@
 package sunmi.l3demo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 /**
  * @author by 47673 on 2017/5/15.
  */
-public class CustomActivity extends Activity implements View.OnClickListener {
+public class CustomActivity extends BaseActivity {
 
-    private EditText transTypeEdit, paymentTypeEdit, amountEdit, transID,
-            oriVoucherNoEdit, oriDateEdit, oriAuthNoEdit, oriReferenceNoEdit,
-            qrOrderNoEdit, appIDEdit;
+    private EditText mEditVoucher;
+    private EditText mEditReference;
+    private EditText mEditAuth;
+    private EditText mEditQRCode;
+    private EditText mEditDate;
+    private EditText mEditAmount;
+    private EditText mEditAppId;
+    private EditText mEditRequestType;
+    private EditText mEditPayType;
+    private EditText mEditTransId;
+    private EditText mEditPrintHeaderEdit;
 
-    private EditText userInfoEdit;
-    private EditText userCodeInfoEdit;
-    private EditText merchantInfoEdit;
-    private EditText merchantCodeInfoEdit;
 
-    private EditText printHeaderEdit;
-
-    private CheckBox isPrintCb;
-    private CheckBox isSettlePrintCb;
-    private CheckBox isManagePwdCb;
-    private CheckBox isLastTradeCb;
-    private CheckBox isOrderDetailCb;
+    private CheckBox mCheckBoxManagePwd;
+    private CheckBox mCheckBoxLastTrade;
+    private CheckBox mCheckBoxDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,112 +37,67 @@ public class CustomActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        transTypeEdit = (EditText) findViewById(R.id.input_trans_type);
-        paymentTypeEdit = (EditText) findViewById(R.id.input_payment_type);
-        amountEdit = (EditText) findViewById(R.id.input_money);
-        transID = (EditText) findViewById(R.id.input_trans_id);
-        oriVoucherNoEdit = (EditText) findViewById(R.id.input_ori_voucher_no);
-        oriDateEdit = (EditText) findViewById(R.id.input_ori_date);
-        oriReferenceNoEdit = (EditText) findViewById(R.id.input_ori_reference_no);
-        qrOrderNoEdit = (EditText) findViewById(R.id.input_ori_qr_order_no);
-        appIDEdit = (EditText) findViewById(R.id.input_app_id);
-        oriAuthNoEdit = (EditText) findViewById(R.id.input_ori_auth_no);
+        mEditRequestType = (EditText) findViewById(R.id.edit_input_trans_type);
+        mEditPayType = (EditText) findViewById(R.id.edit_input_payment_type);
+        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
+        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
+        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
+        mEditDate = (EditText) findViewById(R.id.edit_input_date);
+        mEditReference = (EditText) findViewById(R.id.edit_input_reference);
+        mEditQRCode = (EditText) findViewById(R.id.edit_input_qr_order);
+        mEditAppId = (EditText) findViewById(R.id.edit_input_app_id);
+        mEditAuth = (EditText) findViewById(R.id.edit_input_auth);
+        mEditPrintHeaderEdit = (EditText) findViewById(R.id.edit_input_print_header);
 
-        userInfoEdit = (EditText) findViewById(R.id.input_user_info);
-        userCodeInfoEdit = (EditText) findViewById(R.id.input_user_code_info);
-        merchantInfoEdit = (EditText) findViewById(R.id.input_merchant_info);
-        merchantCodeInfoEdit = (EditText) findViewById(R.id.input_merchant_code_info);
-        printHeaderEdit = (EditText) findViewById(R.id.input_print_header);
-
-        isPrintCb = (CheckBox) findViewById(R.id.cb_code_print);
-        isSettlePrintCb = (CheckBox) findViewById(R.id.cb_settle_print);
-        isManagePwdCb = (CheckBox) findViewById(R.id.cb_manage_pwd);
-        isLastTradeCb = (CheckBox) findViewById(R.id.cb_last_trade);
-        isOrderDetailCb = (CheckBox) findViewById(R.id.cb_order_detail);
+        mCheckBoxManagePwd = (CheckBox) findViewById(R.id.cb_manage_pwd);
+        mCheckBoxLastTrade = (CheckBox) findViewById(R.id.cb_last_trade);
+        mCheckBoxDetail = (CheckBox) findViewById(R.id.cb_detail);
 
         Button ok = (Button) findViewById(R.id.btn_ok);
         ok.setOnClickListener(this);
 
-        String packageName = getPackageName();
-        appIDEdit.setText(packageName);
+        mEditAppId.setText(BuildConfig.APPLICATION_ID);
     }
 
     @Override
     public void onClick(View view) {
         Intent intent = new Intent("sunmi.payment.L3");
         try {
-            String transType = transTypeEdit.getText().toString();
-            int parseInt = Integer.parseInt(transType);
+            int parseInt = Integer.parseInt(mEditRequestType.getText().toString());
             intent.putExtra("transType", parseInt);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            String paymentType = paymentTypeEdit.getText().toString();
-            int parseInt = Integer.parseInt(paymentType);
+            int parseInt = Integer.parseInt(mEditPayType.getText().toString());
             intent.putExtra("paymentType", parseInt);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            String amount = amountEdit.getText().toString();
-            long parseLong = Long.parseLong(amount);
+            long parseLong = Long.parseLong(mEditAmount.getText().toString());
             intent.putExtra("amount", parseLong);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        String transId = transID.getText().toString();
-        intent.putExtra("transId", transId);
+        intent.putExtra("transId", mEditTransId.getText().toString());
+        intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
+        intent.putExtra("oriTransDate", mEditDate.getText().toString());
+        intent.putExtra("oriReferenceNo", mEditReference.getText().toString());
+        intent.putExtra("oriQROrderNo", mEditQRCode.getText().toString());
+        intent.putExtra("oriAuthNo", mEditAuth.getText().toString());
+        intent.putExtra("appId", mEditAppId.getText().toString());
+        intent.putExtra("riseString", mEditPrintHeaderEdit.getText().toString());
 
-        String voucherNo = oriVoucherNoEdit.getText().toString();
-        intent.putExtra("oriVoucherNo", voucherNo);
+        intent.putExtra("isManagePwd", mCheckBoxManagePwd.isChecked());
+        intent.putExtra("isLastTrade", mCheckBoxLastTrade.isChecked());
+        intent.putExtra("isSettlementDetail", mCheckBoxDetail.isChecked());
 
-        String date = oriDateEdit.getText().toString();
-        intent.putExtra("oriTransDate", date);
+        // 添加用户自定义小票内容
+        intent = addUserCustomTicketContent(intent);
 
-        String referenceNo = oriReferenceNoEdit.getText().toString();
-        intent.putExtra("oriReferenceNo", referenceNo);
-
-        String qrOrder = qrOrderNoEdit.getText().toString();
-        intent.putExtra("oriQROrderNo", qrOrder);
-
-        String appId = appIDEdit.getText().toString();
-        intent.putExtra("appId", appId);
-
-        String oriAuthNo = oriAuthNoEdit.getText().toString();
-        intent.putExtra("oriAuthNo", oriAuthNo);
-
-        String printInfo = userInfoEdit.getText().toString();
-        String printInfo2 = userCodeInfoEdit.getText().toString();
-        String printMerchantInfo = merchantInfoEdit.getText().toString();
-        String printMerchantInfo2 = merchantCodeInfoEdit.getText().toString();
-        if (printInfo.length() > 100) {
-            Toast.makeText(this, "用户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
-        }
-        if (printMerchantInfo.length() > 100) {
-            Toast.makeText(this, "商户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
-        }
-        intent.putExtra("printInfo", printInfo);
-        intent.putExtra("printInfo2", printInfo2);
-        intent.putExtra("printMerchantInfo", printMerchantInfo);
-        intent.putExtra("printMerchantInfo2", printMerchantInfo2);
-
-        String header = printHeaderEdit.getText().toString();
-        intent.putExtra("riseString", header);
-
-        intent.putExtra("isPrintTicket", isPrintCb.isChecked());
-        intent.putExtra("isPrintSettleTicket", isSettlePrintCb.isChecked());
-        intent.putExtra("isManagePwd", isManagePwdCb.isChecked());
-        intent.putExtra("isLastTrade", isLastTradeCb.isChecked());
-        intent.putExtra("isSettlementDetail", isOrderDetailCb.isChecked());
-
-        boolean existing = Util.isIntentExisting(intent, this);
-        if (existing) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
-        }
+        startActivity(intent);
     }
 
 

@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/input_select_mode_payment"
-            android:textColor="#969696"
+            android:textColor="#999999"
             android:textSize="12sp" />
 
         <RadioGroup
@@ -25,71 +25,54 @@
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/rb_bank_card"
+                android:id="@+id/rb_pre_auth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/pay_bank_card"
+                android:text="@string/request_pre_auth"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/rb_aliPay_scan"
+                android:id="@+id/rb_pre_revoke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_aliPay_scan"
+                android:text="@string/request_pre_revoke"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/rb_aliPay_code"
+                android:id="@+id/rb_pre_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_aliPay_code"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:visibility="visible" />
-
-            <RadioButton
-                android:id="@+id/rb_weChat_scan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pay_wx_scan"
+                android:text="@string/request_pre_complete"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/rb_weChat_code"
+                android:id="@+id/rb_pre_complete_revoke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_wx_code"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:visibility="visible" />
-
-            <RadioButton
-                android:id="@+id/rb_union_scan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pay_union_scan"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/rb_union_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pay_union_code"
+                android:text="@string/request_pre_complete_revoke"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
         </RadioGroup>
 
         <EditText
-            android:id="@+id/edit_input_reference"
+            android:id="@+id/edit_input_voucher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/input_ori_reference"
+            android:hint="@string/input_ori_voucher"
+            android:textColor="#000000"
+            android:textColorHint="#ff6900"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edit_input_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_money"
             android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#ff6900"
@@ -101,32 +84,20 @@
             android:layout_height="wrap_content"
             android:hint="@string/input_ori_date"
             android:inputType="date"
-            android:maxLength="4"
             android:textColor="#000000"
             android:textColorHint="#ff6900"
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/edit_input_money"
+            android:id="@+id/edit_input_auth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/input_money"
-            android:inputType="number"
-            android:maxLength="9"
+            android:hint="@string/input_ori_auth"
             android:textColor="#000000"
             android:textColorHint="#ff6900"
             android:textSize="14sp" />
 
         <include layout="@layout/include_add_print_footer" />
-
-        <CheckBox
-            android:id="@+id/cb_manage_pwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="是否输入管理员密码"
-            android:textColor="#000000"
-            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_ok"

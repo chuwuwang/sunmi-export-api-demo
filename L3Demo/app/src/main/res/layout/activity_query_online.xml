@@ -14,33 +14,23 @@
         android:textColorHint="#ff6900"
         android:textSize="14sp" />
 
+    <EditText
+        android:id="@+id/edit_input_last_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="最后一笔交易类型 0:非银行卡 1:银行卡 2:支付宝 3:微信 4:银联"
+        android:textColor="#000000"
+        android:textColorHint="#ff6900"
+        android:textSize="14sp" />
+
+    <include layout="@layout/include_add_print_footer" />
+
     <CheckBox
         android:id="@+id/cb_last_print"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="是否打印最后一笔交易"
+        android:text="是否为最后一笔交易"
         android:textColor="#000000"
-        android:textSize="14sp" />
-
-    <CheckBox
-        android:id="@+id/cb_only_print"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="是否直接打印，没有打印预览界面"
-        android:textColor="#000000"
-        android:textSize="14sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="
-     \n * 如果传入凭证号，则打印指定的一笔交易
-     \n * 如果指定最后一笔交易，则打印最后一笔交易
-     \n * 如果传入为空，则跳转到
-     \n * 如果传入isOnlyPrint为false，则不打印直接返回
-     \n * 打印顺序：凭证号，最后一笔交易
-     \n * 注意：只打印成功的交易"
         android:textSize="14sp" />
 
     <Button

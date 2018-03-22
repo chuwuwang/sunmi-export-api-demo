@@ -2,38 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginEnd="20dp"
-    android:layout_marginStart="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <EditText
-        android:id="@+id/edit_voucher"
+        android:id="@+id/edit_input_voucher"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
-        android:hint="输入原交易凭证号"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_ori_voucher"
         android:singleLine="true"
         android:textColor="#000000"
-        android:textColorHint="#666666"
+        android:textColorHint="#ff6900"
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/edit_trade"
+        android:id="@+id/edit_input_trade"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:hint="输入第三方订单号"
+        android:hint="输入第三方订单号（非必填）"
         android:singleLine="true"
         android:textColor="#000000"
-        android:textColorHint="#666666"
+        android:textColorHint="#ff6900"
         android:textSize="14sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="
       \n * 如果传入凭证号，则按凭证号查询
       \n * 如果传入第三方订单号，则按第三方订单号查询
@@ -45,7 +40,6 @@
         android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="@string/ok" />
 
 </LinearLayout>

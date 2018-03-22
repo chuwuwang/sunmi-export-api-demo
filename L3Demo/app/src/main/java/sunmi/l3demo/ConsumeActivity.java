@@ -5,31 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 
 /**
  * @author xurong on 2017/5/15.
  */
 
-public class ConsumeActivity extends BaseActivity implements View.OnClickListener {
-
-    private EditText mEditAmount;
+public class ConsumeActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
-
-    private RadioButton mRBUserOptional;
-    private RadioButton mRbBankCard;
-    private RadioButton mRbAliPayScan;
-    private RadioButton mRbAliPayCode;
-    private RadioButton mRbWeChatScan;
-    private RadioButton mRbWeChatCode;
-    private RadioButton mRbUnionScan;
-    private RadioButton mRbUnionCode;
-    private RadioButton mRbScanAndScan;
-
+    private EditText mEditAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +25,8 @@ public class ConsumeActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void initView() {
-        mEditAmount = (EditText) findViewById(R.id.ed_input_money);
-
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
-
-        mRBUserOptional = (RadioButton) findViewById(R.id.rb_user_optional);
-        mRbBankCard = (RadioButton) findViewById(R.id.rb_bank_card);
-        mRbAliPayScan = (RadioButton) findViewById(R.id.rb_aliPay_scan);
-        mRbAliPayCode = (RadioButton) findViewById(R.id.rb_aliPay_code);
-        mRbWeChatScan = (RadioButton) findViewById(R.id.rb_weChat_scan);
-        mRbWeChatCode = (RadioButton) findViewById(R.id.rb_weChat_code);
-        mRbUnionScan = (RadioButton) findViewById(R.id.rb_union_scan);
-        mRbUnionCode = (RadioButton) findViewById(R.id.rb_union_code);
-        mRbScanAndScan = (RadioButton) findViewById(R.id.rb_scan_and_scan);
-
+        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
         Button btnOk = (Button) findViewById(R.id.btn_ok);
         btnOk.setOnClickListener(this);
     }
@@ -97,26 +71,20 @@ public class ConsumeActivity extends BaseActivity implements View.OnClickListene
         Intent intent = new Intent("sunmi.payment.L3");
         intent.putExtra("transType", 0);
         intent.putExtra("appId", getPackageName());
+        intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("paymentType", paymentType);
-        intent.putExtra("transId", "sunmi_123456789");
         try {
-            String amount = mEditAmount.getText().toString();
-            long aLong = Long.parseLong(amount);
+            long aLong = Long.parseLong(mEditAmount.getText().toString());
             intent.putExtra("amount", aLong);
         } catch (Exception e) {
-            Toast.makeText(this, "消费金额填写错误", Toast.LENGTH_SHORT).show();
-            return;
+            e.printStackTrace();
         }
 
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
-        boolean existing = Util.isIntentExisting(intent, this);
-        if (existing) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
-        }
+        startActivity(intent);
+
     }
 
 

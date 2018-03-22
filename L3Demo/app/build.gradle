@@ -12,8 +12,8 @@ android {
         applicationId "sunmi.l3demo"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 32
-        versionName "v1.0.32"
+        versionCode 33
+        versionName "v1.0.33"
     }
 
     signingConfigs {
@@ -41,7 +41,7 @@ android {
     android.applicationVariants.all {
         variant ->
             variant.outputs.each {
-                output -> output.outputFile = new File(output.outputFile.parent, "L3Demo" + defaultConfig.versionName + "_" + buildType.name+ ".apk");
+                output -> output.outputFile = new File(output.outputFile.parent, "L3Demo" + defaultConfig.versionName + "_" + buildType.name + ".apk");
             }
     }
 

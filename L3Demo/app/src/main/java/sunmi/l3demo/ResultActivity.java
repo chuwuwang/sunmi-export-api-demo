@@ -1,8 +1,8 @@
 package sunmi.l3demo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -10,7 +10,7 @@ import android.widget.TextView;
  * @author xurong on 2017/5/15.
  */
 
-public class ResultActivity extends Activity {
+public class ResultActivity extends AppCompatActivity {
 
     private static final String TAG = "ResultActivity";
 
@@ -31,13 +31,12 @@ public class ResultActivity extends Activity {
         }
 
         sb.append("transType: " + intent.getIntExtra("transType", -99999) + "\n");
-        sb.append("appId: " + intent.getStringExtra("appId") + "\n");
+        sb.append("packageName: " + intent.getStringExtra("packageName") + "\n");
         sb.append("resultCode: " + intent.getIntExtra("resultCode", -99999) + "\n");
         sb.append("errorCode: " + intent.getIntExtra("errorCode", -99999) + "\n");
         sb.append("errorMsg: " + intent.getStringExtra("errorMsg") + "\n");
         sb.append("model: " + intent.getStringExtra("model") + "\n");
         sb.append("version: " + intent.getStringExtra("version") + "\n");
-        sb.append("tusn: " + intent.getStringExtra("tusn") + "\n");
         sb.append("terminalId: " + intent.getStringExtra("terminalId") + "\n");
         sb.append("merchantName: " + intent.getStringExtra("merchantName") + "\n");
         sb.append("transDate: " + intent.getStringExtra("transDate") + "\n");
@@ -55,14 +54,19 @@ public class ResultActivity extends Activity {
         sb.append("accountType: " + intent.getStringExtra("accountType") + "\n");
         sb.append("issue: " + intent.getStringExtra("issue") + "\n");
         sb.append("acquire: " + intent.getStringExtra("acquire") + "\n");
-        sb.append("paymentType: " + intent.getIntExtra("paymentType", -99999) + "\n");
         sb.append("answerCode: " + intent.getStringExtra("answerCode") + "\n");
         sb.append("transactionType: " + intent.getIntExtra("transactionType", -99999) + "\n");
         sb.append("transactionPlatform: " + intent.getIntExtra("transactionPlatform", -99999) + "\n");
         sb.append("qrCodeScanModel: " + intent.getIntExtra("qrCodeScanModel", -99999) + "\n");
         sb.append("qrCodeTransactionState: " + intent.getIntExtra("qrCodeTransactionState", -99999) + "\n");
 
-        sb.append("结算相关数据 \n");
+        sb.append("\n 商户信息相关数据 \n");
+        sb.append("merchantNameEn: " + intent.getStringExtra("merchantNameEn") + "\n");
+
+        sb.append("\n 余额相关数据 \n");
+        sb.append("balance: " + intent.getLongExtra("balance", -99999) + "\n");
+
+        sb.append("\n 结算相关数据 \n");
         sb.append("transNum: " + intent.getIntExtra("transNum", -99999) + "\n");
         sb.append("totalAmount: " + intent.getLongExtra("totalAmount", -99999) + "\n");
         sb.append("settleJson: " + intent.getStringExtra("settleJson") + "\n");

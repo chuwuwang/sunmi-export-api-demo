@@ -1,14 +1,11 @@
 package sunmi.l3demo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends BaseActivity {
 
     private Button mBtnConsume;
     private Button mBtnRevoke;
@@ -98,6 +95,7 @@ public class MainActivity extends Activity implements OnClickListener {
             intent.putExtra("transType", 10);
         } else if (id == R.id.btn_print) {
             // 打印
+            isOpen = false;
             openActivity(PrintActivity.class);
         } else if (id == R.id.btn_query_merchant) {
             // 商户信息查询
@@ -108,25 +106,19 @@ public class MainActivity extends Activity implements OnClickListener {
         } else if (id == R.id.btn_query_trade_online) {
             // 联机交易记录查询
             isOpen = false;
-            openActivity(QueryAllTradeActivity.class);
+            openActivity(QueryByOnlineActivity.class);
         } else if (id == R.id.btn_query_trade_local) {
             // 本地交易记录查询
             isOpen = false;
-            openActivity(LocalTradeQueryActivity.class);
+            openActivity(QueryByLocalActivity.class);
         } else if (id == R.id.btn_custom) {
             isOpen = false;
             openActivity(CustomActivity.class);
         }
         if (isOpen) {
-            String packageName = getPackageName();
-            intent.putExtra("appId", packageName);
-            intent.putExtra("transId", "Sunmi_123456789");
-            boolean existing = Util.isIntentExisting(intent, this);
-            if (existing) {
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
-            }
+            intent.putExtra("appId", getPackageName());
+            intent.putExtra("transId", System.currentTimeMillis() + "");
+            startActivity(intent);
         }
     }
 

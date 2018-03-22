@@ -1,26 +1,31 @@
 package sunmi.l3demo;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * @author Created by Lee64 on 2018/3/2.
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * 添加用户自定义小票内容
      */
     protected Intent addUserCustomTicketContent(Intent intent) {
-        EditText mEditUserInfo = (EditText) findViewById(R.id.et_user_info);
-        EditText mEditUserCodeInfo = (EditText) findViewById(R.id.et_user_code_info);
-        EditText mEditMerchantInfo = (EditText) findViewById(R.id.et_merchant_info);
-        EditText mEditMerchantCodeInfo = (EditText) findViewById(R.id.et_merchant_code_info);
-        CheckBox mCbPrint = (CheckBox) findViewById(R.id.cb_code_print);
+        EditText mEditUserInfo = (EditText) findViewById(R.id.edit_user_info);
+        EditText mEditUserCodeInfo = (EditText) findViewById(R.id.edit_user_code_info);
+        EditText mEditMerchantInfo = (EditText) findViewById(R.id.edit_merchant_info);
+        EditText mEditMerchantCodeInfo = (EditText) findViewById(R.id.edit_merchant_code_info);
+        CheckBox mCbPrint = (CheckBox) findViewById(R.id.cb_print);
 
         String printInfo = mEditUserInfo.getText().toString();
         String printCode = mEditUserCodeInfo.getText().toString();
@@ -42,5 +47,23 @@ public class BaseActivity extends Activity {
 
         return intent;
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        final PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> resolveInfo = packageManager.queryIntentActivities(intent,
+                PackageManager.MATCH_DEFAULT_ONLY);
+        if (resolveInfo.size() > 0) {
+            super.startActivity(intent);
+        } else {
+            Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }

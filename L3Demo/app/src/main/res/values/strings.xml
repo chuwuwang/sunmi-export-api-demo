@@ -30,17 +30,17 @@
     <string name="pay_union_code">银联二维码</string>
     <string name="pay_scan_and_scan">扫一扫</string>
 
-    <string name="input_app_id">输入应用包名</string>
-    <string name="input_trans_id">输入交易ID</string>
-    <string name="input_ori_date">输入原交易日期</string>
-    <string name="input_trans_type">输入交易类型</string>
-    <string name="input_payment_type">输入交易方式</string>
-    <string name="input_money">输入交易金额(单位：分)</string>
-    <string name="input_ori_auth_no">输入原交易授权号</string>
-    <string name="input_ori_voucher_no">输入原交易凭证号</string>
     <string name="input_select_mode_payment">选择交易方式</string>
-    <string name="input_ori_qr_order_no">输入原扫码消费订单号</string>
-    <string name="input_ori_reference_no">输入原交易参考号(扫码交易请输入原扫码消费订单号)</string>
+    <string name="input_app_id">输入应用包名（必填）</string>
+    <string name="input_trans_id">输入交易ID（非必填）</string>
+    <string name="input_trans_type">输入请求类型（非必填）</string>
+    <string name="input_payment_type">输入交易方式（非必填）</string>
+    <string name="input_money">输入交易金额（非必填 单位：分）</string>
+    <string name="input_ori_date">输入原交易日期（非必填  格式：0229）</string>
+    <string name="input_ori_auth">输入原交易授权号（非必填）</string>
+    <string name="input_ori_voucher">输入原交易凭证号（非必填）</string>
+    <string name="input_ori_qr_order">输入原扫码订单号（非必填）</string>
+    <string name="input_ori_reference">输入原交易参考号或原扫码订单号（非必填）</string>
 
     <string name="ok">确认</string>
 

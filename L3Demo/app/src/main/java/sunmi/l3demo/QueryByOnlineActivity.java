@@ -9,40 +9,46 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 /**
- * 打印界面
+ * 交易查询
  *
  * @author Created by Lee64 on 2017/8/31.
  */
 
-public class PrintActivity extends BaseActivity {
+public class QueryByOnlineActivity extends BaseActivity {
 
     private EditText mEditVoucher;
+    private EditText mEditLastType;
     private CheckBox mCheckBoxLastTrade;
-    private CheckBox mCheckBoxOnlyPrint;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_print);
-        initView();
-    }
-
-    private void initView() {
+        setContentView(R.layout.activity_query_online);
         mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
+        mEditLastType = (EditText) findViewById(R.id.edit_input_last_type);
         mCheckBoxLastTrade = (CheckBox) findViewById(R.id.cb_last_print);
-        mCheckBoxOnlyPrint = (CheckBox) findViewById(R.id.cb_only_print);
-        Button ok = (Button) findViewById(R.id.btn_ok);
-        ok.setOnClickListener(this);
+        Button button = (Button) findViewById(R.id.btn_ok);
+        button.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transType", 11);
+        intent.putExtra("transType", 16);
         intent.putExtra("appId", getPackageName());
-        intent.putExtra("isOnlyPrint", mCheckBoxOnlyPrint.isChecked());
-        intent.putExtra("isLastTrade", mCheckBoxLastTrade.isChecked());
+        intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
+        try {
+            int parseInt = Integer.parseInt(mEditLastType.getText().toString());
+            intent.putExtra("lastTradeType", parseInt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        intent.putExtra("isLastTrade", mCheckBoxLastTrade.isChecked());
+
+        // 添加用户自定义小票内容
+        intent = addUserCustomTicketContent(intent);
+
         startActivity(intent);
     }
 
