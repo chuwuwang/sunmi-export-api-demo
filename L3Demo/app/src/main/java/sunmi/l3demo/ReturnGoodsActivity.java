@@ -2,6 +2,7 @@ package sunmi.l3demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,6 +16,7 @@ import android.widget.RadioGroup;
 public class ReturnGoodsActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
+    private EditText mEditTransId;
     private EditText mEditReference;
     private EditText mEditDate;
     private EditText mEditAmount;
@@ -32,6 +34,7 @@ public class ReturnGoodsActivity extends BaseActivity {
      */
     private void initView() {
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
+        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
         mEditReference = (EditText) findViewById(R.id.edit_input_reference);
         mEditDate = (EditText) findViewById(R.id.edit_input_date);
         mEditAmount = (EditText) findViewById(R.id.edit_input_money);
@@ -74,8 +77,14 @@ public class ReturnGoodsActivity extends BaseActivity {
         Intent intent = new Intent("sunmi.payment.L3");
         intent.putExtra("transType", 2);
         intent.putExtra("appId", getPackageName());
-        intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("paymentType", paymentType);
+
+        String transId = mEditTransId.getText().toString();
+        if (!TextUtils.isEmpty(transId)) {
+            intent.putExtra("transId", transId);
+        } else {
+            intent.putExtra("transId", System.currentTimeMillis() + "");
+        }
 
         String referenceNo = mEditReference.getText().toString();
         if (paymentType != 0) {
