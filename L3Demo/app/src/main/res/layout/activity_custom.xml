@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_trans_type"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#666666"
             android:textSize="14sp" />
@@ -23,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_payment_type"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#666666"
             android:textSize="14sp" />
@@ -32,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_money"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#666666"
             android:textSize="14sp" />
@@ -50,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_ori_voucher"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#666666"
             android:textSize="14sp" />
@@ -65,11 +69,12 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/edit_input_ori_reference"
+            android:id="@+id/edit_input_reference"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="输入原交易参考号（非必填）"
             android:textColor="#000000"
+            android:inputType="number"
             android:textColorHint="#666666"
             android:textSize="14sp" />
 
@@ -79,6 +84,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/input_ori_auth"
             android:textColor="#000000"
+            android:inputType="number"
             android:textColorHint="#666666"
             android:textSize="14sp" />
 

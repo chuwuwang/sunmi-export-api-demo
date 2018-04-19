@@ -64,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_ori_voucher"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#ff6900"
             android:textSize="14sp" />
@@ -93,6 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_ori_auth"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#ff6900"
             android:textSize="14sp" />
