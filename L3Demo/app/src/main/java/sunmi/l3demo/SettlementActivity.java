@@ -38,7 +38,7 @@ public class SettlementActivity extends BaseActivity {
         intent.putExtra("transType", 7);
         intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("appId", getPackageName());
-        intent.putExtra("isPrintTicket", mCbPrint.isChecked());
+        intent.putExtra("isSettlementTicket", mCbPrint.isChecked());
         intent.putExtra("isSettlementDetail", mCbDetail.isChecked());
         startActivity(intent);
     }
