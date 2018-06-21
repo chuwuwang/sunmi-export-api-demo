@@ -7,6 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * @author xurong on 2017/5/15.
@@ -67,24 +72,27 @@ public class ConsumeActivity extends BaseActivity {
                 paymentType = -1;
                 break;
         }
-
         Intent intent = new Intent("sunmi.payment.L3");
         intent.putExtra("transType", 0);
-        intent.putExtra("appId", getPackageName());
+        String packageName = getPackageName();
+        intent.putExtra("appId", packageName);
         intent.putExtra("transId", System.currentTimeMillis() + "");
         intent.putExtra("paymentType", paymentType);
+        Map<String, Object> map = new HashMap<>();
+        map.put("payType", 0);
+        map.put("username", "zh123");
+        String toJson = new Gson().toJson(map);
+        intent.putExtra("reserve", toJson);
         try {
-            long aLong = Long.parseLong(mEditAmount.getText().toString());
+            String str = mEditAmount.getText().toString();
+            long aLong = Long.parseLong(str);
             intent.putExtra("amount", aLong);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
-
         startActivity(intent);
-
     }
 
 
