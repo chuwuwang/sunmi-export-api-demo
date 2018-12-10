@@ -2,6 +2,7 @@ package sunmi.l3demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ public class ConsumeActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
     private EditText mEditAmount;
+    private EditText mEditTransId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class ConsumeActivity extends BaseActivity {
     private void initView() {
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
         mEditAmount = (EditText) findViewById(R.id.edit_input_money);
+        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
         Button btnOk = (Button) findViewById(R.id.btn_ok);
         btnOk.setOnClickListener(this);
     }
@@ -76,7 +79,14 @@ public class ConsumeActivity extends BaseActivity {
         intent.putExtra("transType", 0);
         String packageName = getPackageName();
         intent.putExtra("appId", packageName);
-        intent.putExtra("transId", System.currentTimeMillis() + "");
+
+        String transId = mEditTransId.getText().toString();
+        if (TextUtils.isEmpty(transId)) {
+            intent.putExtra("transId", System.currentTimeMillis() + "");
+        } else {
+            intent.putExtra("transId", transId);
+        }
+
         intent.putExtra("paymentType", paymentType);
         Map<String, Object> map = new HashMap<>();
         map.put("payType", 0);
