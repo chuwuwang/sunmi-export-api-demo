@@ -1,14 +1,10 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
-
-/**
- * @author xurong on 2017/5/15.
- */
 
 public class ResultActivity extends AppCompatActivity {
 

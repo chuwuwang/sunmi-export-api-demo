@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
-/**
- * 撤销界面
- *
- * @author by xurong on 2017/5/15.
- */
 
 public class RevokeActivity extends BaseActivity {
 

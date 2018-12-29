@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;

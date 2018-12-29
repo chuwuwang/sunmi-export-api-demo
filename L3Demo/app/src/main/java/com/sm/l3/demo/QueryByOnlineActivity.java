@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
-/**
- * 交易查询
- *
- * @author Created by Lee64 on 2017/8/31.
- */
 
 public class QueryByOnlineActivity extends BaseActivity {
 

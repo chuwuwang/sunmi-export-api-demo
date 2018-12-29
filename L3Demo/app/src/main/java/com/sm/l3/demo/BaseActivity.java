@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,10 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
-
-/**
- * @author Created by Lee64 on 2018/3/2.
- */
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 

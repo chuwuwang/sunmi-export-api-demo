@@ -1,14 +1,9 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-/**
- * 结果接收者
- *
- * @author xurong on 2017/5/15.
- */
 public class ResultReceiver extends BroadcastReceiver {
 
     @Override

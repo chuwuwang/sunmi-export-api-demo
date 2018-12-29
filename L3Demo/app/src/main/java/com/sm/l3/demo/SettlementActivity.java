@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,12 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-
-/**
- * 结算界面
- *
- * @author Created by Lee64 on 2017/8/31.
- */
 
 public class SettlementActivity extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-
-/**
- * @author by xurong on 2017/5/15.
- */
 
 public class ReturnGoodsActivity extends BaseActivity {
 

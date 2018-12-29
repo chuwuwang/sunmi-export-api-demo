@@ -1,4 +1,4 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,12 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-
-/**
- * 预授权界面
- *
- * @author Created by xurong on 2017/5/15.
- */
 
 public class PreAuthActivity extends BaseActivity {
 

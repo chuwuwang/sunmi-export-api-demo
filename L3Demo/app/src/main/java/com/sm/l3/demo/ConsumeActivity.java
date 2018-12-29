@@ -1,8 +1,7 @@
-package sunmi.l3demo;
+package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,11 +11,6 @@ import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
-
-
-/**
- * @author xurong on 2017/5/15.
- */
 
 public class ConsumeActivity extends BaseActivity {
 
@@ -81,7 +75,7 @@ public class ConsumeActivity extends BaseActivity {
         intent.putExtra("appId", packageName);
 
         String transId = mEditTransId.getText().toString();
-        if (TextUtils.isEmpty(transId)) {
+        if (transId == null || transId.trim().length() == 0) {
             intent.putExtra("transId", System.currentTimeMillis() + "");
         } else {
             intent.putExtra("transId", transId);

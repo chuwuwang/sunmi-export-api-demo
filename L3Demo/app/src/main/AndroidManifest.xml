@@ -1,32 +1,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sunmi.l3demo">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sm.l3.demo">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.sm.l3.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConsumeActivity" />
-        <activity android:name=".PreAuthActivity" />
-        <activity android:name=".ReturnGoodsActivity" />
-        <activity android:name=".RevokeActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".CustomActivity" />
-        <activity android:name=".QueryByLocalActivity" />
-        <activity android:name=".SettlementActivity" />
-        <activity android:name=".PrintActivity" />
-        <activity android:name=".QueryByOnlineActivity" />
+        <activity android:name="com.sm.l3.demo.ConsumeActivity" />
+        <activity android:name="com.sm.l3.demo.PreAuthActivity" />
+        <activity android:name="com.sm.l3.demo.ReturnGoodsActivity" />
+        <activity android:name="com.sm.l3.demo.RevokeActivity" />
+        <activity android:name="com.sm.l3.demo.ResultActivity" />
+        <activity android:name="com.sm.l3.demo.CustomActivity" />
+        <activity android:name="com.sm.l3.demo.QueryByLocalActivity" />
+        <activity android:name="com.sm.l3.demo.SettlementActivity" />
+        <activity android:name="com.sm.l3.demo.PrintActivity" />
+        <activity android:name="com.sm.l3.demo.QueryByOnlineActivity" />
 
         <!--接收结果广播-->
-        <receiver android:name=".ResultReceiver">
+        <receiver android:name="com.sm.l3.demo.ResultReceiver">
             <intent-filter>
                 <action android:name="sunmi.payment.L3.RESULT" />
             </intent-filter>
