@@ -13,10 +13,9 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    /**
-     * 添加用户自定义小票内容
-     */
-    protected Intent addUserCustomTicketContent(Intent intent) {
+    public static final String CALL_EXTRA_ACTION = "sunmi.payment.L3";
+
+    public Intent addUserCustomTicketContent(Intent intent) {
         EditText mEditUserInfo = (EditText) findViewById(R.id.edit_user_info);
         EditText mEditUserCodeInfo = (EditText) findViewById(R.id.edit_user_code_info);
         EditText mEditMerchantInfo = (EditText) findViewById(R.id.edit_merchant_info);
@@ -52,8 +51,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void startActivity(Intent intent) {
         final PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> resolveInfo = packageManager.queryIntentActivities(intent,
-                PackageManager.MATCH_DEFAULT_ONLY);
+        List<ResolveInfo> resolveInfo = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         if (resolveInfo.size() > 0) {
             super.startActivity(intent);
         } else {

@@ -3,7 +3,6 @@ package com.sm.l3.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -29,8 +28,7 @@ public class ConsumeActivity extends BaseActivity {
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
         mEditAmount = (EditText) findViewById(R.id.edit_input_money);
         mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
-        Button btnOk = (Button) findViewById(R.id.btn_ok);
-        btnOk.setOnClickListener(this);
+        findViewById(R.id.btn_ok).setOnClickListener(this);
     }
 
     @Override
@@ -69,31 +67,35 @@ public class ConsumeActivity extends BaseActivity {
                 paymentType = -1;
                 break;
         }
-        Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transType", 0);
-        String packageName = getPackageName();
-        intent.putExtra("appId", packageName);
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
+        Bundle bundle = new Bundle();
+        bundle.putInt("transType", 0);
+        bundle.putInt("paymentType", paymentType);
+        bundle.putString("appId", getPackageName() + "");
 
         String transId = mEditTransId.getText().toString();
-        if (transId == null || transId.trim().length() == 0) {
-            intent.putExtra("transId", System.currentTimeMillis() + "");
+        if (transId.trim().length() > 0) {
+            bundle.putString("transId", transId);
         } else {
-            intent.putExtra("transId", transId);
+            bundle.putString("transId", System.currentTimeMillis() + "");
         }
 
-        intent.putExtra("paymentType", paymentType);
         Map<String, Object> map = new HashMap<>();
         map.put("payType", 0);
         map.put("username", "zh123");
         String toJson = new Gson().toJson(map);
-        intent.putExtra("reserve", toJson);
+        // bundle.putString("reserve", "{\"payType\":0}");
+
         try {
             String str = mEditAmount.getText().toString();
             long aLong = Long.parseLong(str);
-            intent.putExtra("amount", aLong);
+            bundle.putLong("amount", aLong);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        intent.putExtras(bundle);
+
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
         startActivity(intent);
