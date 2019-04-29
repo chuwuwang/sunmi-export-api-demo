@@ -6,11 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.google.gson.Gson;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class ConsumeActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
@@ -77,15 +72,9 @@ public class ConsumeActivity extends BaseActivity {
         if (transId.trim().length() > 0) {
             bundle.putString("transId", transId);
         } else {
-            bundle.putString("transId", System.currentTimeMillis() + "");
+            transId = System.currentTimeMillis() + "";
+            bundle.putString("transId", transId);
         }
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("payType", 0);
-        map.put("username", "zh123");
-        String toJson = new Gson().toJson(map);
-        // bundle.putString("reserve", "{\"payType\":0}");
-
         try {
             String str = mEditAmount.getText().toString();
             long aLong = Long.parseLong(str);

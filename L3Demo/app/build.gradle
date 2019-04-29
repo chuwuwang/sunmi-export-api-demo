@@ -4,16 +4,13 @@ android {
 
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
-    lintOptions {
-        abortOnError false
-    }
 
     defaultConfig {
         applicationId "sunmi.l3demo"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 34
-        versionName "v1.0.34"
+        versionCode 35
+        versionName "v1.0.35"
     }
 
     signingConfigs {
@@ -42,9 +39,12 @@ android {
         variant ->
             variant.outputs.each {
                 output ->
-                    output.outputFile = new File(output.outputFile.parent, "SunMiL3Demo" +
-                            defaultConfig.versionName + "_" + buildType.name + ".apk");
+                    output.outputFile = new File(output.outputFile.parent, "SunmiL3Demo" + defaultConfig.versionName + "_" + buildType.name + ".apk")
             }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
 }
