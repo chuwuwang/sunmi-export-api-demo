@@ -62,22 +62,20 @@ public class ConsumeActivity extends BaseActivity {
                 paymentType = -1;
                 break;
         }
+
+        String packageName = getPackageName();
+        String transId = mEditTransId.getText().toString();
+
         Intent intent = new Intent(CALL_EXTRA_ACTION);
         Bundle bundle = new Bundle();
         bundle.putInt("transType", 0);
+        bundle.putString("transId", transId);
+        bundle.putString("appId", packageName);
         bundle.putInt("paymentType", paymentType);
-        bundle.putString("appId", getPackageName() + "");
 
-        String transId = mEditTransId.getText().toString();
-        if (transId.trim().length() > 0) {
-            bundle.putString("transId", transId);
-        } else {
-            transId = System.currentTimeMillis() + "";
-            bundle.putString("transId", transId);
-        }
         try {
-            String str = mEditAmount.getText().toString();
-            long aLong = Long.parseLong(str);
+            String amount = mEditAmount.getText().toString();
+            long aLong = Long.parseLong(amount);
             bundle.putLong("amount", aLong);
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,6 +85,7 @@ public class ConsumeActivity extends BaseActivity {
 
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
+
         startActivity(intent);
     }
 

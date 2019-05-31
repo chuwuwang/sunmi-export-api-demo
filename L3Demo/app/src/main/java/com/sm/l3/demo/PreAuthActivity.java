@@ -52,20 +52,28 @@ public class PreAuthActivity extends BaseActivity {
                 break;
         }
 
-        Intent intent = new Intent("sunmi.payment.L3");
+        String packageName = getPackageName();
+        String transId = System.currentTimeMillis() + "";
+
+        String amount = mEditMoney.getText().toString();
+        String oriAuthNo = mEditAuth.getText().toString();
+        String oriTransDate = mEditDate.getText().toString();
+        String oriVoucherNo = mEditVoucher.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
+        intent.putExtra("transId", transId);
+        intent.putExtra("appId", packageName);
         intent.putExtra("transType", transType);
-        intent.putExtra("appId", getPackageName());
-        intent.putExtra("transId", System.currentTimeMillis() + "");
+
         try {
-            long money = Long.valueOf(mEditMoney.getText().toString());
+            long money = Long.valueOf(amount);
             intent.putExtra("amount", money);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        intent.putExtra("oriTransDate", mEditDate.getText().toString());
-        intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
-        intent.putExtra("oriAuthNo", mEditAuth.getText().toString());
-        intent.putExtra("oriTransDate", mEditDate.getText().toString());
+        intent.putExtra("oriAuthNo", oriAuthNo);
+        intent.putExtra("oriTransDate", oriTransDate);
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
 
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);

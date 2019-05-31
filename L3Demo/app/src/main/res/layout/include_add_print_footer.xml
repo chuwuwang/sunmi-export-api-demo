@@ -8,7 +8,7 @@
         android:id="@+id/edit_user_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="用户联追加打印（非必填）"
+        android:hint="@string/footer_user"
         android:textColor="#000000"
         android:textColorHint="#969696"
         android:textSize="14sp" />
@@ -17,7 +17,7 @@
         android:id="@+id/edit_user_code_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="用户联追加二维码（非必填）"
+        android:hint="@string/footer_user_code"
         android:textColor="#000000"
         android:textColorHint="#969696"
         android:textSize="14sp" />
@@ -26,7 +26,7 @@
         android:id="@+id/edit_merchant_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="商户联追加打印（非必填）"
+        android:hint="@string/footer_merchant"
         android:textColor="#000000"
         android:textColorHint="#969696"
         android:textSize="14sp" />
@@ -35,7 +35,7 @@
         android:id="@+id/edit_merchant_code_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="商户联追加二维码（非必填）"
+        android:hint="@string/footer_merchant_code"
         android:textColor="#000000"
         android:textColorHint="#969696"
         android:textSize="14sp" />
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="是否打印小票"
+        android:text="@string/footer_print"
         android:textColor="#000000"
         android:textSize="14sp" />
 

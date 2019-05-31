@@ -58,38 +58,60 @@ public class CustomActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent("sunmi.payment.L3");
+        String appId = mEditAppId.getText().toString();
+        String transId = mEditTransId.getText().toString();
+
+        String oriAuthNo = mEditAuth.getText().toString();
+        String oriTransDate = mEditDate.getText().toString();
+        String oriQROrderNo = mEditQRCode.getText().toString();
+        String oriVoucherNo = mEditVoucher.getText().toString();
+        String oriReferenceNo = mEditReference.getText().toString();
+
+        String riseString = mEditPrintHeaderEdit.getText().toString();
+
+        boolean isManagePwd = mCheckBoxManagePwd.isChecked();
+        boolean isLastTrade = mCheckBoxLastTrade.isChecked();
+        boolean isSettlementDetail = mCheckBoxDetail.isChecked();
+
+        String amount = mEditAmount.getText().toString();
+        String transType = mEditRequestType.getText().toString();
+        String paymentType = mEditPayType.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
         try {
-            int parseInt = Integer.parseInt(mEditRequestType.getText().toString());
+            int parseInt = Integer.parseInt(transType);
             intent.putExtra("transType", parseInt);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         try {
-            int parseInt = Integer.parseInt(mEditPayType.getText().toString());
+            int parseInt = Integer.parseInt(paymentType);
             intent.putExtra("paymentType", parseInt);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         try {
-            long parseLong = Long.parseLong(mEditAmount.getText().toString());
+            long parseLong = Long.parseLong(amount);
             intent.putExtra("amount", parseLong);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        intent.putExtra("transId", mEditTransId.getText().toString());
-        intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
-        intent.putExtra("oriTransDate", mEditDate.getText().toString());
-        intent.putExtra("oriReferenceNo", mEditReference.getText().toString());
-        intent.putExtra("oriQROrderNo", mEditQRCode.getText().toString());
-        intent.putExtra("oriAuthNo", mEditAuth.getText().toString());
-        intent.putExtra("appId", mEditAppId.getText().toString());
-        intent.putExtra("riseString", mEditPrintHeaderEdit.getText().toString());
+        intent.putExtra("appId", appId);
+        intent.putExtra("transId", transId);
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
+        intent.putExtra("oriTransDate", oriTransDate);
+        intent.putExtra("oriQROrderNo", oriQROrderNo);
+        intent.putExtra("oriReferenceNo", oriReferenceNo);
+        intent.putExtra("oriAuthNo", oriAuthNo);
 
-        intent.putExtra("isManagePwd", mCheckBoxManagePwd.isChecked());
-        intent.putExtra("isLastTrade", mCheckBoxLastTrade.isChecked());
-        intent.putExtra("isSettlementDetail", mCheckBoxDetail.isChecked());
+        intent.putExtra("riseString", riseString);
+
+        intent.putExtra("isManagePwd", isManagePwd);
+        intent.putExtra("isLastTrade", isLastTrade);
+        intent.putExtra("isSettlementDetail", isSettlementDetail);
 
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);

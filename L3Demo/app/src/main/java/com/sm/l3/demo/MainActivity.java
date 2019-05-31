@@ -63,7 +63,11 @@ public class MainActivity extends BaseActivity {
         int id = v.getId();
         boolean isOpen = true;
 
-        Intent intent = new Intent("sunmi.payment.L3");
+        String packageName = getPackageName();
+        String transId = System.currentTimeMillis() + "";
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
+
         if (id == R.id.btn_consume) {
             // 消费
             isOpen = false;
@@ -106,18 +110,19 @@ public class MainActivity extends BaseActivity {
         } else if (id == R.id.btn_query_trade_online) {
             // 联机交易记录查询
             isOpen = false;
-            openActivity(QueryByOnlineActivity.class);
+            openActivity(InquiryByOnlineActivity.class);
         } else if (id == R.id.btn_query_trade_local) {
             // 本地交易记录查询
             isOpen = false;
-            openActivity(QueryByLocalActivity.class);
+            openActivity(InquiryByLocalActivity.class);
         } else if (id == R.id.btn_custom) {
             isOpen = false;
             openActivity(CustomActivity.class);
         }
+
         if (isOpen) {
-            intent.putExtra("appId", getPackageName());
-            intent.putExtra("transId", System.currentTimeMillis() + "");
+            intent.putExtra("transId", transId);
+            intent.putExtra("appId", packageName);
             startActivity(intent);
         }
     }
@@ -149,5 +154,6 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }
+
 
 }

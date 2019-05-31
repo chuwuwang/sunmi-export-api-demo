@@ -1,0 +1,70 @@
+<resources>
+
+    <string name="app_name">SunmiL3Demo</string>
+
+    <string name="request_consume">消费</string>
+    <string name="request_consume_revoke">消费撤销</string>
+    <string name="request_return_goods">退货</string>
+    <string name="request_pre_auth">预授权</string>
+    <string name="request_pre_revoke">预授权撤销</string>
+    <string name="request_pre_complete">预授权完成</string>
+    <string name="request_pre_complete_revoke">预授权完成撤销</string>
+
+    <string name="request_sign">签到</string>
+    <string name="request_sign_out">签退</string>
+    <string name="request_balance">余额查询</string>
+    <string name="request_settlement">结算</string>
+
+    <string name="request_print">打印</string>
+    <string name="request_custom">自定义交易</string>
+    <string name="request_system_manager">系统管理</string>
+    <string name="request_query_merchant">商户信息查询</string>
+    <string name="request_query_trade_local">本地交易记录查询</string>
+    <string name="request_query_trade_online">联机交易记录查询</string>
+
+    <string name="pay_bank_card">银行卡</string>
+    <string name="pay_scan_and_scan">扫一扫</string>
+    <string name="pay_wx_scan">微信扫码</string>
+    <string name="pay_wx_code">微信二维码</string>
+    <string name="pay_aliPay_scan">支付宝扫码</string>
+    <string name="pay_aliPay_code">支付宝二维码</string>
+    <string name="pay_union_scan">银联扫码</string>
+    <string name="pay_union_code">银联二维码</string>
+    <string name="pay_user_optional">用户自选</string>
+
+    <string name="input_select_mode_payment">选择交易方式</string>
+    <string name="input_app_id">输入应用包名（必填）</string>
+    <string name="input_trans_id">输入交易ID（非必填）</string>
+    <string name="input_trans_type">输入请求类型（非必填）</string>
+    <string name="input_payment_type">输入交易方式（非必填）</string>
+    <string name="input_money">输入交易金额（非必填 单位：分）</string>
+    <string name="input_ori_date">输入原交易日期（非必填  格式：0229）</string>
+    <string name="input_ori_auth">输入原交易授权号（非必填）</string>
+    <string name="input_ori_voucher">输入原交易凭证号（非必填）</string>
+    <string name="input_ori_qr_order">输入原扫码订单号（非必填）</string>
+    <string name="input_ori_reference">输入原交易参考号或原扫码订单号（非必填）</string>
+    <string name="input_ori_third_order">输入第三方订单号（非必填）</string>
+
+    <string name="input_change_print_title">更改打印抬头文字（非必填）</string>
+
+    <string name="ok">确认</string>
+
+    <string name="footer_print">是否打印小票</string>
+    <string name="footer_admin_pwd">是否输入管理员密码</string>
+    <string name="footer_settlement_detail">结算是否返回结算明细</string>
+
+    <string name="footer_transaction_last">是否为最后一笔交易</string>
+    <string name="footer_transaction_last_hint">最后一笔交易类型 0:非银行卡 1:银行卡 2:支付宝 3:微信 4:银联</string>
+
+    <string name="footer_query_hint">\n * 如果传入凭证号，则按凭证号查询\n * 如果传入第三方订单号，则按第三方订单号查询\n * 如果传入为空，则为查询全部\n * 查询顺序：凭证号，第三方订单号</string>
+
+    <string name="footer_print_no">是否直接打印，没有打印预览界面</string>
+    <string name="footer_print_hint">\n * 如果传入凭证号，则打印指定的一笔交易\n * 如果指定最后一笔交易，则打印最后一笔交易\n * 如果传入为空，则跳转到\n * 如果传入isOnlyPrint为false，则不打印直接返回\n * 打印顺序：凭证号，最后一笔交易\n * 注意：只打印成功的交易</string>
+
+    <string name="footer_user">用户联追加打印（非必填）</string>
+    <string name="footer_user_code">用户联追加二维码（非必填）</string>
+    <string name="footer_merchant">商户联追加打印（非必填）</string>
+    <string name="footer_merchant_code">商户联追加二维码（非必填）</string>
+
+
+</resources>

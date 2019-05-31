@@ -2,7 +2,6 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,9 +24,6 @@ public class ReturnGoodsActivity extends BaseActivity {
         initView();
     }
 
-    /**
-     * 初始化界面
-     */
     private void initView() {
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
         mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
@@ -70,37 +66,39 @@ public class ReturnGoodsActivity extends BaseActivity {
                 break;
         }
 
-        Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transType", 2);
-        intent.putExtra("appId", getPackageName());
-        intent.putExtra("paymentType", paymentType);
-
+        String packageName = getPackageName();
         String transId = mEditTransId.getText().toString();
-        if (!TextUtils.isEmpty(transId)) {
-            intent.putExtra("transId", transId);
-        } else {
-            intent.putExtra("transId", System.currentTimeMillis() + "");
-        }
 
+        String amount = mEditAmount.getText().toString();
+        String oriTransDate = mEditDate.getText().toString();
+        boolean isManagePwd = mCheckBoxManagePwd.isChecked();
         String referenceNo = mEditReference.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
+        intent.putExtra("transType", 2);
+        intent.putExtra("transId", transId);
+        intent.putExtra("appId", packageName);
+
+        intent.putExtra("paymentType", paymentType);
+        intent.putExtra("isManagePwd", isManagePwd);
+
         if (paymentType != 0) {
             intent.putExtra("oriQROrderNo", referenceNo);
         } else {
             intent.putExtra("oriReferenceNo", referenceNo);
         }
         try {
-            long aLong = Long.parseLong(mEditAmount.getText().toString());
+            long aLong = Long.parseLong(amount);
             intent.putExtra("amount", aLong);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        intent.putExtra("oriTransDate", mEditDate.getText().toString());
-        intent.putExtra("isManagePwd", mCheckBoxManagePwd.isChecked());
+        intent.putExtra("oriTransDate", oriTransDate);
 
-        // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);
     }
+
 
 }

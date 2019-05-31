@@ -13,13 +13,15 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String CALL_EXTRA_ACTION = "sunmi.payment.L3";
+    public static final String CALL_EXTRA_ACTION = "sun" + "mi.payment.L3";
 
     public Intent addUserCustomTicketContent(Intent intent) {
         EditText mEditUserInfo = (EditText) findViewById(R.id.edit_user_info);
         EditText mEditUserCodeInfo = (EditText) findViewById(R.id.edit_user_code_info);
+
         EditText mEditMerchantInfo = (EditText) findViewById(R.id.edit_merchant_info);
         EditText mEditMerchantCodeInfo = (EditText) findViewById(R.id.edit_merchant_code_info);
+
         CheckBox mCbPrint = (CheckBox) findViewById(R.id.cb_print);
 
         String printInfo = mEditUserInfo.getText().toString();

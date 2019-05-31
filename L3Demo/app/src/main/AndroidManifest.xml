@@ -22,10 +22,10 @@
         <activity android:name="com.sm.l3.demo.RevokeActivity" />
         <activity android:name="com.sm.l3.demo.ResultActivity" />
         <activity android:name="com.sm.l3.demo.CustomActivity" />
-        <activity android:name="com.sm.l3.demo.QueryByLocalActivity" />
+        <activity android:name="com.sm.l3.demo.InquiryByLocalActivity" />
         <activity android:name="com.sm.l3.demo.SettlementActivity" />
         <activity android:name="com.sm.l3.demo.PrintActivity" />
-        <activity android:name="com.sm.l3.demo.QueryByOnlineActivity" />
+        <activity android:name="com.sm.l3.demo.InquiryByOnlineActivity" />
 
         <!--接收结果广播-->
         <receiver android:name="com.sm.l3.demo.ResultReceiver">

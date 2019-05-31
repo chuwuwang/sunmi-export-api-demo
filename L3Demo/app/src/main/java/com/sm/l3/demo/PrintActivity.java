@@ -31,12 +31,18 @@ public class PrintActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent("sunmi.payment.L3");
+        String packageName = getPackageName();
+        boolean isOnlyPrint = mCheckBoxOnlyPrint.isChecked();
+        boolean isLastTrade = mCheckBoxLastTrade.isChecked();
+        String oriVoucherNo = mEditVoucher.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
         intent.putExtra("transType", 11);
-        intent.putExtra("appId", getPackageName());
-        intent.putExtra("isOnlyPrint", mCheckBoxOnlyPrint.isChecked());
-        intent.putExtra("isLastTrade", mCheckBoxLastTrade.isChecked());
-        intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
+        intent.putExtra("appId", packageName);
+        
+        intent.putExtra("isOnlyPrint", isOnlyPrint);
+        intent.putExtra("isLastTrade", isLastTrade);
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
         startActivity(intent);
     }
 

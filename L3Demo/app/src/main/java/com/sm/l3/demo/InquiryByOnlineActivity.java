@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-public class QueryByOnlineActivity extends BaseActivity {
+public class InquiryByOnlineActivity extends BaseActivity {
 
     private EditText mEditVoucher;
     private EditText mEditLastType;
@@ -27,20 +27,28 @@ public class QueryByOnlineActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent("sunmi.payment.L3");
+        String packageName = getPackageName();
+        String transId = System.currentTimeMillis() + "";
+
+        boolean isLastTrade = mCheckBoxLastTrade.isChecked();
+        String oriVoucherNo = mEditVoucher.getText().toString();
+        String lastTradeType = mEditLastType.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
         intent.putExtra("transType", 16);
-        intent.putExtra("appId", getPackageName());
-        intent.putExtra("transId", System.currentTimeMillis() + "");
-        intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
+        intent.putExtra("transId", transId);
+        intent.putExtra("appId", packageName);
+
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
+
         try {
-            int parseInt = Integer.parseInt(mEditLastType.getText().toString());
+            int parseInt = Integer.parseInt(lastTradeType);
             intent.putExtra("lastTradeType", parseInt);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        intent.putExtra("isLastTrade", mCheckBoxLastTrade.isChecked());
+        intent.putExtra("isLastTrade", isLastTrade);
 
-        // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);

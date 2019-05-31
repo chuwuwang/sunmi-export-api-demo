@@ -28,13 +28,21 @@ public class SettlementActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent("sunmi.payment.L3");
+        String packageName = getPackageName();
+        String transId = System.currentTimeMillis() + "";
+
+        boolean isSettlementTicket = mCbPrint.isChecked();
+        boolean isSettlementDetail = mCbDetail.isChecked();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
         intent.putExtra("transType", 7);
-        intent.putExtra("transId", System.currentTimeMillis() + "");
-        intent.putExtra("appId", getPackageName());
-        intent.putExtra("isSettlementTicket", mCbPrint.isChecked());
-        intent.putExtra("isSettlementDetail", mCbDetail.isChecked());
+        intent.putExtra("transId", transId);
+        intent.putExtra("appId", packageName);
+
+        intent.putExtra("isSettlementTicket", isSettlementTicket);
+        intent.putExtra("isSettlementDetail", isSettlementDetail);
         startActivity(intent);
     }
+
 
 }

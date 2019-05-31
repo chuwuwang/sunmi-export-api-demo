@@ -13,4 +13,5 @@ public class ResultReceiver extends BroadcastReceiver {
         context.startActivity(intent);
     }
 
+
 }

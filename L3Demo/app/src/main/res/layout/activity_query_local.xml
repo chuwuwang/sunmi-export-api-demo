@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:hint="输入第三方订单号（非必填）"
+        android:hint="@string/input_ori_third_order"
         android:singleLine="true"
         android:textColor="#000000"
         android:textColorHint="#ff6900"
@@ -30,11 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="
-      \n * 如果传入凭证号，则按凭证号查询
-      \n * 如果传入第三方订单号，则按第三方订单号查询
-      \n * 如果传入为空，则为查询全部
-      \n * 查询顺序：凭证号，第三方订单号"
+        android:text="@string/footer_query_hint"
         android:textSize="14sp" />
 
     <Button

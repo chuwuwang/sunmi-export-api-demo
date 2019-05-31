@@ -2,7 +2,6 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -31,19 +30,24 @@ public class RevokeActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent("sunmi.payment.L3");
-        intent.putExtra("transType", 1);
-        intent.putExtra("appId", getPackageName());
+        String packageName = getPackageName();
         String transId = mEditTransId.getText().toString();
-        if (!TextUtils.isEmpty(transId)) {
-            intent.putExtra("transId", transId);
-        } else {
-            intent.putExtra("transId", System.currentTimeMillis() + "");
-        }
-        // 原交易凭证号,如果有值则会直接跳转到刷卡界面,为null则跳转到选择交易列表界面
-        intent.putExtra("oriVoucherNo", mEditVoucher.getText().toString());
+
+        boolean isManagePwd = mCheckBoxManagePwd.isChecked();
+        String oriVoucherNo = mEditVoucher.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
+        intent.putExtra("transType", 1);
+        intent.putExtra("transId", transId);
+        intent.putExtra("appId", packageName);
+
+        // 原交易凭证号
+        // 如果有值则会直接跳转到刷卡界面
+        // 为null则跳转到选择交易列表界面
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
+
         // 是否输入管理员密码
-        intent.putExtra("isManagePwd", mCheckBoxManagePwd.isChecked());
+        intent.putExtra("isManagePwd", isManagePwd);
 
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
