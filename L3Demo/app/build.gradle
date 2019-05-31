@@ -2,15 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "sunmi.l3demo"
         minSdkVersion 21
-        targetSdkVersion 23
-        versionCode 35
-        versionName "v1.0.35"
+        targetSdkVersion 28
+        versionCode 41
+        versionName "v1.1.1"
     }
 
     signingConfigs {
@@ -25,8 +24,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.sign
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             debuggable true
@@ -37,9 +36,8 @@ android {
 
     android.applicationVariants.all {
         variant ->
-            variant.outputs.each {
-                output ->
-                    output.outputFile = new File(output.outputFile.parent, "SunmiL3Demo" + defaultConfig.versionName + "_" + buildType.name + ".apk")
+            variant.outputs.all {
+                outputFileName = "SunmiL3Demo_" + defaultConfig.versionName + "_" + buildType.name + ".apk"
             }
     }
 
@@ -50,10 +48,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(
+    implementation fileTree(
             dir: 'libs', include: ['*.jar']
     )
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 
-    compile 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
