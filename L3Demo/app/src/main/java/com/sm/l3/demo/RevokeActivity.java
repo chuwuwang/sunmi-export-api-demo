@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class RevokeActivity extends BaseActivity {
 
     private EditText mEditVoucher;
@@ -21,10 +24,10 @@ public class RevokeActivity extends BaseActivity {
     }
 
     private void initView() {
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mCheckBoxManagePwd = (CheckBox) findViewById(R.id.cb_manage_pwd);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
-        Button btnOk = (Button) findViewById(R.id.btn_ok);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+        Button btnOk = findViewById(R.id.btn_ok);
         btnOk.setOnClickListener(this);
     }
 
@@ -52,7 +55,10 @@ public class RevokeActivity extends BaseActivity {
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
-        startActivity(intent);
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

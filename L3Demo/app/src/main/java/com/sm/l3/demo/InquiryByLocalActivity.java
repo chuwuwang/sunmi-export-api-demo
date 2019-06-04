@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class InquiryByLocalActivity extends BaseActivity {
 
     private EditText mEditVoucher;
@@ -20,9 +23,9 @@ public class InquiryByLocalActivity extends BaseActivity {
     }
 
     private void initView() {
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trade);
-        Button button = (Button) findViewById(R.id.btn_ok);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mEditTransId = findViewById(R.id.edit_input_trade);
+        Button button = findViewById(R.id.btn_ok);
         button.setOnClickListener(this);
     }
 
@@ -38,7 +41,11 @@ public class InquiryByLocalActivity extends BaseActivity {
         intent.putExtra("appId", packageName);
 
         intent.putExtra("oriVoucherNo", oriVoucherNo);
-        startActivity(intent);
+
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

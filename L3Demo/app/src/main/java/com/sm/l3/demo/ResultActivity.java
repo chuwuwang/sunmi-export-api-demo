@@ -14,7 +14,8 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        TextView tvResult = (TextView) findViewById(R.id.tv_result);
+
+        TextView resultView = findViewById(R.id.tv_result);
 
         Intent intent = getIntent();
         StringBuilder sb = new StringBuilder();
@@ -64,13 +65,13 @@ public class ResultActivity extends AppCompatActivity {
 
         sb.append("\n 结算相关数据 \n");
         sb.append("transNum: " + intent.getIntExtra("transNum", -99999) + "\n");
-        sb.append("totalAmount: " + intent.getLongExtra("totalAmount", -99999) + "\n");
+        sb.append("totalAmount: " + intent.getLongExtra("totalAmount", -99999L) + "\n");
         sb.append("settleJson: " + intent.getStringExtra("settleJson") + "\n");
 
         String result = sb.toString();
         Log.e(TAG, "result: " + result);
 
-        tvResult.setText(result);
+        resultView.setText(result);
 
     }
 

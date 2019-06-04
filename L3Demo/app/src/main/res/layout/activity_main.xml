@@ -9,12 +9,22 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btn_web_socket_setting"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/web_socket"
+            android:textSize="14sp" />
+
+        <Button
             android:id="@+id/btn_consume"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_consume"
             android:textSize="14sp" />
 
@@ -22,9 +32,9 @@
             android:id="@+id/btn_revoke"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_consume_revoke"
             android:textSize="14sp" />
 
@@ -32,9 +42,9 @@
             android:id="@+id/btn_return_goods"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_return_goods"
             android:textSize="14sp" />
 
@@ -42,9 +52,9 @@
             android:id="@+id/btn_pre_auth"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_pre_auth"
             android:textSize="14sp" />
 
@@ -52,9 +62,9 @@
             android:id="@+id/btn_settlement"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_settlement"
             android:textSize="14sp" />
 
@@ -62,9 +72,9 @@
             android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_sign"
             android:textSize="14sp" />
 
@@ -72,9 +82,9 @@
             android:id="@+id/btn_query_balance"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_balance"
             android:textSize="14sp" />
 
@@ -82,9 +92,9 @@
             android:id="@+id/btn_system_manager"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_system_manager"
             android:textSize="14sp" />
 
@@ -92,9 +102,9 @@
             android:id="@+id/btn_print"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_print"
             android:textSize="14sp" />
 
@@ -102,9 +112,9 @@
             android:id="@+id/btn_query_merchant"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_query_merchant"
             android:textSize="14sp" />
 
@@ -112,9 +122,9 @@
             android:id="@+id/btn_sign_out"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_sign_out"
             android:textSize="14sp" />
 
@@ -122,9 +132,9 @@
             android:id="@+id/btn_query_trade_online"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_query_trade_online"
             android:textSize="14sp" />
 
@@ -132,9 +142,9 @@
             android:id="@+id/btn_query_trade_local"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_query_trade_local"
             android:textSize="14sp" />
 
@@ -142,9 +152,9 @@
             android:id="@+id/btn_custom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/request_custom"
             android:textSize="14sp" />
 

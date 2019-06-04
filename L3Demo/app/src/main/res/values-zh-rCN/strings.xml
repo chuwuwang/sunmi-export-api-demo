@@ -66,5 +66,11 @@
     <string name="footer_merchant">商户联追加打印（非必填）</string>
     <string name="footer_merchant_code">商户联追加二维码（非必填）</string>
 
+    <string name="web_socket">WebSocket设置</string>
+    <string name="web_socket_ip">IP</string>
+    <string name="web_socket_port">PORT</string>
+    <string name="web_socket_connect">连接服务</string>
+    <string name="web_socket_failed">连接WebSocket服务失败</string>
+    <string name="web_socket_success">连接WebSocket服务成功</string>
 
 </resources>

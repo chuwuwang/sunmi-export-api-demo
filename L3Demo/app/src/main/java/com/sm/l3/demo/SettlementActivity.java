@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class SettlementActivity extends BaseActivity {
 
     private CheckBox mCbPrint;
@@ -20,9 +23,9 @@ public class SettlementActivity extends BaseActivity {
     }
 
     private void initView() {
-        mCbPrint = (CheckBox) findViewById(R.id.cb_print);
-        mCbDetail = (CheckBox) findViewById(R.id.cb_detail);
-        Button ok = (Button) findViewById(R.id.btn_ok);
+        mCbPrint = findViewById(R.id.cb_print);
+        mCbDetail = findViewById(R.id.cb_detail);
+        Button ok = findViewById(R.id.btn_ok);
         ok.setOnClickListener(this);
     }
 
@@ -41,7 +44,11 @@ public class SettlementActivity extends BaseActivity {
 
         intent.putExtra("isSettlementTicket", isSettlementTicket);
         intent.putExtra("isSettlementDetail", isSettlementDetail);
-        startActivity(intent);
+
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

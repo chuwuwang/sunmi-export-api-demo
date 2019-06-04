@@ -66,4 +66,11 @@
     <string name="footer_merchant">Merchant receipt added print (O)</string>
     <string name="footer_merchant_code">Merchant receipt added code (O)</string>
 
+    <string name="web_socket">WebSocket Setting</string>
+    <string name="web_socket_ip">IP</string>
+    <string name="web_socket_port">PORT</string>
+    <string name="web_socket_connect">Connect</string>
+    <string name="web_socket_failed">Connect WebSocket Service Failed</string>
+    <string name="web_socket_success">Connect WebSocket Service Successful</string>
+
 </resources>

@@ -8,6 +8,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class ReturnGoodsActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
@@ -25,13 +28,13 @@ public class ReturnGoodsActivity extends BaseActivity {
     }
 
     private void initView() {
-        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
-        mEditReference = (EditText) findViewById(R.id.edit_input_reference);
-        mEditDate = (EditText) findViewById(R.id.edit_input_date);
-        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
-        mCheckBoxManagePwd = (CheckBox) findViewById(R.id.cb_manage_pwd);
-        Button okBtn = (Button) findViewById(R.id.btn_ok);
+        mRadioGroup = findViewById(R.id.radio_group);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+        mEditReference = findViewById(R.id.edit_input_reference);
+        mEditDate = findViewById(R.id.edit_input_date);
+        mEditAmount = findViewById(R.id.edit_input_money);
+        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
+        Button okBtn = findViewById(R.id.btn_ok);
         okBtn.setOnClickListener(this);
     }
 
@@ -97,7 +100,10 @@ public class ReturnGoodsActivity extends BaseActivity {
 
         intent = addUserCustomTicketContent(intent);
 
-        startActivity(intent);
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

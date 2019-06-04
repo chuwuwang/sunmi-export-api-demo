@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.sm.l3.demo.socket.WebSocketActivity;
+
 public class MainActivity extends BaseActivity {
 
     private Button mBtnConsume;
@@ -26,20 +28,21 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mBtnSignIn = (Button) findViewById(R.id.btn_sign_in);
-        mBtnConsume = (Button) findViewById(R.id.btn_consume);
-        mBtnRevoke = (Button) findViewById(R.id.btn_revoke);
-        mBtnPreAuth = (Button) findViewById(R.id.btn_pre_auth);
-        mBtnReturnGood = (Button) findViewById(R.id.btn_return_goods);
-        mBtnSettlement = (Button) findViewById(R.id.btn_settlement);
-        mBtnQueryBalance = (Button) findViewById(R.id.btn_query_balance);
-        mBtnSystemManager = (Button) findViewById(R.id.btn_system_manager);
-        mBtnPrint = (Button) findViewById(R.id.btn_print);
-        mBtnQueryMerchant = (Button) findViewById(R.id.btn_query_merchant);
-        mBtnSignOut = (Button) findViewById(R.id.btn_sign_out);
-        mBtnTradeQueryOnline = (Button) findViewById(R.id.btn_query_trade_online);
-        mBtnTradeQueryLocal = (Button) findViewById(R.id.btn_query_trade_local);
-        mBtnCustom = (Button) findViewById(R.id.btn_custom);
+
+        mBtnSignIn = findViewById(R.id.btn_sign_in);
+        mBtnConsume = findViewById(R.id.btn_consume);
+        mBtnRevoke = findViewById(R.id.btn_revoke);
+        mBtnPreAuth = findViewById(R.id.btn_pre_auth);
+        mBtnReturnGood = findViewById(R.id.btn_return_goods);
+        mBtnSettlement = findViewById(R.id.btn_settlement);
+        mBtnQueryBalance = findViewById(R.id.btn_query_balance);
+        mBtnSystemManager = findViewById(R.id.btn_system_manager);
+        mBtnPrint = findViewById(R.id.btn_print);
+        mBtnQueryMerchant = findViewById(R.id.btn_query_merchant);
+        mBtnSignOut = findViewById(R.id.btn_sign_out);
+        mBtnTradeQueryOnline = findViewById(R.id.btn_query_trade_online);
+        mBtnTradeQueryLocal = findViewById(R.id.btn_query_trade_local);
+        mBtnCustom = findViewById(R.id.btn_custom);
 
         mBtnSettlement.setOnClickListener(this);
         mBtnQueryBalance.setOnClickListener(this);
@@ -55,12 +58,19 @@ public class MainActivity extends BaseActivity {
         mBtnReturnGood.setOnClickListener(this);
         mBtnTradeQueryOnline.setOnClickListener(this);
         mBtnTradeQueryLocal.setOnClickListener(this);
+
+        findViewById(R.id.btn_web_socket_setting).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        setEnable(false);
         int id = v.getId();
+        if (id == R.id.btn_web_socket_setting) {
+            openActivity(WebSocketActivity.class);
+            return;
+        }
+
+        setEnable(false);
         boolean isOpen = true;
 
         String packageName = getPackageName();

@@ -2,7 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sm.l3.demo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,12 +39,13 @@
         <activity android:name="com.sm.l3.demo.PrintActivity" />
         <activity android:name="com.sm.l3.demo.InquiryByOnlineActivity" />
 
-        <!--接收结果广播-->
         <receiver android:name="com.sm.l3.demo.ResultReceiver">
             <intent-filter>
                 <action android:name="sunmi.payment.L3.RESULT" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".socket.WebSocketActivity" />
 
     </application>
 

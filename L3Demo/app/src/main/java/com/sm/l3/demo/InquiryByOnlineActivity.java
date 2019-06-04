@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class InquiryByOnlineActivity extends BaseActivity {
 
     private EditText mEditVoucher;
@@ -18,10 +21,11 @@ public class InquiryByOnlineActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_online);
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mEditLastType = (EditText) findViewById(R.id.edit_input_last_type);
-        mCheckBoxLastTrade = (CheckBox) findViewById(R.id.cb_last_print);
-        Button button = (Button) findViewById(R.id.btn_ok);
+
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mEditLastType = findViewById(R.id.edit_input_last_type);
+        mCheckBoxLastTrade = findViewById(R.id.cb_last_print);
+        Button button = findViewById(R.id.btn_ok);
         button.setOnClickListener(this);
     }
 
@@ -51,7 +55,10 @@ public class InquiryByOnlineActivity extends BaseActivity {
 
         intent = addUserCustomTicketContent(intent);
 
-        startActivity(intent);
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class CustomActivity extends BaseActivity {
 
     private EditText mEditVoucher;
@@ -34,23 +37,23 @@ public class CustomActivity extends BaseActivity {
     }
 
     private void initView() {
-        mEditRequestType = (EditText) findViewById(R.id.edit_input_trans_type);
-        mEditPayType = (EditText) findViewById(R.id.edit_input_payment_type);
-        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mEditDate = (EditText) findViewById(R.id.edit_input_date);
-        mEditReference = (EditText) findViewById(R.id.edit_input_reference);
-        mEditQRCode = (EditText) findViewById(R.id.edit_input_qr_order);
-        mEditAppId = (EditText) findViewById(R.id.edit_input_app_id);
-        mEditAuth = (EditText) findViewById(R.id.edit_input_auth);
-        mEditPrintHeaderEdit = (EditText) findViewById(R.id.edit_input_print_header);
+        mEditRequestType = findViewById(R.id.edit_input_trans_type);
+        mEditPayType = findViewById(R.id.edit_input_payment_type);
+        mEditAmount = findViewById(R.id.edit_input_money);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mEditDate = findViewById(R.id.edit_input_date);
+        mEditReference = findViewById(R.id.edit_input_reference);
+        mEditQRCode = findViewById(R.id.edit_input_qr_order);
+        mEditAppId = findViewById(R.id.edit_input_app_id);
+        mEditAuth = findViewById(R.id.edit_input_auth);
+        mEditPrintHeaderEdit = findViewById(R.id.edit_input_print_header);
 
-        mCheckBoxManagePwd = (CheckBox) findViewById(R.id.cb_manage_pwd);
-        mCheckBoxLastTrade = (CheckBox) findViewById(R.id.cb_last_trade);
-        mCheckBoxDetail = (CheckBox) findViewById(R.id.cb_detail);
+        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
+        mCheckBoxLastTrade = findViewById(R.id.cb_last_trade);
+        mCheckBoxDetail = findViewById(R.id.cb_detail);
 
-        Button ok = (Button) findViewById(R.id.btn_ok);
+        Button ok = findViewById(R.id.btn_ok);
         ok.setOnClickListener(this);
 
         mEditAppId.setText(BuildConfig.APPLICATION_ID);
@@ -116,7 +119,10 @@ public class CustomActivity extends BaseActivity {
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
-        startActivity(intent);
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
 public class PrintActivity extends BaseActivity {
 
     private EditText mEditVoucher;
@@ -22,10 +25,10 @@ public class PrintActivity extends BaseActivity {
     }
 
     private void initView() {
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mCheckBoxLastTrade = (CheckBox) findViewById(R.id.cb_last_print);
-        mCheckBoxOnlyPrint = (CheckBox) findViewById(R.id.cb_only_print);
-        Button ok = (Button) findViewById(R.id.btn_ok);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mCheckBoxLastTrade = findViewById(R.id.cb_last_print);
+        mCheckBoxOnlyPrint = findViewById(R.id.cb_only_print);
+        Button ok = findViewById(R.id.btn_ok);
         ok.setOnClickListener(this);
     }
 
@@ -39,11 +42,15 @@ public class PrintActivity extends BaseActivity {
         Intent intent = new Intent(CALL_EXTRA_ACTION);
         intent.putExtra("transType", 11);
         intent.putExtra("appId", packageName);
-        
+
         intent.putExtra("isOnlyPrint", isOnlyPrint);
         intent.putExtra("isLastTrade", isLastTrade);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
-        startActivity(intent);
+
+        String json = new Gson().toJson(intent);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 

@@ -2,9 +2,13 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
 
 public class ConsumeActivity extends BaseActivity {
 
@@ -20,9 +24,10 @@ public class ConsumeActivity extends BaseActivity {
     }
 
     private void initView() {
-        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
-        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
+        mRadioGroup = findViewById(R.id.radio_group);
+        mEditAmount = findViewById(R.id.edit_input_money);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+
         findViewById(R.id.btn_ok).setOnClickListener(this);
     }
 
@@ -86,7 +91,11 @@ public class ConsumeActivity extends BaseActivity {
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
-        startActivity(intent);
+        String json = new Gson().toJson(intent);
+        Log.e("nsz", json);
+        WebSocketService.getInstance().send(json);
+
+        // startActivity(intent);
     }
 
 
