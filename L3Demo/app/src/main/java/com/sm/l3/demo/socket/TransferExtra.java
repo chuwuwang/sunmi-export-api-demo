@@ -1,5 +1,7 @@
 package com.sm.l3.demo.socket;
 
+import java.io.Serializable;
+
 public class TransferExtra {
 
     public Extras mExtras;
@@ -10,7 +12,7 @@ public class TransferExtra {
 
     }
 
-    public class Bean {
+    public class Bean implements Serializable {
 
         public int transType = -99999;
         public String packageName;
@@ -43,6 +45,7 @@ public class TransferExtra {
         public String acquire;
         public String cardType;
         public String accountType;
+        public String signHexData;
 
         public String answerCode;
         public int paymentType = -99999;

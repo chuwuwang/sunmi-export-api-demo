@@ -75,5 +75,6 @@
 
     <string name="error_network">请检查网络连接</string>
     <string name="error_timeout">与服务器通讯超时</string>
+    <string name="error_printer">打印机异常，请检查</string>
 
 </resources>

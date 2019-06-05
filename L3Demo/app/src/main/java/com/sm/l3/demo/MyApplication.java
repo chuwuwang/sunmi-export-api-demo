@@ -13,6 +13,7 @@ import com.sunmi.peripheral.printer.SunmiPrinterService;
 public class MyApplication extends Application {
 
     public static Context sContext;
+
     public static MyApplication sInstance;
 
     private Handler mainHandler;
@@ -50,20 +51,25 @@ public class MyApplication extends Application {
 
     private void bindPrintService() {
         try {
-            InnerPrinterManager.getInstance().bindService(this, new InnerPrinterCallback() {
-                @Override
-                protected void onConnected(SunmiPrinterService service) {
-                    MyApplication.sunmiPrinterService = service;
-                }
+            InnerPrinterManager.getInstance().bindService(this,
+                    new InnerPrinterCallback() {
 
-                @Override
-                protected void onDisconnected() {
-                    MyApplication.sunmiPrinterService = null;
-                }
-            });
+                        @Override
+                        protected void onConnected(SunmiPrinterService service) {
+                            MyApplication.sunmiPrinterService = service;
+                        }
+
+                        @Override
+                        protected void onDisconnected() {
+                            MyApplication.sunmiPrinterService = null;
+                        }
+
+                    }
+            );
         } catch (InnerPrinterException e) {
             e.printStackTrace();
         }
     }
+
 
 }

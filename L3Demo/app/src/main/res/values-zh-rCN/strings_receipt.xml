@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="receipt_stub_merchant">商户存根</string>
+    <string name="receipt_stub_card_holder">持卡人存根</string>
+    <string name="receipt_keep_receipt">请妥善保管</string>
+
+    <string name="receipt_merchant_name">商户名称：</string>
+    <string name="receipt_merchant_num">商户编号：</string>
+    <string name="receipt_terminal_num">终端编号：</string>
+    <string name="receipt_operator_num">操作员号：</string>
+
+    <string name="receipt_order_number">订单号：</string>
+    <string name="receipt_batch_number">批次号：</string>
+    <string name="receipt_voucher_number">凭证号：</string>
+    <string name="receipt_authorize_number">授权码：</string>
+    <string name="receipt_reference_number">参考号：</string>
+
+    <string name="receipt_date">日 期：</string>
+    <string name="receipt_time"> 时 间：</string>
+    <string name="receipt_type">交易类型：</string>
+    <string name="receipt_transaction_time">交易时间：</string>
+
+    <string name="receipt_tips">小费：</string>
+    <string name="receipt_amount">金额：</string>
+    <string name="receipt_revoke_amount">退款金额：</string>
+    <string name="receipt_refund_amount">退款金额：</string>
+
+    <string name="receipt_original_date">原交易日期：</string>
+    <string name="receipt_original_voucher_num">原交易凭证号：</string>
+    <string name="receipt_original_reference_num">原交易参考号：</string>
+    <string name="receipt_original_authorize_num">原交易授权码：</string>
+
+    <string name="receipt_no_pin">无需输密</string>
+    <string name="receipt_show_pin">PIN验证成功</string>
+    <string name="receipt_no_signature">无需签名</string>
+    <string name="receipt_card_holder_sign">持卡人签名</string>
+    <string name="receipt_agree_transaction">本人确认以上交易，同意记入本卡账户</string>
+
+    <string name="receipt_remark">备注</string>
+    <string name="receipt_again_print">重打印</string>
+
+    <string name="receipt_scan">扫码</string>
+    <string name="receipt_card">银行卡</string>
+
+    <string name="receipt_card_debit">借记卡</string>
+    <string name="receipt_card_outside">外卡</string>
+    <string name="receipt_card_credit">贷记卡</string>
+
+    <string name="receipt_user_scan">【备注】用户扫码支付</string>
+    <string name="receipt_merchant_scan">【备注】商家扫码支付</string>
+
+    <string name="receipt_settlement_summary">结算总计单</string>
+    <string name="receipt_settlement_summary_pens">笔数</string>
+    <string name="receipt_settlement_summary_type">交易类型</string>
+    <string name="receipt_settlement_summary_amount">总金额</string>
+    <string name="receipt_settlement_date">结算日期：</string>
+
+    <string name="receipt_settlement_detail">交易明细单</string>
+    <string name="receipt_settlement_detail_type">类型</string>
+    <string name="receipt_settlement_detail_amount">金额</string>
+    <string name="receipt_settlement_detail_card_num">卡号</string>
+    <string name="receipt_settlement_detail_voucher_num">凭证号</string>
+
+
+    <string name="sale">消费</string>
+    <string name="sale_void">消费撤销</string>
+    <string name="sale_offline">离线消费</string>
+    <string name="refund">退货</string>
+    <string name="pre_auth">预授权</string>
+    <string name="pre_auth_revoke">预授权撤销</string>
+    <string name="pre_auth_complete">预授权完成</string>
+    <string name="pre_auth_complete_request">预授权完成通知</string>
+    <string name="pre_auth_complete_revoke">预授权完成撤销</string>
+
+    <string name="pre_auth_symbol">预授权</string>
+    <string name="pre_auth_revoke_symbol">预授权撤销</string>
+    <string name="pre_auth_complete_symbol">预授权完成</string>
+    <string name="pre_auth_complete_revoke_symbol">预授权完成撤销</string>
+
+    <string name="platform_wx">微信</string>
+    <string name="platform_ali">支付宝</string>
+    <string name="platform_union">云闪付</string>
+
+</resources>

@@ -128,6 +128,8 @@ public class WebSocketService {
 
             intent.putExtra("settleJson", bean.settleJson);
 
+            intent.putExtra("bean", bean);
+
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             MyApplication.sContext.startActivity(intent);
         }
@@ -144,14 +146,7 @@ public class WebSocketService {
         public void onError(Exception ex) {
             Log.e(TAG, "onError");
             MyApplication.sInstance.post(
-                    new Runnable() {
-
-                        @Override
-                        public void run() {
-                            Toast.makeText(MyApplication.sContext, R.string.error_timeout, Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
+                    () -> Toast.makeText(MyApplication.sContext, R.string.error_timeout, Toast.LENGTH_SHORT).show()
             );
         }
 

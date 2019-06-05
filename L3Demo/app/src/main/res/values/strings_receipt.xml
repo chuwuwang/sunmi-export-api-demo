@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="receipt_stub_merchant">MERCHANT COPY</string>
+    <string name="receipt_stub_card_holder">CARDHOLDER COPY</string>
+    <string name="receipt_keep_receipt">PLEASE KEEP</string>
+
+    <string name="receipt_merchant_name">MERCHANT NAME：</string>
+    <string name="receipt_merchant_num">MID：</string>
+    <string name="receipt_terminal_num">TID：</string>
+    <string name="receipt_operator_num">OPERATOR NO：</string>
+
+    <string name="receipt_order_number">TRANS NO：</string>
+    <string name="receipt_batch_number">BATCH NO：</string>
+    <string name="receipt_voucher_number">INV NO：</string>
+    <string name="receipt_authorize_number">APP CODE：</string>
+    <string name="receipt_reference_number">REF NO：</string>
+
+    <string name="receipt_date">DATE：</string>
+    <string name="receipt_time">TIME：</string>
+    <string name="receipt_type">TYPE：</string>
+    <string name="receipt_transaction_time">DATE/TIME：</string>
+
+    <string name="receipt_tips">TIPS：</string>
+    <string name="receipt_amount">AMOUNT：</string>
+    <string name="receipt_revoke_amount">VOID AMOUNT：</string>
+    <string name="receipt_refund_amount">REFUND AMOUNT：</string>
+
+    <string name="receipt_original_date">ORI DATE：</string>
+    <string name="receipt_original_voucher_num">ORI INV NO：</string>
+    <string name="receipt_original_reference_num">ORI REF NO：</string>
+    <string name="receipt_original_authorize_num">ORI AUTH NO：</string>
+
+    <string name="receipt_no_pin">NO PIN REQUIRED</string>
+    <string name="receipt_show_pin">PIN VERIFIED OK</string>
+    <string name="receipt_no_signature">NO SIGNATURE REQUIRED</string>
+    <string name="receipt_card_holder_sign">CARDHOLDER SIGNATURE</string>
+    <string name="receipt_agree_transaction">I AGREE TO PAY ABOVE TOTAL \n AMOUNT ACCORDING TO CARD ISSUER AGREEMENT</string>
+
+    <string name="receipt_remark">REFERENCE：</string>
+    <string name="receipt_again_print">REPRINT</string>
+
+    <string name="receipt_scan">SCAN</string>
+    <string name="receipt_card">CARD</string>
+
+    <string name="receipt_card_debit">DEBIT</string>
+    <string name="receipt_card_credit">CREDIT</string>
+    <string name="receipt_card_outside">FOREIGN</string>
+
+    <string name="receipt_user_scan">USER SCAN</string>
+    <string name="receipt_merchant_scan">MERCHANT SCAN</string>
+
+    <string name="receipt_settlement_summary">SETTLEMENT</string>
+    <string name="receipt_settlement_summary_type">TYPE</string>
+    <string name="receipt_settlement_summary_pens">NUM</string>
+    <string name="receipt_settlement_summary_amount">AMOUNT</string>
+    <string name="receipt_settlement_date">DATE OF SETTLEMENT</string>
+
+    <string name="receipt_settlement_detail">DETAIL</string>
+    <string name="receipt_settlement_detail_type">TYPE</string>
+    <string name="receipt_settlement_detail_amount">AMOUNT</string>
+    <string name="receipt_settlement_detail_card_num">CARD NO</string>
+    <string name="receipt_settlement_detail_voucher_num">INV NO</string>
+
+
+    <string name="sale">SALE</string>
+    <string name="sale_void">VOID</string>
+    <string name="sale_offline">OFFLINE</string>
+    <string name="refund">REFUND</string>
+    <string name="pre_auth">PRE AUTH</string>
+    <string name="pre_auth_revoke">PRE AUTH VOID</string>
+    <string name="pre_auth_complete">SALE COMPLETE</string>
+    <string name="pre_auth_complete_revoke">SALE COMPLETE VOID</string>
+    <string name="pre_auth_complete_request">SALE COMPLETE NOTICE</string>
+
+    <string name="pre_auth_symbol">P-AUTH</string>
+    <string name="pre_auth_revoke_symbol">P-AUTH-V</string>
+    <string name="pre_auth_complete_symbol">COM</string>
+    <string name="pre_auth_complete_revoke_symbol">COM VOID</string>
+
+    <string name="platform_wx">WeChat</string>
+    <string name="platform_ali">AliPay</string>
+    <string name="platform_union">UnionPay</string>
+
+</resources>

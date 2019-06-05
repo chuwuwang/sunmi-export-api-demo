@@ -3,8 +3,14 @@ package com.sm.l3.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.sm.l3.demo.print.PrintController;
+import com.sm.l3.demo.socket.TransferExtra;
+import com.sm.l3.demo.util.ThreadPoolManager;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -73,6 +79,37 @@ public class ResultActivity extends AppCompatActivity {
 
         resultView.setText(result);
 
+        TransferExtra.Bean bean = (TransferExtra.Bean) intent.getSerializableExtra("bean");
+
+        boolean b1 = TextUtils.equals(bean.answerCode, "00") && bean.transactionPlatform == 0;
+        boolean b2 = TextUtils.equals(bean.answerCode, "00") && bean.transactionPlatform != 0 && bean.qrCodeTransactionState == 1;
+        if (b1 || b2) {
+            startPrint(bean);
+        }
+    }
+
+    private void startPrint(TransferExtra.Bean bean) {
+        ThreadPoolManager.executeInCachePool(
+                () -> {
+                    try {
+                        int state = MyApplication.sunmiPrinterService.updatePrinterState();
+                        if (state == 1) {
+                            new PrintController().print(bean, null, 1, false);
+                        } else {
+                            showToast(R.string.error_printer);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        showToast(R.string.error_printer);
+                    }
+                }
+        );
+    }
+
+    public void showToast(int resId) {
+        runOnUiThread(
+                () -> Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
+        );
     }
 
 

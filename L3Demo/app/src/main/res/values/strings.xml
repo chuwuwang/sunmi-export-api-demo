@@ -75,5 +75,6 @@
 
     <string name="error_network">Error network</string>
     <string name="error_timeout">Connect timeout</string>
+    <string name="error_printer">The printer is abnormal, please check</string>
 
 </resources>

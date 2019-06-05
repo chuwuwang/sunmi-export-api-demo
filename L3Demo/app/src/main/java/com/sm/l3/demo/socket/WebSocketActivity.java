@@ -26,14 +26,7 @@ public class WebSocketActivity extends AppCompatActivity {
         mEditPort = findViewById(R.id.edit_port);
         mTvStatus = findViewById(R.id.tv_status);
         findViewById(R.id.mb_ok).setOnClickListener(
-                new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        initWebSocket();
-                    }
-
-                }
+                v -> initWebSocket()
         );
 
         mEditIP.setText("10.10.169.186");
@@ -51,28 +44,14 @@ public class WebSocketActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess() {
                             runOnUiThread(
-                                    new Runnable() {
-
-                                        @Override
-                                        public void run() {
-                                            mTvStatus.setText(R.string.web_socket_success);
-                                        }
-
-                                    }
+                                    () -> mTvStatus.setText(R.string.web_socket_success)
                             );
                         }
 
                         @Override
                         public void onFailed() {
                             runOnUiThread(
-                                    new Runnable() {
-
-                                        @Override
-                                        public void run() {
-                                            mTvStatus.setText(R.string.web_socket_failed);
-                                        }
-
-                                    }
+                                    () -> mTvStatus.setText(R.string.web_socket_failed)
                             );
                         }
 
