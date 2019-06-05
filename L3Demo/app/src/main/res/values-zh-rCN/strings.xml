@@ -73,4 +73,7 @@
     <string name="web_socket_failed">连接WebSocket服务失败</string>
     <string name="web_socket_success">连接WebSocket服务成功</string>
 
+    <string name="error_network">请检查网络连接</string>
+    <string name="error_timeout">连接超时</string>
+
 </resources>

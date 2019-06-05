@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sm.l3.demo.socket.WebSocketActivity;
 import com.sm.l3.demo.socket.WebSocketService;
+import com.sm.l3.demo.util.NetUtil;
 
 public class MainActivity extends BaseActivity {
 
@@ -70,6 +72,12 @@ public class MainActivity extends BaseActivity {
         int id = v.getId();
         if (id == R.id.btn_web_socket_setting) {
             openActivity(WebSocketActivity.class);
+            return;
+        }
+
+        boolean isConnected = NetUtil.isNetworkConnected(this);
+        if (isConnected == false) {
+            Toast.makeText(this, R.string.error_network, Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -73,4 +73,7 @@
     <string name="web_socket_failed">Connect WebSocket Service Failed</string>
     <string name="web_socket_success">Connect WebSocket Service Successful</string>
 
+    <string name="error_network">Error network</string>
+    <string name="error_timeout">Connect timeout</string>
+
 </resources>

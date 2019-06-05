@@ -2,9 +2,11 @@ package com.sm.l3.demo.socket;
 
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sm.l3.demo.MyApplication;
+import com.sm.l3.demo.R;
 import com.sm.l3.demo.ResultActivity;
 
 import org.java_websocket.client.WebSocketClient;
@@ -141,6 +143,16 @@ public class WebSocketService {
         @Override
         public void onError(Exception ex) {
             Log.e(TAG, "onError");
+            MyApplication.sInstance.post(
+                    new Runnable() {
+
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyApplication.sContext, R.string.error_timeout, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+            );
         }
 
     }
