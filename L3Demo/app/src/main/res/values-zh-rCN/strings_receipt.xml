@@ -62,6 +62,7 @@
     <string name="receipt_settlement_detail_card_num">卡号</string>
     <string name="receipt_settlement_detail_voucher_num">凭证号</string>
 
+    <string name="receipt_settlement_total">总计</string>
 
     <string name="sale">消费</string>
     <string name="sale_void">消费撤销</string>

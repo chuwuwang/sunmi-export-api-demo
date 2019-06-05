@@ -66,7 +66,7 @@ class BasePrint {
     }
 
     void printFooter(int size) throws Exception {
-        String temp = "Power by NSZ \n";
+        String temp = "power by z h o u \n";
         mPrinterService.setAlignment(1, null);
         mPrinterService.printTextWithFont(temp, null, size, null);
         mPrinterService.setAlignment(0, null);
@@ -92,7 +92,7 @@ class BasePrint {
 
     void printSeparateLine() throws Exception {
         mPrinterService.setAlignment(1, null);
-        mPrinterService.printTextWithFont("--------------------------------\n", "", DEFAULT_SIZE, null);
+        mPrinterService.printTextWithFont("------------------------------------------------\n", "", DEFAULT_SIZE, null);
         mPrinterService.setAlignment(0, null);
     }
 

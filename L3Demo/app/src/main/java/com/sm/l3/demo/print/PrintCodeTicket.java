@@ -24,6 +24,8 @@ class PrintCodeTicket extends BasePrint {
 
         printAddress(mPayDetail.merchantName, normalSize);
 
+        printLine();
+
         printUserInfo(normalSize);
 
         printSeparateLine();
@@ -55,10 +57,12 @@ class PrintCodeTicket extends BasePrint {
 
         printMerchantOrUser(pageNum, normalSize);
 
+        printLine();
+
         printFooter(smallSize);
 
         mPrinterService.lineWrap(4, callback);
-        mPrinterService.cutPaper(null);
+        mPrinterService.cutPaper(callback);
         mPrinterService.exitPrinterBufferWithCallback(true, callback);
     }
 
@@ -105,7 +109,7 @@ class PrintCodeTicket extends BasePrint {
         if (mPayDetail.qrOrderNo == null || mPayDetail.qrOrderNo.length() == 0) {
             return;
         }
-        // 打印二维码
+        printLine(2);
         mPrinterService.setAlignment(1, null);
         mPrinterService.printQRCode(mPayDetail.qrOrderNo, 5, 2, null);
         mPrinterService.setAlignment(0, null);

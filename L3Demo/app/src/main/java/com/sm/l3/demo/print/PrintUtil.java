@@ -16,11 +16,11 @@ class PrintUtil {
             case 2:
                 return getString(R.string.platform_wx);
             case 3:
-                return "- -";
+                return "";
             case 4:
                 return getString(R.string.platform_union);
             default:
-                return "- -";
+                return "";
         }
     }
 
@@ -57,7 +57,7 @@ class PrintUtil {
                     return getString(R.string.pre_auth_complete_revoke);
                 }
             default:
-                return "- -";
+                return "";
         }
     }
 

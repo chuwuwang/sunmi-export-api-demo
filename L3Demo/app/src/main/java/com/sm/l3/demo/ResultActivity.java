@@ -8,9 +8,16 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sm.l3.demo.print.PrintController;
+import com.sm.l3.demo.print.PrintSettlementTicket;
+import com.sm.l3.demo.socket.Settlement;
 import com.sm.l3.demo.socket.TransferExtra;
 import com.sm.l3.demo.util.ThreadPoolManager;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -79,22 +86,59 @@ public class ResultActivity extends AppCompatActivity {
 
         resultView.setText(result);
 
+        List<Settlement> list = null;
+        try {
+            String json = intent.getStringExtra("settleJson");
+            Type type = new TypeToken< List<Settlement> >() {}.getType();
+            list = new Gson().fromJson(json, type);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        int transType = intent.getIntExtra("transType", -99999);
+
         TransferExtra.Bean bean = (TransferExtra.Bean) intent.getSerializableExtra("bean");
+
+        if (transType == 7 || transType == 18) {
+            printSettlement(bean, list);
+            return;
+        }
 
         boolean b1 = TextUtils.equals(bean.answerCode, "00") && bean.transactionPlatform == 0;
         boolean b2 = TextUtils.equals(bean.answerCode, "00") && bean.transactionPlatform != 0 && bean.qrCodeTransactionState == 1;
         if (b1 || b2) {
-            startPrint(bean);
+            printOrder(bean);
         }
     }
 
-    private void startPrint(TransferExtra.Bean bean) {
+    private void printOrder(TransferExtra.Bean bean) {
         ThreadPoolManager.executeInCachePool(
                 () -> {
                     try {
                         int state = MyApplication.sunmiPrinterService.updatePrinterState();
                         if (state == 1) {
                             new PrintController().print(bean, null, 1, false);
+                        } else {
+                            showToast(R.string.error_printer);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        showToast(R.string.error_printer);
+                    }
+                }
+        );
+    }
+
+    private void printSettlement(TransferExtra.Bean bean, List<Settlement> list) {
+        ThreadPoolManager.executeInCachePool(
+                () -> {
+                    try {
+                        int state = MyApplication.sunmiPrinterService.updatePrinterState();
+                        if (state == 1) {
+                            PrintSettlementTicket ticket = new PrintSettlementTicket();
+                            ticket.printSettlementSummary(bean, list, null);
+
+                            ticket.printSettlementDetail(bean, list, null);
                         } else {
                             showToast(R.string.error_printer);
                         }

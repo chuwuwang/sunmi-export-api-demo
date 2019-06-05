@@ -31,6 +31,8 @@ class PrintCardTicket extends BasePrint {
 
         printAddress(mPayDetail.merchantName, normalSize);
 
+        printLine();
+
         printUserInfo(normalSize);
 
         printCardInfo(normalSize);
@@ -41,16 +43,20 @@ class PrintCardTicket extends BasePrint {
 
         printSignature(pageNum != 2, smallSize, normalSize);
 
+        printLine();
+
         printProtectInfo(smallSize);
 
         printReprintText(isAgain, normalSize);
 
         printMerchantOrUser(pageNum, normalSize);
 
+        printLine();
+
         printFooter(smallSize);
 
         mPrinterService.lineWrap(4, callback);
-        mPrinterService.cutPaper(null);
+        mPrinterService.cutPaper(callback);
         mPrinterService.exitPrinterBufferWithCallback(true, callback);
     }
 
@@ -114,6 +120,8 @@ class PrintCardTicket extends BasePrint {
         String transTime = TextUtils.isEmpty(mPayDetail.transTime) ? "- -" : mPayDetail.transTime.substring(0, 2) + ":" + mPayDetail.transTime.substring(2, 4) + ":" + mPayDetail.transTime.substring(4, 6);
         String date = getString(R.string.receipt_transaction_time) + SystemDateTime.getYYYY() + "/" + transDate + " " + transTime + "\n";
         mPrinterService.printTextWithFont(date, "", size, null);
+
+        printLine();
 
         String amount = MoneyUtil.longCent2DoubleMoneyStr(mPayDetail.amount);
         if (mPayDetail.transactionType == 2 || mPayDetail.transactionType == 5 || mPayDetail.transactionType == 7) {
@@ -198,7 +206,7 @@ class PrintCardTicket extends BasePrint {
             mPrinterService.setAlignment(1, null);
             mPrinterService.printBitmap(sign, null);
             mPrinterService.setAlignment(0, null);
-            printLine(1);
+            printLine();
         } else {
             printLine(2);
         }
