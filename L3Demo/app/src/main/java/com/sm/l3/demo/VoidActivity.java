@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.sm.l3.demo.socket.WebSocketService;
 
-public class RevokeActivity extends BaseActivity {
+public class VoidActivity extends BaseActivity {
 
     private EditText mEditVoucher;
     private EditText mEditTransId;

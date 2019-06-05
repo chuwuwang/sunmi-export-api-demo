@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 import com.google.gson.Gson;
 import com.sm.l3.demo.socket.WebSocketService;
 
-public class ReturnGoodsActivity extends BaseActivity {
+public class RefundActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
     private EditText mEditTransId;

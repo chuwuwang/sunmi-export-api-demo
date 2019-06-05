@@ -36,7 +36,7 @@ public class WebSocketActivity extends AppCompatActivity {
                 }
         );
 
-        mEditIP.setText("10.10.171.9");
+        mEditIP.setText("10.10.169.186");
         if (WebSocketService.getInstance().mWebSocketClient != null) {
             mTvStatus.setText(R.string.web_socket_success);
         }

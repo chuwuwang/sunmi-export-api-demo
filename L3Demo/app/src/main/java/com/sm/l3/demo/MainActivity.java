@@ -2,10 +2,13 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
 import com.sm.l3.demo.socket.WebSocketActivity;
+import com.sm.l3.demo.socket.WebSocketService;
 
 public class MainActivity extends BaseActivity {
 
@@ -18,10 +21,10 @@ public class MainActivity extends BaseActivity {
     private Button mBtnQueryBalance;
     private Button mBtnSystemManager;
     private Button mBtnPrint;
-    private Button mBtnQueryMerchant;
+    private Button mBtnInquiryMerchant;
     private Button mBtnSignOut;
-    private Button mBtnTradeQueryOnline;
-    private Button mBtnTradeQueryLocal;
+    private Button mBtnTradeInquiryOnline;
+    private Button mBtnTradeInquiryLocal;
     private Button mBtnCustom;
 
     @Override
@@ -38,17 +41,17 @@ public class MainActivity extends BaseActivity {
         mBtnQueryBalance = findViewById(R.id.btn_query_balance);
         mBtnSystemManager = findViewById(R.id.btn_system_manager);
         mBtnPrint = findViewById(R.id.btn_print);
-        mBtnQueryMerchant = findViewById(R.id.btn_query_merchant);
+        mBtnInquiryMerchant = findViewById(R.id.btn_query_merchant);
         mBtnSignOut = findViewById(R.id.btn_sign_out);
-        mBtnTradeQueryOnline = findViewById(R.id.btn_query_trade_online);
-        mBtnTradeQueryLocal = findViewById(R.id.btn_query_trade_local);
+        mBtnTradeInquiryOnline = findViewById(R.id.btn_query_trade_online);
+        mBtnTradeInquiryLocal = findViewById(R.id.btn_query_trade_local);
         mBtnCustom = findViewById(R.id.btn_custom);
 
         mBtnSettlement.setOnClickListener(this);
         mBtnQueryBalance.setOnClickListener(this);
         mBtnSystemManager.setOnClickListener(this);
         mBtnPrint.setOnClickListener(this);
-        mBtnQueryMerchant.setOnClickListener(this);
+        mBtnInquiryMerchant.setOnClickListener(this);
         mBtnSignOut.setOnClickListener(this);
         mBtnCustom.setOnClickListener(this);
         mBtnSignIn.setOnClickListener(this);
@@ -56,8 +59,8 @@ public class MainActivity extends BaseActivity {
         mBtnRevoke.setOnClickListener(this);
         mBtnPreAuth.setOnClickListener(this);
         mBtnReturnGood.setOnClickListener(this);
-        mBtnTradeQueryOnline.setOnClickListener(this);
-        mBtnTradeQueryLocal.setOnClickListener(this);
+        mBtnTradeInquiryOnline.setOnClickListener(this);
+        mBtnTradeInquiryLocal.setOnClickListener(this);
 
         findViewById(R.id.btn_web_socket_setting).setOnClickListener(this);
     }
@@ -81,15 +84,15 @@ public class MainActivity extends BaseActivity {
         if (id == R.id.btn_consume) {
             // 消费
             isOpen = false;
-            openActivity(ConsumeActivity.class);
+            openActivity(CustomActivity.class);
         } else if (id == R.id.btn_revoke) {
-            // 消费撤销
+            // 撤销
             isOpen = false;
-            openActivity(RevokeActivity.class);
+            openActivity(VoidActivity.class);
         } else if (id == R.id.btn_return_goods) {
             // 退货
             isOpen = false;
-            openActivity(ReturnGoodsActivity.class);
+            openActivity(RefundActivity.class);
         } else if (id == R.id.btn_pre_auth) {
             // 预授权
             isOpen = false;
@@ -127,13 +130,18 @@ public class MainActivity extends BaseActivity {
             openActivity(InquiryByLocalActivity.class);
         } else if (id == R.id.btn_custom) {
             isOpen = false;
-            openActivity(CustomActivity.class);
+            openActivity(SaleActivity.class);
         }
 
         if (isOpen) {
             intent.putExtra("transId", transId);
             intent.putExtra("appId", packageName);
-            startActivity(intent);
+
+            String json = new Gson().toJson(intent);
+            Log.e("nsz", "request json:" + json);
+            WebSocketService.getInstance().send(json);
+
+            // startActivity(intent);
         }
     }
 
@@ -153,11 +161,11 @@ public class MainActivity extends BaseActivity {
         mBtnQueryBalance.setEnabled(enable);
         mBtnSystemManager.setEnabled(enable);
         mBtnPrint.setEnabled(enable);
-        mBtnQueryMerchant.setEnabled(enable);
+        mBtnInquiryMerchant.setEnabled(enable);
         mBtnSignOut.setEnabled(enable);
         mBtnCustom.setEnabled(enable);
-        mBtnTradeQueryOnline.setEnabled(enable);
-        mBtnTradeQueryLocal.setEnabled(enable);
+        mBtnTradeInquiryOnline.setEnabled(enable);
+        mBtnTradeInquiryLocal.setEnabled(enable);
     }
 
     private void openActivity(Class clazz) {
