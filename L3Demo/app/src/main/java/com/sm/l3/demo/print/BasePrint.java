@@ -92,7 +92,7 @@ class BasePrint {
 
     void printSeparateLine() throws Exception {
         mPrinterService.setAlignment(1, null);
-        mPrinterService.printTextWithFont("------------------------------------------------\n", "", DEFAULT_SIZE, null);
+        mPrinterService.printTextWithFont("--------------------------------\n", "", DEFAULT_SIZE, null);
         mPrinterService.setAlignment(0, null);
     }
 
