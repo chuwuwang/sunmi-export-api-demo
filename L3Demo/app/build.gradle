@@ -3,6 +3,10 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion 28
+    lintOptions {
+        abortOnError false
+        disable 'GoogleAppIndexingWarning'
+    }
 
     defaultConfig {
         applicationId "sunmi.l3demo"
