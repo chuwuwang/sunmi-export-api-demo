@@ -14,7 +14,8 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        TextView tvResult = (TextView) findViewById(R.id.tv_result);
+
+        TextView tvResult = findViewById(R.id.tv_result);
 
         Intent intent = getIntent();
         StringBuilder sb = new StringBuilder();
@@ -55,6 +56,10 @@ public class ResultActivity extends AppCompatActivity {
         sb.append("transactionPlatform: " + intent.getIntExtra("transactionPlatform", -99999) + "\n");
         sb.append("qrCodeScanModel: " + intent.getIntExtra("qrCodeScanModel", -99999) + "\n");
         sb.append("qrCodeTransactionState: " + intent.getIntExtra("qrCodeTransactionState", -99999) + "\n");
+
+        sb.append("expDate: " + intent.getStringExtra("expDate") + "\n");
+        sb.append("entryMode: " + intent.getStringExtra("entryMode") + "\n");
+        sb.append("cardHolderName: " + intent.getStringExtra("cardHolderName") + "\n");
 
         sb.append("\n 商户信息相关数据 \n");
         sb.append("merchantNameEn: " + intent.getStringExtra("merchantNameEn") + "\n");

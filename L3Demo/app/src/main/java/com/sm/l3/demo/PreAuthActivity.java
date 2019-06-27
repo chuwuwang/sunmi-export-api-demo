@@ -23,13 +23,13 @@ public class PreAuthActivity extends BaseActivity {
     }
 
     private void initView() {
-        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
-        mEditMoney = (EditText) findViewById(R.id.edit_input_money);
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mEditDate = (EditText) findViewById(R.id.edit_input_date);
-        mEditAuth = (EditText) findViewById(R.id.edit_input_auth);
+        mRadioGroup = findViewById(R.id.radio_group);
+        mEditMoney = findViewById(R.id.edit_input_money);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mEditDate = findViewById(R.id.edit_input_date);
+        mEditAuth = findViewById(R.id.edit_input_auth);
 
-        Button ok = (Button) findViewById(R.id.btn_ok);
+        Button ok = findViewById(R.id.btn_ok);
         ok.setOnClickListener(this);
     }
 
@@ -75,7 +75,6 @@ public class PreAuthActivity extends BaseActivity {
         intent.putExtra("oriTransDate", oriTransDate);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
 
-        // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);

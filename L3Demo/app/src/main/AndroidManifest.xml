@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.sm.l3.demo.ConsumeActivity" />
+        <activity android:name="com.sm.l3.demo.SaleActivity" />
         <activity android:name="com.sm.l3.demo.PreAuthActivity" />
         <activity android:name="com.sm.l3.demo.ReturnGoodsActivity" />
         <activity android:name="com.sm.l3.demo.RevokeActivity" />
