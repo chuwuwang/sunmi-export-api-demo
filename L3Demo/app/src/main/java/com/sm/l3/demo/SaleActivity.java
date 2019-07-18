@@ -81,6 +81,9 @@ public class SaleActivity extends BaseActivity {
             e.printStackTrace();
         }
 
+        intent.putExtra("countTime", 200);
+        intent.putExtra("isShowCountTime", true);
+
         intent.putExtras(bundle);
 
         intent = addUserCustomTicketContent(intent);

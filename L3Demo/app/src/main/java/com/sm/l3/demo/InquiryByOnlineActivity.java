@@ -49,6 +49,8 @@ public class InquiryByOnlineActivity extends BaseActivity {
         }
         intent.putExtra("isLastTrade", isLastTrade);
 
+        intent.putExtra("isShowResult", false);
+
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);
