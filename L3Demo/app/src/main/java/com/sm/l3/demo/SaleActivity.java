@@ -82,6 +82,7 @@ public class SaleActivity extends BaseActivity {
         }
 
         intent.putExtra("countTime", 200);
+        intent.putExtra("isCallbackNow", true);
         intent.putExtra("isShowCountTime", true);
 
         intent.putExtras(bundle);
