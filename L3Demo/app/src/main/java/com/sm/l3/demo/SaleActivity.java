@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -16,38 +14,35 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class RefundActivity extends BaseActivity {
+public class SaleActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
-    private EditText mEditTransId;
-    private EditText mEditReference;
-    private EditText mEditDate;
     private EditText mEditAmount;
-    private CheckBox mCheckBoxManagePwd;
+    private EditText mEditTransId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_refund);
+        setContentView(R.layout.activity_consume);
         initView();
     }
 
     private void initView() {
         mRadioGroup = findViewById(R.id.radio_group);
-        mEditTransId = findViewById(R.id.edit_input_trans_id);
-        mEditReference = findViewById(R.id.edit_input_reference);
-        mEditDate = findViewById(R.id.edit_input_date);
         mEditAmount = findViewById(R.id.edit_input_money);
-        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
-        Button okBtn = findViewById(R.id.btn_ok);
-        okBtn.setOnClickListener(this);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+
+        findViewById(R.id.btn_ok).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        int paymentType = 0;
+        int paymentType = -1;
         int buttonId = mRadioGroup.getCheckedRadioButtonId();
         switch (buttonId) {
+            case R.id.rb_user_optional:
+                paymentType = -1;
+                break;
             case R.id.rb_bank_card:
                 paymentType = 0;
                 break;
@@ -77,32 +72,24 @@ public class RefundActivity extends BaseActivity {
         String packageName = getPackageName();
         String transId = mEditTransId.getText().toString();
 
-        String amount = mEditAmount.getText().toString();
-        String oriTransDate = mEditDate.getText().toString();
-        boolean isManagePwd = mCheckBoxManagePwd.isChecked();
-        String referenceNo = mEditReference.getText().toString();
-
         Intent intent = new Intent(CALL_EXTRA_ACTION);
-        intent.putExtra("transType", 2);
-        intent.putExtra("transId", transId);
-        intent.putExtra("appId", packageName);
+        Bundle bundle = new Bundle();
+        bundle.putInt("transType", 0);
+        bundle.putString("transId", transId);
+        bundle.putString("appId", packageName);
+        bundle.putInt("paymentType", paymentType);
 
-        intent.putExtra("paymentType", paymentType);
-        intent.putExtra("isManagePwd", isManagePwd);
-
-        if (paymentType != 0) {
-            intent.putExtra("oriQROrderNo", referenceNo);
-        } else {
-            intent.putExtra("oriReferenceNo", referenceNo);
-        }
         try {
+            String amount = mEditAmount.getText().toString();
             long aLong = Long.parseLong(amount);
-            intent.putExtra("amount", aLong);
+            bundle.putLong("amount", aLong);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        intent.putExtra("oriTransDate", oriTransDate);
 
+        intent.putExtras(bundle);
+
+        // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
         Map<String, Object> map = new HashMap<>();
@@ -110,6 +97,12 @@ public class RefundActivity extends BaseActivity {
             Set<String> keySet = intent.getExtras().keySet();
             for (String key : keySet) {
                 Object obj = intent.getExtras().get(key);
+                if (obj != null) {
+                    String value = obj.toString();
+                    Log.e("nsz", "key = " + key + " || value = " + value);
+                } else {
+                    Log.e("nsz", "key = " + key + " || value = null");
+                }
                 map.put(key, obj);
             }
         } catch (Exception e) {
@@ -117,6 +110,7 @@ public class RefundActivity extends BaseActivity {
         }
 
         String json = new Gson().toJson(map);
+        Log.e("nsz", json);
         WebSocketService.getInstance().send(json);
 
         // startActivity(intent);

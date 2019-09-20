@@ -2,112 +2,140 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 
+import com.google.gson.Gson;
+import com.sm.l3.demo.socket.WebSocketService;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class CustomActivity extends BaseActivity {
 
-    private RadioGroup mRadioGroup;
+    private EditText mEditVoucher;
+    private EditText mEditReference;
+    private EditText mEditAuth;
+    private EditText mEditQRCode;
+    private EditText mEditDate;
     private EditText mEditAmount;
+    private EditText mEditAppId;
+    private EditText mEditRequestType;
+    private EditText mEditPayType;
     private EditText mEditTransId;
+    private EditText mEditPrintHeaderEdit;
+
+
+    private CheckBox mCheckBoxManagePwd;
+    private CheckBox mCheckBoxLastTrade;
+    private CheckBox mCheckBoxDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consume);
+        setContentView(R.layout.activity_custom);
         initView();
     }
 
     private void initView() {
-        mRadioGroup = findViewById(R.id.radio_group);
+        mEditRequestType = findViewById(R.id.edit_input_trans_type);
+        mEditPayType = findViewById(R.id.edit_input_payment_type);
         mEditAmount = findViewById(R.id.edit_input_money);
         mEditTransId = findViewById(R.id.edit_input_trans_id);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mEditDate = findViewById(R.id.edit_input_date);
+        mEditReference = findViewById(R.id.edit_input_reference);
+        mEditQRCode = findViewById(R.id.edit_input_qr_order);
+        mEditAppId = findViewById(R.id.edit_input_app_id);
+        mEditAuth = findViewById(R.id.edit_input_auth);
+        mEditPrintHeaderEdit = findViewById(R.id.edit_input_print_header);
 
-        findViewById(R.id.btn_ok).setOnClickListener(this);
+        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
+        mCheckBoxLastTrade = findViewById(R.id.cb_last_trade);
+        mCheckBoxDetail = findViewById(R.id.cb_detail);
+
+        Button ok = findViewById(R.id.btn_ok);
+        ok.setOnClickListener(this);
+
+        mEditAppId.setText(BuildConfig.APPLICATION_ID);
     }
 
     @Override
     public void onClick(View view) {
-        int paymentType;
-        int buttonId = mRadioGroup.getCheckedRadioButtonId();
-        switch (buttonId) {
-            case R.id.rb_user_optional:
-                paymentType = -1;
-                break;
-            case R.id.rb_bank_card:
-                paymentType = 0;
-                break;
-            case R.id.rb_aliPay_scan:
-                paymentType = 1;
-                break;
-            case R.id.rb_aliPay_code:
-                paymentType = 2;
-                break;
-            case R.id.rb_weChat_scan:
-                paymentType = 3;
-                break;
-            case R.id.rb_weChat_code:
-                paymentType = 4;
-                break;
-            case R.id.rb_union_scan:
-                paymentType = 5;
-                break;
-            case R.id.rb_union_code:
-                paymentType = 6;
-                break;
-            case R.id.rb_scan_and_scan:
-                paymentType = 7;
-                break;
-            default:
-                paymentType = -1;
-                break;
-        }
-
-        String packageName = getPackageName();
+        String appId = mEditAppId.getText().toString();
         String transId = mEditTransId.getText().toString();
 
-        Intent intent = new Intent(CALL_EXTRA_ACTION);
-        Bundle bundle = new Bundle();
-        bundle.putInt("transType", 0);
-        bundle.putString("transId", transId);
-        bundle.putString("appId", packageName);
-        bundle.putInt("paymentType", paymentType);
+        String oriAuthNo = mEditAuth.getText().toString();
+        String oriTransDate = mEditDate.getText().toString();
+        String oriQROrderNo = mEditQRCode.getText().toString();
+        String oriVoucherNo = mEditVoucher.getText().toString();
+        String oriReferenceNo = mEditReference.getText().toString();
 
+        String riseString = mEditPrintHeaderEdit.getText().toString();
+
+        boolean isManagePwd = mCheckBoxManagePwd.isChecked();
+        boolean isLastTrade = mCheckBoxLastTrade.isChecked();
+        boolean isSettlementDetail = mCheckBoxDetail.isChecked();
+
+        String amount = mEditAmount.getText().toString();
+        String transType = mEditRequestType.getText().toString();
+        String paymentType = mEditPayType.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
         try {
-            String amount = mEditAmount.getText().toString();
-            long aLong = Long.parseLong(amount);
-            bundle.putLong("amount", aLong);
+            int parseInt = Integer.parseInt(transType);
+            intent.putExtra("transType", parseInt);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        intent.putExtras(bundle);
+        try {
+            int parseInt = Integer.parseInt(paymentType);
+            intent.putExtra("paymentType", parseInt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            long parseLong = Long.parseLong(amount);
+            intent.putExtra("amount", parseLong);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        intent.putExtra("appId", appId);
+        intent.putExtra("transId", transId);
+        intent.putExtra("oriVoucherNo", oriVoucherNo);
+        intent.putExtra("oriTransDate", oriTransDate);
+        intent.putExtra("oriQROrderNo", oriQROrderNo);
+        intent.putExtra("oriReferenceNo", oriReferenceNo);
+        intent.putExtra("oriAuthNo", oriAuthNo);
+
+        intent.putExtra("riseString", riseString);
+
+        intent.putExtra("isManagePwd", isManagePwd);
+        intent.putExtra("isLastTrade", isLastTrade);
+        intent.putExtra("isSettlementDetail", isSettlementDetail);
 
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
+        Map<String, Object> map = new HashMap<>();
         try {
             Set<String> keySet = intent.getExtras().keySet();
             for (String key : keySet) {
                 Object obj = intent.getExtras().get(key);
-                if (obj != null) {
-                    String value = obj.toString();
-                    Log.e("nsz", "key = " + key + " || value = " + value);
-                } else {
-                    Log.e("nsz", "key = " + key + " || value = null");
-                }
+                map.put(key, obj);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-//        String json = new Gson().toJson(intent);
-//        Log.e("nsz", json);
-//        WebSocketService.getInstance().send(json);
+        String json = new Gson().toJson(map);
+        WebSocketService.getInstance().send(json);
 
         // startActivity(intent);
     }

@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity {
         if (id == R.id.btn_consume) {
             // 消费
             isOpen = false;
-            openActivity(CustomActivity.class);
+            openActivity(SaleActivity.class);
         } else if (id == R.id.btn_revoke) {
             // 撤销
             isOpen = false;
@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity {
             openActivity(InquiryByLocalActivity.class);
         } else if (id == R.id.btn_custom) {
             isOpen = false;
-            openActivity(CustomActivity1.class);
+            openActivity(CustomActivity.class);
         }
 
         if (isOpen) {

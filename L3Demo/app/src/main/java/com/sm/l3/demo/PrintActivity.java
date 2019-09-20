@@ -3,6 +3,7 @@ package com.sm.l3.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,6 +11,10 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.sm.l3.demo.socket.WebSocketService;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class PrintActivity extends BaseActivity {
 
@@ -47,7 +52,18 @@ public class PrintActivity extends BaseActivity {
         intent.putExtra("isLastTrade", isLastTrade);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
 
-        String json = new Gson().toJson(intent);
+        Map<String, Object> map = new HashMap<>();
+        try {
+            Set<String> keySet = intent.getExtras().keySet();
+            for (String key : keySet) {
+                Object obj = intent.getExtras().get(key);
+                map.put(key, obj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String json = new Gson().toJson(map);
         WebSocketService.getInstance().send(json);
 
         // startActivity(intent);

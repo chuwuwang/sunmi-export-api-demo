@@ -28,12 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.sm.l3.demo.CustomActivity" />
+        <activity android:name="com.sm.l3.demo.SaleActivity" />
         <activity android:name="com.sm.l3.demo.PreAuthActivity" />
         <activity android:name="com.sm.l3.demo.RefundActivity" />
         <activity android:name="com.sm.l3.demo.VoidActivity" />
         <activity android:name="com.sm.l3.demo.ResultActivity" />
-        <activity android:name="com.sm.l3.demo.CustomActivity1" />
+        <activity android:name="com.sm.l3.demo.CustomActivity" />
         <activity android:name="com.sm.l3.demo.InquiryByLocalActivity" />
         <activity android:name="com.sm.l3.demo.SettlementActivity" />
         <activity android:name="com.sm.l3.demo.PrintActivity" />
