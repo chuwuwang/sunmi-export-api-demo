@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.google.gson.Gson;
-import com.sm.l3.demo.socket.WebSocketService;
+import java.util.Set;
 
 public class CustomActivity extends BaseActivity {
 
@@ -91,9 +90,24 @@ public class CustomActivity extends BaseActivity {
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
-        String json = new Gson().toJson(intent);
-        Log.e("nsz", json);
-        WebSocketService.getInstance().send(json);
+        try {
+            Set<String> keySet = intent.getExtras().keySet();
+            for (String key : keySet) {
+                Object obj = intent.getExtras().get(key);
+                if (obj != null) {
+                    String value = obj.toString();
+                    Log.e("nsz", "key = " + key + " || value = " + value);
+                } else {
+                    Log.e("nsz", "key = " + key + " || value = null");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        String json = new Gson().toJson(intent);
+//        Log.e("nsz", json);
+//        WebSocketService.getInstance().send(json);
 
         // startActivity(intent);
     }

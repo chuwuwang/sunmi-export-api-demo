@@ -2,16 +2,12 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
-import com.sm.l3.demo.socket.WebSocketService;
-
-public class SaleActivity extends BaseActivity {
+public class CustomActivity1 extends BaseActivity {
 
     private EditText mEditVoucher;
     private EditText mEditReference;
@@ -120,9 +116,10 @@ public class SaleActivity extends BaseActivity {
         // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
-        String json = new Gson().toJson(intent);
-        Log.e("nsz", "request json:" + json);
-        WebSocketService.getInstance().send(json);
+
+//        String json = new Gson().toJson(intent);
+//        Log.e("nsz", "request json:" + json);
+//        WebSocketService.getInstance().send(json);
 
         // startActivity(intent);
     }

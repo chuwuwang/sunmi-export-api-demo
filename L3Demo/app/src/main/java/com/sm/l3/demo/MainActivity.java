@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity {
             openActivity(InquiryByLocalActivity.class);
         } else if (id == R.id.btn_custom) {
             isOpen = false;
-            openActivity(SaleActivity.class);
+            openActivity(CustomActivity1.class);
         }
 
         if (isOpen) {
