@@ -14,13 +14,13 @@ import io.github.suzp1984.jbig.JbigCodecFactory;
 
 class PrintCardTicket extends BasePrint {
 
-    private TransferExtra.Bean mPayDetail;
+    private TransferExtra mPayDetail;
 
     PrintCardTicket() {
         super();
     }
 
-    void printCardTicket(TransferExtra.Bean payDetail, BasePrintCallback callback, int pageNum, boolean isAgain) throws Exception {
+    void printCardTicket(TransferExtra payDetail, BasePrintCallback callback, int pageNum, boolean isAgain) throws Exception {
         int smallSize = 16;
         int normalSize = 18;
         this.mPayDetail = payDetail;

@@ -97,7 +97,7 @@ public class ResultActivity extends AppCompatActivity {
 
         int transType = intent.getIntExtra("transType", -99999);
 
-        TransferExtra.Bean bean = (TransferExtra.Bean) intent.getSerializableExtra("bean");
+        TransferExtra bean = (TransferExtra) intent.getSerializableExtra("bean");
 
         if (transType == 7 || transType == 18) {
             printSettlement(bean, list);
@@ -111,7 +111,7 @@ public class ResultActivity extends AppCompatActivity {
         }
     }
 
-    private void printOrder(TransferExtra.Bean bean) {
+    private void printOrder(TransferExtra bean) {
         ThreadPoolManager.executeInCachePool(
                 () -> {
                     try {
@@ -129,7 +129,7 @@ public class ResultActivity extends AppCompatActivity {
         );
     }
 
-    private void printSettlement(TransferExtra.Bean bean, List<Settlement> list) {
+    private void printSettlement(TransferExtra bean, List<Settlement> list) {
         ThreadPoolManager.executeInCachePool(
                 () -> {
                     try {

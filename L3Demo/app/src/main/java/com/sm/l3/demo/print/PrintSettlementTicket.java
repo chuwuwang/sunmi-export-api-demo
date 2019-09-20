@@ -24,7 +24,7 @@ public class PrintSettlementTicket extends BasePrint {
         super();
     }
 
-    public void printSettlementSummary(TransferExtra.Bean bean, List<Settlement> list, BasePrintCallback callback) throws Exception {
+    public void printSettlementSummary(TransferExtra bean, List<Settlement> list, BasePrintCallback callback) throws Exception {
         int smallSize = 18;
         int normalSize = 20;
 
@@ -59,7 +59,7 @@ public class PrintSettlementTicket extends BasePrint {
         mPrinterService.exitPrinterBufferWithCallback(true, callback);
     }
 
-    public void printSettlementDetail(TransferExtra.Bean bean, List<Settlement> list, BasePrintCallback callback) throws Exception {
+    public void printSettlementDetail(TransferExtra bean, List<Settlement> list, BasePrintCallback callback) throws Exception {
         int smallSize = 18;
         int normalSize = 20;
 
@@ -364,7 +364,7 @@ public class PrintSettlementTicket extends BasePrint {
         }
     }
 
-    private void printTotal(TransferExtra.Bean bean, int size) throws Exception {
+    private void printTotal(TransferExtra bean, int size) throws Exception {
         if (bean == null) {
             return;
         }
@@ -377,7 +377,7 @@ public class PrintSettlementTicket extends BasePrint {
         mPrinterService.printColumnsString(saleTotal, mColsWidth, mColsAlign, null);
     }
 
-    private void printTitle(TransferExtra.Bean bean, boolean isSummary, int size) throws Exception {
+    private void printTitle(TransferExtra bean, boolean isSummary, int size) throws Exception {
         printLogo(0);
 
         printSeparateLine();

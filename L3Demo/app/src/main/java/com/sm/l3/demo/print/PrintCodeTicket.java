@@ -7,13 +7,13 @@ import com.sm.l3.demo.socket.TransferExtra;
 
 class PrintCodeTicket extends BasePrint {
 
-    private TransferExtra.Bean mPayDetail;
+    private TransferExtra mPayDetail;
 
     PrintCodeTicket() {
         super();
     }
 
-    void printCodeTicket(TransferExtra.Bean payDetail, boolean isAgain, int pageNum, BasePrintCallback callback) throws Exception {
+    void printCodeTicket(TransferExtra payDetail, boolean isAgain, int pageNum, BasePrintCallback callback) throws Exception {
         int smallSize = 16;
         int normalSize = 18;
         this.mPayDetail = payDetail;

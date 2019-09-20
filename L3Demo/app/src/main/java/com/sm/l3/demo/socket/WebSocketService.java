@@ -73,8 +73,7 @@ public class WebSocketService {
             if (message == null) {
                 return;
             }
-            TransferExtra transferExtra = new Gson().fromJson(message, TransferExtra.class);
-            TransferExtra.Bean bean = transferExtra.mExtras.mMap;
+            TransferExtra bean = new Gson().fromJson(message, TransferExtra.class);
 
             Intent intent = new Intent(MyApplication.sContext, ResultActivity.class);
 

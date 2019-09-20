@@ -116,7 +116,7 @@ class BasePrint {
         mPrinterService.sendRAWData(returnText, null);
     }
 
-    String getTimeByPayDetail(TransferExtra.Bean payDetail) {
+    String getTimeByPayDetail(TransferExtra payDetail) {
         String date = payDetail.transDate;
         String transDate = " ";
         if (date != null && date.length() >= 4) {

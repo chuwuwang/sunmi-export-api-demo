@@ -2,7 +2,6 @@ package com.sm.l3.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +10,10 @@ import com.google.gson.Gson;
 import com.sm.l3.demo.socket.WebSocketActivity;
 import com.sm.l3.demo.socket.WebSocketService;
 import com.sm.l3.demo.util.NetUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends BaseActivity {
 
@@ -145,8 +148,18 @@ public class MainActivity extends BaseActivity {
             intent.putExtra("transId", transId);
             intent.putExtra("appId", packageName);
 
-            String json = new Gson().toJson(intent);
-            Log.e("nsz", "request json:" + json);
+            Map<String, Object> map = new HashMap<>();
+            try {
+                Set<String> keySet = intent.getExtras().keySet();
+                for (String key : keySet) {
+                    Object obj = intent.getExtras().get(key);
+                    map.put(key, obj);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            String json = new Gson().toJson(map);
             WebSocketService.getInstance().send(json);
 
             // startActivity(intent);

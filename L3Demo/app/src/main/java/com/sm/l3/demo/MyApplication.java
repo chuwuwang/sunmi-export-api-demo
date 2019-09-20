@@ -5,10 +5,14 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.sm.l3.demo.socket.UsbDeviceService;
+import com.sunmi.device.comm.aidl.DeviceCommOptV2;
 import com.sunmi.peripheral.printer.InnerPrinterCallback;
 import com.sunmi.peripheral.printer.InnerPrinterException;
 import com.sunmi.peripheral.printer.InnerPrinterManager;
 import com.sunmi.peripheral.printer.SunmiPrinterService;
+
+import sunmi.paylib.SunmiPayKernel;
 
 public class MyApplication extends Application {
 
@@ -18,6 +22,9 @@ public class MyApplication extends Application {
 
     private Handler mainHandler;
 
+    private SunmiPayKernel sunmiPayKernel;
+
+    public static DeviceCommOptV2 mDeviceCommOptV2;
     public static SunmiPrinterService sunmiPrinterService;
 
     @Override
@@ -26,7 +33,11 @@ public class MyApplication extends Application {
 
         sInstance = this;
         sContext = getApplicationContext();
+
         bindPrintService();
+
+        connectPayService();
+
         Looper mainLooper = Looper.getMainLooper();
         mainHandler = new Handler(mainLooper);
     }
@@ -44,10 +55,31 @@ public class MyApplication extends Application {
         return mainHandler;
     }
 
-
-    public static MyApplication getInstance() {
-        return sInstance;
+    private void connectPayService() {
+        sunmiPayKernel = SunmiPayKernel.getInstance();
+        sunmiPayKernel.initPaySDK(this, mConnectCallback);
     }
+
+    private SunmiPayKernel.ConnectCallback mConnectCallback = new SunmiPayKernel.ConnectCallback() {
+
+        @Override
+        public void onConnectPaySDK() {
+            try {
+                MyApplication.mDeviceCommOptV2 = sunmiPayKernel.mDeviceCommOptV2;
+
+                UsbDeviceService.startService(sContext);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        public void onDisconnectPaySDK() {
+
+        }
+
+    };
 
     private void bindPrintService() {
         try {
@@ -69,6 +101,10 @@ public class MyApplication extends Application {
         } catch (InnerPrinterException e) {
             e.printStackTrace();
         }
+    }
+
+    public static MyApplication getInstance() {
+        return sInstance;
     }
 
 

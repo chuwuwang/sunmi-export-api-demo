@@ -8,7 +8,7 @@ public class PrintController {
 
     }
 
-    public void print(TransferExtra.Bean payDetail, BasePrintCallback callback, int pageNum, boolean isAgain) throws Exception {
+    public void print(TransferExtra payDetail, BasePrintCallback callback, int pageNum, boolean isAgain) throws Exception {
         int transPlatform = payDetail.transactionPlatform;
         switch (transPlatform) {
             case 0:

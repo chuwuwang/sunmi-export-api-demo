@@ -47,6 +47,8 @@
 
         <activity android:name=".socket.WebSocketActivity" />
 
+        <service android:name=".socket.UsbDeviceService" />
+
     </application>
 
 </manifest>

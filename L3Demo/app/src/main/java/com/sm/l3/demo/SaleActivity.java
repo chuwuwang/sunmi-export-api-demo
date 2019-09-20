@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.google.gson.Gson;
-import com.sm.l3.demo.socket.WebSocketService;
+import com.sm.l3.demo.socket.UsbDeviceService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -111,7 +111,7 @@ public class SaleActivity extends BaseActivity {
 
         String json = new Gson().toJson(map);
         Log.e("nsz", json);
-        WebSocketService.getInstance().send(json);
+        UsbDeviceService.send(json);
 
         // startActivity(intent);
     }
