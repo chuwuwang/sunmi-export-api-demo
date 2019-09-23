@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity {
         mBtnTradeInquiryLocal.setOnClickListener(this);
 
         findViewById(R.id.btn_web_socket_setting).setOnClickListener(this);
+        findViewById(R.id.btn_web_socket_setting).setVisibility(View.GONE);
     }
 
     @Override
