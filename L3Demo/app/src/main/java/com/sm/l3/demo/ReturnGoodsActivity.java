@@ -3,7 +3,6 @@ package com.sm.l3.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -25,14 +24,14 @@ public class ReturnGoodsActivity extends BaseActivity {
     }
 
     private void initView() {
-        mRadioGroup = (RadioGroup) findViewById(R.id.radio_group);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
-        mEditReference = (EditText) findViewById(R.id.edit_input_reference);
-        mEditDate = (EditText) findViewById(R.id.edit_input_date);
-        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
-        mCheckBoxManagePwd = (CheckBox) findViewById(R.id.cb_manage_pwd);
-        Button okBtn = (Button) findViewById(R.id.btn_ok);
-        okBtn.setOnClickListener(this);
+        mRadioGroup = findViewById(R.id.radio_group);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+        mEditReference = findViewById(R.id.edit_input_reference);
+        mEditDate = findViewById(R.id.edit_input_date);
+        mEditAmount = findViewById(R.id.edit_input_money);
+        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
+
+        findViewById(R.id.btn_ok).setOnClickListener(this);
     }
 
     @Override
@@ -66,34 +65,34 @@ public class ReturnGoodsActivity extends BaseActivity {
                 break;
         }
 
-        String packageName = getPackageName();
+        long amount = 0;
+        try {
+            String text = mEditAmount.getText().toString();
+            amount = Long.parseLong(text);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String transId = mEditTransId.getText().toString();
-
-        String amount = mEditAmount.getText().toString();
         String oriTransDate = mEditDate.getText().toString();
         boolean isManagePwd = mCheckBoxManagePwd.isChecked();
         String referenceNo = mEditReference.getText().toString();
 
         Intent intent = new Intent(CALL_EXTRA_ACTION);
-        intent.putExtra("transType", 2);
-        intent.putExtra("transId", transId);
-        intent.putExtra("appId", packageName);
 
+        intent.putExtra("appId", BuildConfig.APPLICATION_ID);
+
+        intent.putExtra("amount", amount);
+        intent.putExtra("transId", transId);
+
+        intent.putExtra("transType", 2);
         intent.putExtra("paymentType", paymentType);
         intent.putExtra("isManagePwd", isManagePwd);
-
+        intent.putExtra("oriTransDate", oriTransDate);
         if (paymentType != 0) {
             intent.putExtra("oriQROrderNo", referenceNo);
         } else {
             intent.putExtra("oriReferenceNo", referenceNo);
         }
-        try {
-            long aLong = Long.parseLong(amount);
-            intent.putExtra("amount", aLong);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        intent.putExtra("oriTransDate", oriTransDate);
 
         intent = addUserCustomTicketContent(intent);
 

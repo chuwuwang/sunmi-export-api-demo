@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 
 public class SettlementActivity extends BaseActivity {
@@ -20,25 +19,21 @@ public class SettlementActivity extends BaseActivity {
     }
 
     private void initView() {
-        mCbPrint = (CheckBox) findViewById(R.id.cb_print);
-        mCbDetail = (CheckBox) findViewById(R.id.cb_detail);
-        Button ok = (Button) findViewById(R.id.btn_ok);
-        ok.setOnClickListener(this);
+        mCbPrint = findViewById(R.id.cb_print);
+        mCbDetail = findViewById(R.id.cb_detail);
+        findViewById(R.id.btn_ok).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        String packageName = getPackageName();
-        String transId = System.currentTimeMillis() + "";
-
         boolean isSettlementTicket = mCbPrint.isChecked();
         boolean isSettlementDetail = mCbDetail.isChecked();
 
         Intent intent = new Intent(CALL_EXTRA_ACTION);
-        intent.putExtra("transType", 7);
-        intent.putExtra("transId", transId);
-        intent.putExtra("appId", packageName);
 
+        intent.putExtra("appId", BuildConfig.APPLICATION_ID);
+
+        intent.putExtra("transType", 7);
         intent.putExtra("isSettlementTicket", isSettlementTicket);
         intent.putExtra("isSettlementDetail", isSettlementDetail);
         startActivity(intent);

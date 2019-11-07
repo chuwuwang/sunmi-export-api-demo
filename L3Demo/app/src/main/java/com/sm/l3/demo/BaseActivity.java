@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String CALL_EXTRA_ACTION = "sun" + "mi.payment.L3";
+    public static final String CALL_EXTRA_ACTION = "com.pos.router.payment.ACTION_PAY";
 
     public Intent addUserCustomTicketContent(Intent intent) {
         EditText mEditUserInfo = findViewById(R.id.edit_user_info);

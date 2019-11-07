@@ -3,28 +3,27 @@ package com.sm.l3.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class CustomActivity extends BaseActivity {
 
+    private EditText mEditAuth;
+    private EditText mEditDate;
+    private EditText mEditAppId;
+    private EditText mEditAmount;
+    private EditText mEditQRCode;
     private EditText mEditVoucher;
     private EditText mEditReference;
-    private EditText mEditAuth;
-    private EditText mEditQRCode;
-    private EditText mEditDate;
-    private EditText mEditAmount;
-    private EditText mEditAppId;
     private EditText mEditRequestType;
-    private EditText mEditPayType;
+
     private EditText mEditTransId;
+    private EditText mEditPayType;
     private EditText mEditPrintHeaderEdit;
 
-
+    private CheckBox mCheckBoxDetail;
     private CheckBox mCheckBoxManagePwd;
     private CheckBox mCheckBoxLastTrade;
-    private CheckBox mCheckBoxDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +33,24 @@ public class CustomActivity extends BaseActivity {
     }
 
     private void initView() {
-        mEditRequestType = (EditText) findViewById(R.id.edit_input_trans_type);
-        mEditPayType = (EditText) findViewById(R.id.edit_input_payment_type);
-        mEditAmount = (EditText) findViewById(R.id.edit_input_money);
-        mEditTransId = (EditText) findViewById(R.id.edit_input_trans_id);
-        mEditVoucher = (EditText) findViewById(R.id.edit_input_voucher);
-        mEditDate = (EditText) findViewById(R.id.edit_input_date);
-        mEditReference = (EditText) findViewById(R.id.edit_input_reference);
-        mEditQRCode = (EditText) findViewById(R.id.edit_input_qr_order);
-        mEditAppId = (EditText) findViewById(R.id.edit_input_app_id);
-        mEditAuth = (EditText) findViewById(R.id.edit_input_auth);
-        mEditPrintHeaderEdit = (EditText) findViewById(R.id.edit_input_print_header);
+        mEditAuth = findViewById(R.id.edit_input_auth);
+        mEditDate = findViewById(R.id.edit_input_date);
+        mEditAmount = findViewById(R.id.edit_input_money);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
+        mEditQRCode = findViewById(R.id.edit_input_qr_order);
+        mEditTransId = findViewById(R.id.edit_input_trans_id);
+        mEditReference = findViewById(R.id.edit_input_reference);
+        mEditRequestType = findViewById(R.id.edit_input_trans_type);
 
-        mCheckBoxManagePwd = (CheckBox) findViewById(R.id.cb_manage_pwd);
-        mCheckBoxLastTrade = (CheckBox) findViewById(R.id.cb_last_trade);
-        mCheckBoxDetail = (CheckBox) findViewById(R.id.cb_detail);
+        mEditAppId = findViewById(R.id.edit_input_app_id);
+        mEditPayType = findViewById(R.id.edit_input_payment_type);
+        mEditPrintHeaderEdit = findViewById(R.id.edit_input_print_header);
 
-        Button ok = (Button) findViewById(R.id.btn_ok);
-        ok.setOnClickListener(this);
+        mCheckBoxDetail = findViewById(R.id.cb_detail);
+        mCheckBoxManagePwd = findViewById(R.id.cb_manage_pwd);
+        mCheckBoxLastTrade = findViewById(R.id.cb_last_trade);
+
+        findViewById(R.id.btn_ok).setOnClickListener(this);
 
         mEditAppId.setText(BuildConfig.APPLICATION_ID);
     }
@@ -78,34 +77,34 @@ public class CustomActivity extends BaseActivity {
         String paymentType = mEditPayType.getText().toString();
 
         Intent intent = new Intent(CALL_EXTRA_ACTION);
+
         try {
-            int parseInt = Integer.parseInt(transType);
-            intent.putExtra("transType", parseInt);
+            int value = Integer.parseInt(transType);
+            intent.putExtra("transType", value);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         try {
-            int parseInt = Integer.parseInt(paymentType);
-            intent.putExtra("paymentType", parseInt);
+            int value = Integer.parseInt(paymentType);
+            intent.putExtra("paymentType", value);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         try {
-            long parseLong = Long.parseLong(amount);
-            intent.putExtra("amount", parseLong);
+            long value = Long.parseLong(amount);
+            intent.putExtra("amount", value);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         intent.putExtra("appId", appId);
         intent.putExtra("transId", transId);
+
+        intent.putExtra("oriAuthNo", oriAuthNo);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
         intent.putExtra("oriTransDate", oriTransDate);
         intent.putExtra("oriQROrderNo", oriQROrderNo);
         intent.putExtra("oriReferenceNo", oriReferenceNo);
-        intent.putExtra("oriAuthNo", oriAuthNo);
 
         intent.putExtra("riseString", riseString);
 
@@ -113,7 +112,6 @@ public class CustomActivity extends BaseActivity {
         intent.putExtra("isLastTrade", isLastTrade);
         intent.putExtra("isSettlementDetail", isSettlementDetail);
 
-        // 添加用户自定义小票内容
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);

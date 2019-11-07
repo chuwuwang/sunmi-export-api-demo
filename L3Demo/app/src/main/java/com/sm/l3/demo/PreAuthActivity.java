@@ -24,10 +24,10 @@ public class PreAuthActivity extends BaseActivity {
 
     private void initView() {
         mRadioGroup = findViewById(R.id.radio_group);
-        mEditMoney = findViewById(R.id.edit_input_money);
-        mEditVoucher = findViewById(R.id.edit_input_voucher);
         mEditDate = findViewById(R.id.edit_input_date);
         mEditAuth = findViewById(R.id.edit_input_auth);
+        mEditMoney = findViewById(R.id.edit_input_money);
+        mEditVoucher = findViewById(R.id.edit_input_voucher);
 
         Button ok = findViewById(R.id.btn_ok);
         ok.setOnClickListener(this);
@@ -51,26 +51,24 @@ public class PreAuthActivity extends BaseActivity {
                 transType = 6;
                 break;
         }
-
-        String packageName = getPackageName();
-        String transId = System.currentTimeMillis() + "";
-
-        String amount = mEditMoney.getText().toString();
+        long amount = 0;
+        try {
+            String text = mEditMoney.getText().toString();
+            amount = Long.parseLong(text);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String oriAuthNo = mEditAuth.getText().toString();
         String oriTransDate = mEditDate.getText().toString();
         String oriVoucherNo = mEditVoucher.getText().toString();
 
         Intent intent = new Intent(CALL_EXTRA_ACTION);
-        intent.putExtra("transId", transId);
-        intent.putExtra("appId", packageName);
+
+        intent.putExtra("appId", BuildConfig.APPLICATION_ID);
+
         intent.putExtra("transType", transType);
 
-        try {
-            long money = Long.valueOf(amount);
-            intent.putExtra("amount", money);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        intent.putExtra("amount", amount);
         intent.putExtra("oriAuthNo", oriAuthNo);
         intent.putExtra("oriTransDate", oriTransDate);
         intent.putExtra("oriVoucherNo", oriVoucherNo);

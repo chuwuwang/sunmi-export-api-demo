@@ -15,15 +15,12 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_result);
 
         TextView tvResult = findViewById(R.id.tv_result);
 
         Intent intent = getIntent();
-
         StringBuilder sb = new StringBuilder();
-
         try {
             Set<String> keySet = intent.getExtras().keySet();
             for (String key : keySet) {
@@ -45,7 +42,6 @@ public class ResultActivity extends AppCompatActivity {
 
         String result = sb.toString();
         Log.e(TAG, "result: " + result);
-
         tvResult.setText(result);
     }
 

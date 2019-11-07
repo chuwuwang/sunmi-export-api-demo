@@ -23,6 +23,7 @@ public class SaleActivity extends BaseActivity {
         mRadioGroup = findViewById(R.id.radio_group);
         mEditAmount = findViewById(R.id.edit_input_money);
         mEditTransId = findViewById(R.id.edit_input_trans_id);
+
         findViewById(R.id.btn_ok).setOnClickListener(this);
     }
 
@@ -59,30 +60,28 @@ public class SaleActivity extends BaseActivity {
                 paymentType = 7;
                 break;
         }
-
-        String packageName = getPackageName();
-        String transId = mEditTransId.getText().toString();
-
-        Intent intent = new Intent(CALL_EXTRA_ACTION);
-        Bundle bundle = new Bundle();
-        bundle.putInt("transType", 0);
-        bundle.putString("transId", transId);
-        bundle.putString("appId", packageName);
-        bundle.putInt("paymentType", paymentType);
-
+        long amount = 0;
         try {
-            String amount = mEditAmount.getText().toString();
-            long aLong = Long.parseLong(amount);
-            bundle.putLong("amount", aLong);
+            String text = mEditAmount.getText().toString();
+            amount = Long.parseLong(text);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        String transId = mEditTransId.getText().toString();
+
+        Intent intent = new Intent(CALL_EXTRA_ACTION);
+
+        intent.putExtra("appId", BuildConfig.APPLICATION_ID);
+
+        intent.putExtra("amount", amount);
+        intent.putExtra("transId", transId);
+
+        intent.putExtra("transType", 0);
+        intent.putExtra("paymentType", paymentType);
 
         intent.putExtra("countTime", 200);
         intent.putExtra("isCallbackNow", true);
         intent.putExtra("isShowCountTime", true);
-
-        intent.putExtras(bundle);
 
         intent = addUserCustomTicketContent(intent);
 
