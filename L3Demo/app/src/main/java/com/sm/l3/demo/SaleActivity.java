@@ -15,7 +15,7 @@ public class SaleActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consume);
+        setContentView(R.layout.activity_sale);
         initView();
     }
 
@@ -79,10 +79,7 @@ public class SaleActivity extends BaseActivity {
         intent.putExtra("transType", 0);
         intent.putExtra("paymentType", paymentType);
 
-        intent.putExtra("countTime", 200);
-        intent.putExtra("isCallbackNow", true);
-        intent.putExtra("isShowCountTime", true);
-
+        intent = addPaymentChannel(intent);
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);

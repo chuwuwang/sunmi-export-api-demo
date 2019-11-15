@@ -73,6 +73,7 @@ public class PreAuthActivity extends BaseActivity {
         intent.putExtra("oriTransDate", oriTransDate);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
 
+        intent = addPaymentChannel(intent);
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);

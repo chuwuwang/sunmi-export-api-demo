@@ -66,4 +66,7 @@
     <string name="footer_merchant">Merchant receipt added print (O)</string>
     <string name="footer_merchant_code">Merchant receipt added code (O)</string>
 
+    <string name="payment_channel_card">Card Payment</string>
+    <string name="payment_channel_wallet">E-Wallet Payment</string>
+
 </resources>

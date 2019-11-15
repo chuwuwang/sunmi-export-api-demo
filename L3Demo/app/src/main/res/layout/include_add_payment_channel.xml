@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Please select payment type"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/rg_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_card_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/payment_channel_card"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/rb_wallet_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_channel_wallet"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+    </RadioGroup>
+
+</LinearLayout>

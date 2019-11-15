@@ -43,6 +43,7 @@ public class RevokeActivity extends BaseActivity {
         intent.putExtra("isManagePwd", isManagePwd);
         intent.putExtra("oriVoucherNo", oriVoucherNo);
 
+        intent = addPaymentChannel(intent);
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);

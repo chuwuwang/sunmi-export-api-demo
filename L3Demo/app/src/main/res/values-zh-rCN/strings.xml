@@ -66,5 +66,7 @@
     <string name="footer_merchant">商户联追加打印（非必填）</string>
     <string name="footer_merchant_code">商户联追加二维码（非必填）</string>
 
+    <string name="payment_channel_card">银行卡支付</string>
+    <string name="payment_channel_wallet">二维码支付</string>
 
 </resources>

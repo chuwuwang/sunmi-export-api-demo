@@ -122,6 +122,8 @@
 
         <include layout="@layout/include_add_print_footer" />
 
+        <include layout="@layout/include_add_payment_channel" />
+
         <Button
             android:id="@+id/btn_ok"
             android:layout_width="match_parent"

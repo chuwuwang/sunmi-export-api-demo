@@ -36,6 +36,9 @@ public class SettlementActivity extends BaseActivity {
         intent.putExtra("transType", 7);
         intent.putExtra("isSettlementTicket", isSettlementTicket);
         intent.putExtra("isSettlementDetail", isSettlementDetail);
+
+        intent = addPaymentChannel(intent);
+
         startActivity(intent);
     }
 

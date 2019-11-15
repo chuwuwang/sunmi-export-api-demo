@@ -7,27 +7,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String CALL_EXTRA_ACTION = "com.pos.router.payment.ACTION_PAY";
+    public static final String CALL_EXTRA_ACTION = "sunmi.payment.L3";
+    public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY";
 
     public Intent addUserCustomTicketContent(Intent intent) {
-        EditText mEditUserInfo = findViewById(R.id.edit_user_info);
-        EditText mEditUserCodeInfo = findViewById(R.id.edit_user_code_info);
+        CheckBox cbPrint = findViewById(R.id.cb_print);
+        EditText editUserInfo = findViewById(R.id.edit_user_info);
+        EditText editMerchantInfo = findViewById(R.id.edit_merchant_info);
+        EditText editUserCodeInfo = findViewById(R.id.edit_user_code_info);
+        EditText editMerchantCodeInfo = findViewById(R.id.edit_merchant_code_info);
 
-        EditText mEditMerchantInfo = findViewById(R.id.edit_merchant_info);
-        EditText mEditMerchantCodeInfo = findViewById(R.id.edit_merchant_code_info);
-
-        CheckBox mCbPrint = findViewById(R.id.cb_print);
-
-        String printInfo = mEditUserInfo.getText().toString();
-        String printCode = mEditUserCodeInfo.getText().toString();
-        String printMerchantInfo = mEditMerchantInfo.getText().toString();
-        String printMerchantCode = mEditMerchantCodeInfo.getText().toString();
+        boolean checked = cbPrint.isChecked();
+        String printInfo = editUserInfo.getText().toString();
+        String printCode = editUserCodeInfo.getText().toString();
+        String printMerchantInfo = editMerchantInfo.getText().toString();
+        String printMerchantCode = editMerchantCodeInfo.getText().toString();
         if (printInfo.length() > 100) {
             Toast.makeText(this, "用户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
         }
@@ -35,13 +36,25 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "商户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
         }
 
-        boolean checked = mCbPrint.isChecked();
-        intent.putExtra("isPrintTicket", checked);
         intent.putExtra("printInfo", printInfo);
         intent.putExtra("printInfo2", printCode);
+        intent.putExtra("isPrintTicket", checked);
         intent.putExtra("printMerchantInfo", printMerchantInfo);
         intent.putExtra("printMerchantInfo2", printMerchantCode);
+        return intent;
+    }
 
+    public Intent addPaymentChannel(Intent intent) {
+        RadioGroup radioGroup = findViewById(R.id.rg_payment);
+        int buttonId = radioGroup.getCheckedRadioButtonId();
+        switch (buttonId) {
+            case R.id.rb_card_payment:
+                intent.setAction(CALL_EXTRA_ACTION_CARD);
+                break;
+            case R.id.rb_wallet_payment:
+                intent.setAction(CALL_EXTRA_ACTION);
+                break;
+        }
         return intent;
     }
 
