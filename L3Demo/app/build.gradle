@@ -8,8 +8,8 @@ android {
         applicationId "sunmi.l3demo"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 42
-        versionName "v1.1.2"
+        versionCode 43
+        versionName "v1.1.3"
     }
 
     signingConfigs {
@@ -37,7 +37,8 @@ android {
     android.applicationVariants.all {
         variant ->
             variant.outputs.all {
-                outputFileName = "SunmiL3Demo_" + defaultConfig.versionName + "_" + buildType.name + ".apk"
+                def timeNow = getDate()
+                outputFileName = "SunmiL3Demo_" + defaultConfig.versionName + "_" + buildType.name + "_" + timeNow + ".apk"
             }
     }
 
@@ -46,6 +47,12 @@ android {
         disable 'GoogleAppIndexingWarning'
     }
 
+}
+
+def getDate() {
+    def date = new Date()
+    def formatDate = date.format('yyyyMMddHHmmss')
+    return formatDate
 }
 
 dependencies {
