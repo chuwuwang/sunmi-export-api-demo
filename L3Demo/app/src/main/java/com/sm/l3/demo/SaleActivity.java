@@ -28,7 +28,7 @@ public class SaleActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        int paymentType;
+        int paymentType = -1;
         int buttonId = mRadioGroup.getCheckedRadioButtonId();
         switch (buttonId) {
             case R.id.rb_user_optional:
@@ -58,13 +58,13 @@ public class SaleActivity extends BaseActivity {
             case R.id.rb_scan_and_scan:
                 paymentType = 7;
                 break;
-            default:
-                paymentType = -1;
-                break;
         }
 
         String packageName = getPackageName();
         String transId = mEditTransId.getText().toString();
+        if (transId == null || transId.trim().length() == 0) {
+            transId = System.currentTimeMillis() + "";
+        }
 
         Intent intent = new Intent(CALL_EXTRA_ACTION);
         Bundle bundle = new Bundle();
@@ -87,6 +87,5 @@ public class SaleActivity extends BaseActivity {
 
         startActivity(intent);
     }
-
 
 }
