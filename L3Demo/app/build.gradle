@@ -8,8 +8,8 @@ android {
         applicationId "sunmi.l3demo"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 43
-        versionName "v1.1.3"
+        versionCode 44
+        versionName "1.1.4"
     }
 
     signingConfigs {
@@ -37,8 +37,8 @@ android {
     android.applicationVariants.all {
         variant ->
             variant.outputs.all {
-                def timeNow = getDate()
-                outputFileName = "SunmiL3Demo_" + defaultConfig.versionName + "_" + buildType.name + "_" + timeNow + ".apk"
+                def time = getDateString()
+                outputFileName = "SunmiL3Demo_" + defaultConfig.versionName + "_" + buildType.name + "_" + time + ".apk"
             }
     }
 
@@ -49,10 +49,10 @@ android {
 
 }
 
-def getDate() {
+static def getDateString() {
     def date = new Date()
-    def formatDate = date.format('yyyyMMddHHmmss')
-    return formatDate
+    def string = date.format('yyyyMMddHHmmss')
+    return string
 }
 
 dependencies {
@@ -61,5 +61,5 @@ dependencies {
     )
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }

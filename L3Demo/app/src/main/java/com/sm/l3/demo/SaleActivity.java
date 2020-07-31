@@ -79,11 +79,13 @@ public class SaleActivity extends BaseActivity {
         intent.putExtra("transType", 0);
         intent.putExtra("paymentType", paymentType);
 
+        intent.putExtra("receiptType", 1);
+        intent.putExtra("isWaitingForResult", true);
+
         intent = addPaymentChannel(intent);
         intent = addUserCustomTicketContent(intent);
 
         startActivity(intent);
     }
-
 
 }
