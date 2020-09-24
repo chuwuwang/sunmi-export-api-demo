@@ -35,7 +35,6 @@ public class ResultActivity extends AppCompatActivity {
                 } else {
                     temp = "key = " + key + " || value = null";
                 }
-                Log.e(TAG, temp);
                 sb.append(temp);
                 sb.append("\n");
             }
@@ -48,6 +47,5 @@ public class ResultActivity extends AppCompatActivity {
 
         tvResult.setText(result);
     }
-
 
 }
