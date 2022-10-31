@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sm.l3.demo"
+    tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity android:name="com.sm.l3.demo.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.sm.l3.demo.SaleActivity" />
+        <activity android:name="com.sm.l3.demo.RevokeActivity" />
+        <activity android:name="com.sm.l3.demo.PreAuthActivity" />
+        <activity android:name="com.sm.l3.demo.ReturnGoodsActivity" />
+
+        <activity android:name="com.sm.l3.demo.PrintActivity" />
+        <activity android:name="com.sm.l3.demo.CustomActivity" />
+        <activity android:name="com.sm.l3.demo.SettlementActivity" />
+        <activity android:name="com.sm.l3.demo.InquiryByLocalActivity" />
+        <activity android:name="com.sm.l3.demo.InquiryByOnlineActivity" />
+
+        <activity android:name="com.sm.l3.demo.ResultActivity" />
+
+        <receiver android:name="com.sm.l3.demo.ResultReceiver">
+            <intent-filter>
+                <action android:name="sunmi.payment.L3.RESULT" />
+                <action android:name="com.pos.router.payment.ACTION_RESULT" />
+                <action android:name="com.pos.router.payment.ACTION_RESULT_FINE_XUS" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

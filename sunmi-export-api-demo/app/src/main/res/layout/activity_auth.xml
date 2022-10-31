@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/input_select_mode_payment"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/input_select_mode_payment"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_pre_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/request_pre_auth"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_pre_revoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/request_pre_revoke"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_pre_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/request_pre_complete"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_pre_complete_revoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/request_pre_complete_revoke"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/edit_input_voucher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_ori_voucher"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#ff6900"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edit_input_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_money"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#ff6900"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edit_input_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_ori_date"
+            android:inputType="date"
+            android:textColor="#000000"
+            android:textColorHint="#ff6900"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edit_input_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_ori_auth"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#ff6900"
+            android:textSize="14sp" />
+
+        <include layout="@layout/include_add_print_footer" />
+
+        <include layout="@layout/include_add_payment_channel" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok" />
+
+    </LinearLayout>
+
+</ScrollView>

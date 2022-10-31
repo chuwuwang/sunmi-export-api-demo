@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "sunmi.l3demo"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 45
+        versionName "1.1.5"
+    }
+    signingConfigs {
+        sign {
+            keyAlias 'sunmi'
+            keyPassword 'SunmiPay'
+            storeFile file('../app/sunmi.jks')
+            storePassword 'sunmipay'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.sign
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.sign
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def time = getDateString()
+            outputFileName = "SunmiL3Demo_" + defaultConfig.versionName + "_" + buildType.name + "_" + time + ".apk"
+        }
+    }
+    lintOptions {
+        abortOnError false
+        disable 'GoogleAppIndexingWarning'
+    }
+}
+
+static def getDateString() {
+    def date = new Date()
+    def string = date.format('yyyyMMddHHmmss')
+    return string
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+}

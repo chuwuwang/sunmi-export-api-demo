@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/edit_input_voucher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_ori_voucher"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textColorHint="#ff6900"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/edit_input_trade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:hint="@string/input_ori_third_order"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textColorHint="#ff6900"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/footer_query_hint"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ok" />
+
+</LinearLayout>
