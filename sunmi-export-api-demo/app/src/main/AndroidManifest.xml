@@ -35,6 +35,7 @@
                 <action android:name="sunmi.payment.L3.RESULT" />
                 <action android:name="com.pos.router.payment.ACTION_RESULT" />
                 <action android:name="com.pos.router.payment.ACTION_RESULT_FINE_XUS" />
+                <action android:name="com.pos.router.payment.ACTION_RESULT_MUL_ZONE" />
             </intent-filter>
         </receiver>
 

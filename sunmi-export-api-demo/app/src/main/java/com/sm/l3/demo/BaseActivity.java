@@ -14,9 +14,17 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // public static final String CALL_EXTRA_ACTION = "sunmi.payment.L3";
-    public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY";
-    public static final String CALL_EXTRA_ACTION = "com.pos.router.payment.ACTION_RESULT_FINE_XUS";
+    // this is ipay88 e-wallet app action
+    public static final String CALL_EXTRA_ACTION = "sunmi.payment.L3";
+
+    // this is gobiz app action
+    // public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY";
+
+    // this is finexus app action
+    // public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY_FINE_XUS";
+
+    // this is bank muamalat app action
+    public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY_MUL_ZONE";
 
     public Intent addUserCustomTicketContent(Intent intent) {
         CheckBox cbPrint = findViewById(R.id.cb_print);
@@ -24,7 +32,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         EditText editMerchantInfo = findViewById(R.id.edit_merchant_info);
         EditText editUserCodeInfo = findViewById(R.id.edit_user_code_info);
         EditText editMerchantCodeInfo = findViewById(R.id.edit_merchant_code_info);
-
         boolean checked = cbPrint.isChecked();
         String printInfo = editUserInfo.getText().toString();
         String printCode = editUserCodeInfo.getText().toString();
@@ -36,7 +43,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (printMerchantInfo.length() > 100) {
             Toast.makeText(this, "商户联追加打印请在100字以内", Toast.LENGTH_SHORT).show();
         }
-
         intent.putExtra("printInfo", printInfo);
         intent.putExtra("printInfo2", printCode);
         intent.putExtra("isPrintTicket", checked);
@@ -74,6 +80,5 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "此机器上没有安装L3应用", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 }

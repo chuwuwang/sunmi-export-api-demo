@@ -70,22 +70,13 @@ public class SaleActivity extends BaseActivity {
         String transId = mEditTransId.getText().toString();
 
         Intent intent = new Intent();
-
         intent.putExtra("appId", BuildConfig.APPLICATION_ID);
-
         intent.putExtra("amount", amount);
         intent.putExtra("transId", transId);
-
         intent.putExtra("transType", 0);
-        intent.putExtra("paymentType", 2);
-        intent.putExtra("qrCodeType", "DuitNow");
-
-        intent.putExtra("receiptType", 1);
-        intent.putExtra("isWaitingForResult", true);
-
+        intent.putExtra("paymentType", paymentType);
         intent = addPaymentChannel(intent);
         intent = addUserCustomTicketContent(intent);
-
         startActivity(intent);
     }
 
