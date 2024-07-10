@@ -18,13 +18,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     public static final String CALL_EXTRA_ACTION = "sunmi.payment.L3";
 
     // this is gobiz app action
-    // public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY";
+    public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY";
 
     // this is finexus app action
     // public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY_FINE_XUS";
 
     // this is bank muamalat app action
-    public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY_MUL_ZONE";
+    // public static final String CALL_EXTRA_ACTION_CARD = "com.pos.router.payment.ACTION_PAY_MUL_ZONE";
 
     public Intent addUserCustomTicketContent(Intent intent) {
         CheckBox cbPrint = findViewById(R.id.cb_print);
