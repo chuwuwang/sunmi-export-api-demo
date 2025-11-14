@@ -1,1 +1,2 @@
-#L3Demo
+## Sunmi payment app call api sample
+
